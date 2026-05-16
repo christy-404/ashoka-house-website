@@ -1,0 +1,111 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "name": "Inter-House Basketball Championship",
+      "category": "sports",
+      "startDate": "2026-05-15",
+      "endDate": "2026-05-18",
+      "status": "ongoing",
+      "description": "Elite championship tournament featuring competitive basketball matches across all houses",
+      "points": 150,
+      "houses": ["Ashoka", "Shivaji", "Tagore", "Raman"],
+      "progress": 65,
+      "participants": 48
+    },
+    {
+      "id": 2,
+      "name": "Literary Excellence Symposium",
+      "category": "literary",
+      "startDate": "2026-05-20",
+      "endDate": "2026-05-22",
+      "status": "upcoming",
+      "description": "Premium debate and essay competition celebrating intellectual discourse",
+      "points": 120,
+      "houses": ["Ashoka", "Shivaji", "Tagore", "Raman"],
+      "progress": 0,
+      "participants": 32
+    },
+    {
+      "id": 3,
+      "name": "Annual Cultural Festival",
+      "category": "cultural",
+      "startDate": "2026-05-25",
+      "endDate": "2026-05-27",
+      "status": "upcoming",
+      "description": "Cinematic celebration of music, dance, and artistic expression",
+      "points": 180,
+      "houses": ["Ashoka", "Shivaji", "Tagore", "Raman"],
+      "progress": 0,
+      "participants": 156
+    },
+    {
+      "id": 4,
+      "name": "Science Olympiad",
+      "category": "academic",
+      "startDate": "2026-05-12",
+      "endDate": "2026-05-14",
+      "status": "completed",
+      "description": "Premier science competition showcasing innovation and research excellence",
+      "points": 140,
+      "houses": ["Ashoka", "Shivaji", "Tagore", "Raman"],
+      "progress": 100,
+      "winner": "Ashoka",
+      "participants": 28
+    },
+    {
+      "id": 5,
+      "name": "Badminton Singles Tournament",
+      "category": "sports",
+      "startDate": "2026-05-08",
+      "endDate": "2026-05-10",
+      "status": "completed",
+      "description": "Premier badminton championship with elite players",
+      "points": 100,
+      "houses": ["Ashoka", "Shivaji", "Tagore", "Raman"],
+      "progress": 100,
+      "winner": "Shivaji",
+      "participants": 24
+    },
+    {
+      "id": 6,
+      "name": "Digital Design Challenge",
+      "category": "cultural",
+      "startDate": "2026-05-18",
+      "endDate": "2026-05-20",
+      "status": "ongoing",
+      "description": "Futuristic UI/UX design competition for creative technologists",
+      "points": 110,
+      "houses": ["Ashoka", "Shivaji", "Tagore", "Raman"],
+      "progress": 42,
+      "participants": 36
+    },
+    {
+      "id": 7,
+      "name": "Swimming Relay Championship",
+      "category": "sports",
+      "startDate": "2026-05-22",
+      "endDate": "2026-05-23",
+      "status": "upcoming",
+      "description": "High-performance swimming competition featuring relay events",
+      "points": 80,
+      "houses": ["Ashoka", "Shivaji", "Tagore", "Raman"],
+      "progress": 0,
+      "participants": 40
+    },
+    {
+      "id": 8,
+      "name": "Poetry & Creative Writing Fest",
+      "category": "literary",
+      "startDate": "2026-05-05",
+      "endDate": "2026-05-07",
+      "status": "completed",
+      "description": "Celebration of literary artistry and creative expression",
+      "points": 95,
+      "houses": ["Ashoka", "Shivaji", "Tagore", "Raman"],
+      "progress": 100,
+      "winner": "Tagore",
+      "participants": 20
+    }
+  ]
+}

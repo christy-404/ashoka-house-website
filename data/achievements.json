@@ -1,0 +1,122 @@
+{
+  "house_achievements": [
+    {
+      "id": 1,
+      "title": "Sports Championship Victory 2026",
+      "house": "Ashoka",
+      "category": "sports",
+      "date": "2026-05-14",
+      "description": "Secured first place in annual inter-house sports tournament",
+      "points": 150,
+      "featured": true
+    },
+    {
+      "id": 2,
+      "title": "Academic Excellence Recognition",
+      "house": "Shivaji",
+      "category": "academic",
+      "date": "2026-05-10",
+      "description": "Highest cumulative academic performance across all streams",
+      "points": 120,
+      "featured": false
+    },
+    {
+      "id": 3,
+      "title": "Cultural Festival Victory",
+      "house": "Tagore",
+      "category": "cultural",
+      "date": "2026-05-07",
+      "description": "Outstanding performance in annual cultural festival",
+      "points": 140,
+      "featured": true
+    },
+    {
+      "id": 4,
+      "title": "Community Service Excellence",
+      "house": "Raman",
+      "category": "community",
+      "date": "2026-05-01",
+      "description": "Excellence in social responsibility and community engagement",
+      "points": 100,
+      "featured": false
+    },
+    {
+      "id": 5,
+      "title": "Science Innovation Award",
+      "house": "Ashoka",
+      "category": "academic",
+      "date": "2026-04-28",
+      "description": "Pioneering research project in sustainable technology",
+      "points": 110,
+      "featured": false
+    }
+  ],
+  "individual_achievements": [
+    {
+      "id": 101,
+      "title": "National Science Olympiad Gold Medal",
+      "student": "Aarjav Sharma",
+      "house": "Ashoka",
+      "category": "academic",
+      "date": "2026-05-12",
+      "description": "Gold medal in national physics competition",
+      "points": 80,
+      "featured": true
+    },
+    {
+      "id": 102,
+      "title": "All-India Literary Excellence",
+      "student": "Priya Verma",
+      "house": "Shivaji",
+      "category": "literary",
+      "date": "2026-05-08",
+      "description": "Best short story in all-India competition",
+      "points": 70,
+      "featured": true
+    },
+    {
+      "id": 103,
+      "title": "State-Level Badminton Selection",
+      "student": "Rohan Patel",
+      "house": "Tagore",
+      "category": "sports",
+      "date": "2026-05-06",
+      "description": "Selected for state-level badminton tournament",
+      "points": 60,
+      "featured": false
+    },
+    {
+      "id": 104,
+      "title": "Tech Innovation Award",
+      "student": "Yuki Tanaka",
+      "house": "Raman",
+      "category": "academic",
+      "date": "2026-05-02",
+      "description": "Developed award-winning school management platform",
+      "points": 75,
+      "featured": false
+    },
+    {
+      "id": 105,
+      "title": "Regional Debate Championship",
+      "student": "Ananya Gupta",
+      "house": "Ashoka",
+      "category": "literary",
+      "date": "2026-04-30",
+      "description": "Regional champion in parliamentary debate",
+      "points": 65,
+      "featured": false
+    },
+    {
+      "id": 106,
+      "title": "National Art Exhibition Feature",
+      "student": "Vikram Singh",
+      "house": "Shivaji",
+      "category": "cultural",
+      "date": "2026-04-25",
+      "description": "Featured in national youth art exhibition",
+      "points": 70,
+      "featured": false
+    }
+  ]
+}

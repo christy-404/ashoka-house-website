@@ -1,0 +1,93 @@
+{
+  "leadership": [
+    {
+      "id": 1,
+      "name": "Dr. Rajesh Kumar",
+      "role": "Principal",
+      "category": "principal",
+      "bio": "Visionary educational leader with 20+ years pioneering institutional excellence",
+      "email": "principal@school.edu",
+      "initials": "RK"
+    },
+    {
+      "id": 2,
+      "name": "Ms. Anita Sharma",
+      "role": "Vice Principal",
+      "category": "vice_principal",
+      "bio": "Dedicated to academic excellence and comprehensive student welfare",
+      "email": "vp@school.edu",
+      "initials": "AS"
+    },
+    {
+      "id": 3,
+      "name": "Mr. Vikram Patel",
+      "role": "Ashoka House Master",
+      "category": "house_master",
+      "house": "Ashoka",
+      "bio": "Mentor and strategic guide for Ashoka House excellence",
+      "email": "ashoka.master@school.edu",
+      "initials": "VP",
+      "featured": true
+    },
+    {
+      "id": 4,
+      "name": "Ridhima Chopra",
+      "role": "Ashoka House Council President",
+      "category": "house_council",
+      "house": "Ashoka",
+      "bio": "Student leader steering Ashoka House toward excellence",
+      "email": "ashoka.president@school.edu",
+      "initials": "RC",
+      "featured": true
+    },
+    {
+      "id": 5,
+      "name": "Arjun Singh",
+      "role": "Ashoka House Vice President",
+      "category": "house_council",
+      "house": "Ashoka",
+      "bio": "Supporting strategic initiatives and member engagement",
+      "email": "ashoka.vp@school.edu",
+      "initials": "AS"
+    },
+    {
+      "id": 6,
+      "name": "Aditya Malhotra",
+      "role": "School Council President",
+      "category": "school_council",
+      "bio": "Representative voice for school-wide institutional initiatives",
+      "email": "council.president@school.edu",
+      "initials": "AM"
+    },
+    {
+      "id": 7,
+      "name": "Mr. Rahul Desai",
+      "role": "Shivaji House Master",
+      "category": "house_master",
+      "house": "Shivaji",
+      "bio": "Guiding Shivaji House with discipline and strategic vision",
+      "email": "shivaji.master@school.edu",
+      "initials": "RD"
+    },
+    {
+      "id": 8,
+      "name": "Ms. Priya Nair",
+      "role": "Tagore House Master",
+      "category": "house_master",
+      "house": "Tagore",
+      "bio": "Cultivating cultural excellence and artistic achievement",
+      "email": "tagore.master@school.edu",
+      "initials": "PN"
+    },
+    {
+      "id": 9,
+      "name": "Dr. Sunil Kapoor",
+      "role": "Raman House Master",
+      "category": "house_master",
+      "house": "Raman",
+      "bio": "Fostering innovation and academic excellence",
+      "email": "raman.master@school.edu",
+      "initials": "SK"
+    }
+  ]
+}
