@@ -1,0 +1,356 @@
+/* ==========================================
+   ASHOKA HOUSE - STANDINGS PAGE PREMIUM
+   ========================================== */
+
+/* ========== PAGE LAYOUT ========== */
+.standings-page {
+    padding: 3rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* ========== STANDINGS CONTAINER ========== */
+.standings-container {
+    animation: fadeInUp 0.8s var(--ease-out);
+    margin-bottom: 3rem;
+}
+
+/* ========== PREMIUM STANDINGS TABLE ========== */
+.standings-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.standings-table thead {
+    background: linear-gradient(90deg, rgba(45, 157, 120, 0.15), rgba(45, 157, 120, 0.05));
+    border-bottom: 1px solid var(--border);
+}
+
+.standings-table th {
+    padding: 1.25rem;
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--primary);
+}
+
+.standings-table tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: all var(--duration-normal) var(--ease-out);
+}
+
+.standings-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.standings-table tbody tr:hover {
+    background: rgba(45, 157, 120, 0.05);
+    transform: translateX(4px);
+}
+
+.standings-table td {
+    padding: 1.25rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* ========== TABLE RANK CELL ========== */
+.rank-cell {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 700;
+    color: var(--primary-light);
+    font-size: 1.1rem;
+}
+
+.rank-badge {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(45, 157, 120, 0.2), rgba(45, 157, 120, 0.05));
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.rank-badge.first {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.05));
+    border-color: rgba(212, 175, 55, 0.3);
+    color: #d4af37;
+}
+
+.rank-badge.second {
+    background: linear-gradient(135deg, rgba(192, 192, 192, 0.2), rgba(192, 192, 192, 0.05));
+    border-color: rgba(192, 192, 192, 0.3);
+    color: #c0c0c0;
+}
+
+.rank-badge.third {
+    background: linear-gradient(135deg, rgba(205, 127, 50, 0.2), rgba(205, 127, 50, 0.05));
+    border-color: rgba(205, 127, 50, 0.3);
+    color: #cd7f32;
+}
+
+/* ========== TABLE HOUSE CELL ========== */
+.house-cell {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.house-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(45, 157, 120, 0.2), rgba(45, 157, 120, 0.05));
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.house-name {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* ========== POINTS CELL ========== */
+.points-cell {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--primary-light);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ========== MOMENTUM CELL ========== */
+.momentum-cell {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.momentum-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.8rem;
+    background: rgba(45, 157, 120, 0.15);
+    border: 1px solid rgba(45, 157, 120, 0.3);
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--primary-light);
+}
+
+.momentum-badge.rising {
+    background: rgba(16, 185, 129, 0.15);
+    border-color: rgba(16, 185, 129, 0.3);
+    color: #10b981;
+}
+
+.momentum-badge.stable {
+    background: rgba(107, 114, 128, 0.15);
+    border-color: rgba(107, 114, 128, 0.3);
+    color: #6b7280;
+}
+
+.momentum-badge.dropping {
+    background: rgba(239, 68, 68, 0.15);
+    border-color: rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+}
+
+.momentum-icon {
+    font-size: 1rem;
+}
+
+/* ========== RECENT PERFORMANCE ========== */
+.recent-cell {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.performance-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(45, 157, 120, 0.3);
+}
+
+.performance-dot.positive {
+    background: #10b981;
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
+}
+
+.performance-dot.negative {
+    background: #ef4444;
+}
+
+/* ========== STANDINGS INFO ========== */
+.standings-info {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-tertiary);
+    margin: 2rem 0;
+    padding: 1rem;
+    background: rgba(45, 157, 120, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    animation: fadeInUp 0.8s var(--ease-out);
+}
+
+/* ========== HOUSE DNA SECTION ========== */
+.dna-wrap {
+    margin-top: 3rem;
+    animation: fadeInUp 0.8s var(--ease-out);
+}
+
+.dna-wrap > .section-label {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+.house-dna {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* ========== DNA CARD ========== */
+.dna-card {
+    background: var(--surface-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all var(--duration-normal) var(--ease-out);
+    position: relative;
+    animation: fadeInUp 0.8s var(--ease-out) backwards;
+}
+
+.dna-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(45, 157, 120, 0.1) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity var(--duration-normal);
+    pointer-events: none;
+    border-radius: 16px;
+}
+
+.dna-card:hover {
+    border-color: var(--border-hover);
+    box-shadow: 0 8px 32px rgba(45, 157, 120, 0.15);
+    transform: translateY(-4px);
+}
+
+.dna-card:hover::before {
+    opacity: 1;
+}
+
+.dna-header {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.dna-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(45, 157, 120, 0.2), rgba(45, 157, 120, 0.05));
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 1.5rem;
+}
+
+.dna-name {
+    font-weight: 700;
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+.dna-body {
+    position: relative;
+    z-index: 2;
+}
+
+.dna-trait {
+    margin-bottom: 1rem;
+}
+
+.dna-trait:last-child {
+    margin-bottom: 0;
+}
+
+.dna-trait-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin-bottom: 0.5rem;
+}
+
+.dna-trait-bar {
+    height: 6px;
+    background: rgba(45, 157, 120, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+.dna-trait-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--primary-light));
+    border-radius: 3px;
+    transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1024px) {
+    .house-dna {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .standings-table {
+        font-size: 0.85rem;
+    }
+    
+    .standings-table th,
+    .standings-table td {
+        padding: 0.75rem;
+    }
+    
+    .house-dna {
+        grid-template-columns: 1fr;
+    }
+    
+    .rank-cell {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

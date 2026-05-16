@@ -1,0 +1,453 @@
+/* ==========================================
+   ASHOKA HOUSE - PRELOADER SYSTEM
+   Elegant Cinematic Loading Experience
+   ========================================== */
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--graphite-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 9999;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity var(--transition-slow) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.preloader.complete {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Layered Atmospheric Background */
+.preloader::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 70%, var(--primary-emerald-glow) 0%, transparent 40%),
+    radial-gradient(circle at 70% 30%, var(--gold-accent-glow) 0%, transparent 40%),
+    linear-gradient(135deg, var(--graphite-black) 0%, var(--graphite-dark) 100%);
+  animation: subtlePulse 8s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes subtlePulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+/* Subtle Grid Pattern */
+.preloader::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 1;
+}
+
+.preloader-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3xl);
+}
+
+/* Logo Container - Minimal & Elegant */
+.preloader-logo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.preloader-logo-icon {
+  font-size: 3.5rem;
+  color: var(--primary-emerald-light);
+  font-weight: 600;
+  animation: logoFadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  opacity: 0;
+}
+
+@keyframes logoFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.preloader-logo-text {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--soft-white-secondary);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  animation: textFadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+  opacity: 0;
+}
+
+@keyframes textFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Progress Container - Clean & Precise */
+.preloader-progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  min-width: 300px;
+}
+
+.preloader-progress-bar {
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  position: relative;
+}
+
+.preloader-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-emerald-light), var(--gold-accent));
+  border-radius: var(--radius-sm);
+  width: 0%;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.preloader-progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.preloader-progress-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--soft-white-secondary);
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+  animation: textFadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards;
+  opacity: 0;
+}
+
+/* Status Messages - Contextual Feedback */
+.preloader-status {
+  font-size: 0.75rem;
+  color: var(--soft-white-secondary);
+  text-align: center;
+  max-width: 280px;
+  line-height: 1.5;
+  animation: textFadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.9s forwards;
+  opacity: 0;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .preloader::before {
+    animation: none;
+  }
+
+  .preloader-logo-icon,
+  .preloader-logo-text,
+  .preloader-progress-text,
+  .preloader-status {
+    animation: none;
+    opacity: 1;
+  }
+
+  .preloader-progress-fill {
+    transition: none;
+  }
+
+  .preloader-progress-fill::after {
+    animation: none;
+  }
+}
+
+/* Inner pulsing circle */
+.preloader-logo::after {
+    content: '';
+    position: absolute;
+    inset: -30px;
+    border: 1px solid rgba(45, 157, 120, 0.2);
+    border-radius: 50%;
+    animation: pulseCircle 2.5s ease-in-out infinite;
+}
+
+@keyframes pulseCircle {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.2;
+    }
+}
+
+/* Segmented loader lines */
+.preloader-segments {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    position: relative;
+}
+
+.preloader-segment {
+    width: 4px;
+    height: 30px;
+    background: linear-gradient(180deg, #2d9d78, #1a5f3f);
+    border-radius: 2px;
+    opacity: 0.3;
+    animation: segmentLoad 1.5s ease-in-out infinite;
+}
+
+.preloader-segment:nth-child(1) { animation-delay: 0s; }
+.preloader-segment:nth-child(2) { animation-delay: 0.1s; }
+.preloader-segment:nth-child(3) { animation-delay: 0.2s; }
+.preloader-segment:nth-child(4) { animation-delay: 0.3s; }
+.preloader-segment:nth-child(5) { animation-delay: 0.2s; }
+.preloader-segment:nth-child(6) { animation-delay: 0.1s; }
+
+@keyframes segmentLoad {
+    0%, 100% {
+        height: 30px;
+        opacity: 0.3;
+    }
+    50% {
+        height: 50px;
+        opacity: 1;
+    }
+}
+
+/* Loading text */
+.preloader-text {
+    text-align: center;
+    animation: textFadeIn 0.6s ease-out 0.5s backwards;
+}
+
+.preloader-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.preloader-subtitle {
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(192, 201, 212, 0.6);
+}
+
+@keyframes textFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Progress visuals are kept internal; the visible preloader remains focused on logo and text */
+.preloader-progress,
+.preloader-percent,
+.preloader-bar-container {
+    display: none !important;
+}
+
+@keyframes progressFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Floating particles in preloader */
+.preloader-particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.preloader-particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #2d9d78;
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: particleFloat 4s ease-in-out infinite;
+}
+
+.preloader-particle:nth-child(1) {
+    left: 10%;
+    top: 20%;
+    animation-delay: 0s;
+}
+
+.preloader-particle:nth-child(2) {
+    left: 20%;
+    top: 60%;
+    animation-delay: 0.5s;
+}
+
+.preloader-particle:nth-child(3) {
+    right: 15%;
+    top: 30%;
+    animation-delay: 1s;
+}
+
+.preloader-particle:nth-child(4) {
+    right: 25%;
+    bottom: 20%;
+    animation-delay: 1.5s;
+}
+
+.preloader-particle:nth-child(5) {
+    left: 30%;
+    bottom: 25%;
+    animation-delay: 2s;
+}
+
+@keyframes particleFloat {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateY(-30px) translateX(10px);
+        opacity: 0.8;
+    }
+}
+
+/* Scan line effect (optional premium touch) */
+.preloader-scanline {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    border: 1px solid rgba(45, 157, 120, 0.3);
+    border-radius: 50%;
+    animation: scanExpand 3s ease-out forwards;
+}
+
+@keyframes scanExpand {
+    0% {
+        width: 50px;
+        height: 50px;
+        opacity: 1;
+    }
+    100% {
+        width: 300px;
+        height: 300px;
+        opacity: 0;
+    }
+}
+
+/* Loading bar at bottom */
+.preloader-bar-container {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 2px;
+    background: rgba(45, 157, 120, 0.2);
+    border-radius: 1px;
+    overflow: hidden;
+}
+
+.preloader-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #2d9d78, #3db08a);
+    border-radius: 1px;
+    animation: barExpand 3s ease-in-out forwards;
+    box-shadow: 0 0 10px rgba(45, 157, 120, 0.4);
+}
+
+@keyframes barExpand {
+    0% {
+        width: 0%;
+    }
+    80% {
+        width: 90%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+/* Transition effect from preloader to page */
+.preloader-transition {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #030508 0%, #0a0e14 30%, #0f1420 60%, #0a0e14 100%);
+    z-index: 9998;
+    animation: transitionFadeOut 0.8s ease-out 3s forwards;
+}
+
+@keyframes transitionFadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        display: none;
+    }
+}
+
+/* Success animation (final reveal) */
+@keyframes finalReveal {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+        filter: blur(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+}
+
+body.loaded {
+    animation: finalReveal 0.6s ease-out;
+}

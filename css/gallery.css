@@ -1,0 +1,101 @@
+/* ==========================================
+   ASHOKA HOUSE - GALLERY STYLES
+   Minimal & premium by default (placeholders)
+   ========================================== */
+
+.gallery-section {
+    padding: 0 var(--spacing-lg) 4rem;
+}
+
+.masonry-grid {
+    margin-top: var(--spacing-xl);
+}
+
+.gallery-tile {
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    min-height: 120px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(45, 157, 120, 0.2);
+    border-radius: 16px;
+    backdrop-filter: blur(16px);
+    transition: transform var(--transition-normal), border-color var(--transition-normal);
+}
+
+.gallery-tile::after {
+    content: '';
+    position: absolute;
+    inset: -30%;
+    background: radial-gradient(circle at 30% 30%, rgba(45, 157, 120, 0.22), transparent 55%);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.gallery-tile:hover {
+    transform: translateY(-6px);
+    border-color: rgba(45, 157, 120, 0.4);
+}
+
+.gallery-tile:hover::after {
+    opacity: 1;
+}
+
+/* Fullscreen modal */
+.gallery-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    z-index: 9999;
+    display: grid;
+    place-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-normal);
+}
+
+.gallery-modal.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.gallery-modal-card {
+    width: min(920px, calc(100vw - 2rem));
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+    border: 1px solid rgba(45, 157, 120, 0.25);
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(20px);
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery-modal-card::before {
+    content: '';
+    position: absolute;
+    inset: -30%;
+    background: radial-gradient(circle at 30% 30%, rgba(45, 157, 120, 0.18), transparent 55%);
+}
+
+.gallery-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    border: 1px solid rgba(45, 157, 120, 0.25);
+    background: rgba(10, 14, 20, 0.6);
+    color: #fff;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: transform var(--transition-fast), border-color var(--transition-normal);
+}
+
+.gallery-modal-close:hover {
+    transform: scale(1.05);
+    border-color: rgba(45, 157, 120, 0.45);
+}
+

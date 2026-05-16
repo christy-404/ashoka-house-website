@@ -1,0 +1,549 @@
+/* ==========================================
+   ASHOKA HOUSE - ACHIEVEMENTS PAGE STYLES
+   ========================================== */
+
+.achievements-page {
+    padding-top: 70px;
+}
+
+.achievements-tabs {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1.5rem;
+}
+
+.tab-btn {
+    padding: 0.75rem 1.5rem;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--duration-normal);
+    text-transform: uppercase;
+    position: relative;
+}
+
+.tab-btn::before {
+    content: '';
+    position: absolute;
+    bottom: -1.5rem;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--primary);
+    transform: scaleX(0);
+    transition: transform var(--duration-normal);
+    transform-origin: left;
+}
+
+.tab-btn:hover {
+    color: var(--primary);
+}
+
+.tab-btn.active {
+    color: var(--primary);
+}
+
+.tab-btn.active::before {
+    transform: scaleX(1);
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.4s var(--ease-out);
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.achievement-card {
+    background: var(--surface-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 2rem;
+    transition: all var(--duration-normal);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.achievement-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(45, 157, 120, 0.1), transparent);
+    opacity: 0;
+    transition: opacity var(--duration-normal);
+}
+
+.achievement-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-6px);
+    box-shadow: 0 8px 30px rgba(45, 157, 120, 0.2);
+}
+
+.achievement-card:hover::before {
+    opacity: 1;
+}
+
+.achievement-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.achievement-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.achievement-category,
+.achievement-house {
+    display: inline-block;
+    padding: 0.35rem 0.75rem;
+    background: rgba(26, 107, 90, 0.16);
+    border: 1px solid rgba(26, 107, 90, 0.24);
+    border-radius: 7px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.achievement-desc {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
+    line-height: 1.6;
+}
+
+.achievement-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(45, 157, 120, 0.1);
+}
+
+.achievement-date {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.achievement-badge {
+    padding: 0.4rem 0.8rem;
+    background: rgba(45, 157, 120, 0.2);
+    border: 1px solid var(--primary);
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+/* Featured achievement */
+.featured-achievement {
+    grid-column: span 1;
+    background: linear-gradient(135deg, rgba(45, 157, 120, 0.15), rgba(26, 95, 63, 0.08));
+    border: 1.5px solid rgba(45, 157, 120, 0.3);
+    box-shadow: 0 0 30px rgba(45, 157, 120, 0.15);
+    transform: scale(1.02);
+}
+
+.featured-achievement:hover {
+    box-shadow: 0 0 50px rgba(45, 157, 120, 0.3);
+    transform: scale(1.05);
+}
+
+@media (max-width: 1024px) {
+    .achievements-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+
+    .featured-achievement {
+        grid-column: span 1;
+        transform: scale(1);
+    }
+
+    .featured-achievement:hover {
+        transform: translateY(-6px);
+    }
+}
+
+@media (max-width: 768px) {
+    .achievements-tabs {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .tab-btn {
+        width: 100%;
+        text-align: left;
+    }
+
+    .tab-btn::before {
+        bottom: auto;
+        left: -1.5rem;
+        width: 2px;
+        height: 100%;
+    }
+
+    .achievements-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .achievement-card {
+        padding: 1.5rem;
+    }
+
+    .achievement-title {
+        font-size: 1rem;
+    }
+
+    .achievement-icon {
+        font-size: 2rem;
+    }
+}
+
+/* ==========================================
+   ASHOKA HOUSE - STANDINGS PAGE STYLES
+   ========================================== */
+
+.standings-page {
+    padding-top: 70px;
+}
+
+.standings-container {
+    background: var(--surface-elevated);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    margin-bottom: 3rem;
+}
+
+.standings-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.standings-table thead {
+    background: linear-gradient(90deg, rgba(45, 157, 120, 0.1), transparent);
+    border-bottom: 1px solid var(--border);
+}
+
+.standings-table th {
+    padding: 1.5rem 2rem;
+    text-align: left;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.8rem;
+}
+
+.standings-table tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: all var(--duration-normal);
+    position: relative;
+}
+
+.standings-table tbody tr:hover {
+    background: rgba(45, 157, 120, 0.08);
+}
+
+.standings-table tbody tr:hover td {
+    color: var(--text-primary);
+}
+
+.standings-table td {
+    padding: 1.5rem 2rem;
+    color: var(--text-secondary);
+    transition: color var(--duration-normal);
+}
+
+.rank-cell {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--primary);
+    width: 60px;
+}
+
+.rank-cell.rank-1 { color: #ffd700; }
+.rank-cell.rank-2 { color: #c0c0c0; }
+.rank-cell.rank-3 { color: #cd7f32; }
+
+.house-cell {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 600;
+    width: 200px;
+}
+
+.house-badge {
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-muted);
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+}
+
+.points-cell {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--primary);
+    text-align: center;
+}
+
+.momentum-cell {
+    text-align: center;
+}
+
+.momentum-badge {
+    display: inline-block;
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.momentum-badge.rising {
+    background: rgba(0, 214, 0, 0.15);
+    color: #00d900;
+}
+
+.momentum-badge.stable {
+    background: rgba(100, 150, 255, 0.15);
+    color: #6496ff;
+}
+
+.momentum-badge.dropping {
+    background: rgba(255, 107, 107, 0.15);
+    color: #ff6b6b;
+}
+
+.recent-cell {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 0.35rem;
+    height: 40px;
+}
+
+.bar-group {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.35rem;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.mini-bar,
+.bar {
+    width: 8px;
+    background: linear-gradient(180deg, var(--primary), var(--primary-dark));
+    border-radius: 999px;
+    transition: all var(--duration-normal);
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings-table tbody tr:hover .bar {
+    box-shadow: 0 0 8px rgba(45, 157, 120, 0.5);
+}
+
+.standings-footer {
+    padding: 1.5rem 2rem;
+    background: rgba(45, 157, 120, 0.05);
+    border-top: 1px solid var(--border);
+    font-size: 0.85rem;
+    color: var(--text-tertiary);
+    text-align: center;
+}
+
+/* House DNA profiles */
+.house-dna {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.dna-card {
+    background: var(--surface-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 2rem;
+    transition: all var(--duration-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.dna-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(45, 157, 120, 0.1), transparent);
+    opacity: 0;
+    transition: opacity var(--duration-normal);
+}
+
+.dna-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-6px);
+    box-shadow: 0 8px 30px rgba(45, 157, 120, 0.2);
+}
+
+.dna-card:hover::before {
+    opacity: 1;
+}
+
+.dna-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.dna-badge {
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-muted);
+    border: 1.5px solid var(--primary);
+    border-radius: 10px;
+}
+
+.dna-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.dna-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.dna-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(45, 157, 120, 0.1);
+}
+
+.dna-item:last-child {
+    border-bottom: none;
+}
+
+.dna-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    letter-spacing: 0.05em;
+}
+
+.dna-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+@media (max-width: 768px) {
+    .standings-table {
+        font-size: 0.85rem;
+    }
+
+    .standings-table th,
+    .standings-table td {
+        padding: 1rem;
+    }
+
+    .house-cell {
+        gap: 0.5rem;
+        width: auto;
+    }
+
+    .house-badge {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+
+    .house-dna {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .standings-table {
+        font-size: 0.75rem;
+    }
+
+    .standings-table th,
+    .standings-table td {
+        padding: 0.75rem;
+    }
+
+    .rank-cell {
+        width: 40px;
+    }
+
+    .house-cell {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .dna-card {
+        padding: 1.5rem;
+    }
+
+    .dna-name {
+        font-size: 1.1rem;
+    }
+}
