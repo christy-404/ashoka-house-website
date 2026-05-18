@@ -1,252 +1,227 @@
-// ==========================================
-// ASHOKA HOUSE - HOME PAGE SYSTEM
-// Dynamic previews, ticker, featured event, and house DNA
-// ==========================================
+// Ashoka House — Homepage
 
-class HomeSystem {
-    constructor() {
-        this.events = [];
-        this.houseAchievements = [];
-        this.individualAchievements = [];
-        this.standings = [];
-        this.leadership = [];
-        this.init();
+class HomePage {
+  constructor() {
+    this.events = [];
+    this.achievements = [];
+    this.standings = [];
+    this.leadership = [];
+    this.gallery = [];
+    this.init();
+  }
+
+  async init() {
+    const [eventsData, achievementsData, standingsData, leadershipData, galleryData] =
+      await Promise.all([
+        AshokaAPI.fetchJSON('./data/events.json'),
+        AshokaAPI.fetchJSON('./data/achievements.json'),
+        AshokaAPI.fetchJSON('./data/standings.json'),
+        AshokaAPI.fetchJSON('./data/leadership.json'),
+        AshokaAPI.fetchJSON('./data/gallery.json')
+      ]);
+
+    this.events = eventsData?.events || [];
+    this.achievements = achievementsData?.achievements || [];
+    this.standings = standingsData?.standings || [];
+    this.leadership = leadershipData?.leadership || [];
+    this.gallery = galleryData?.items || [];
+
+    this.renderHeroEvent();
+    this.renderFeaturedEvent();
+    this.renderAchievementsPreview();
+    this.renderStandingsPreview();
+    this.renderLeadershipPreview();
+    this.renderGalleryGlimpse();
+  }
+
+  getFeaturedEvent() {
+    const ongoing = this.events.filter((e) => e.status === 'ongoing');
+    if (ongoing.length) return ongoing[0];
+    const upcoming = this.events.filter((e) => e.status === 'upcoming');
+    return upcoming.sort(
+      (a, b) => new Date(a.startDate) - new Date(b.startDate)
+    )[0];
+  }
+
+  renderHeroEvent() {
+    const container = AshokaAPI.qs('[data-hero-event]');
+    if (!container) return;
+
+    const event = this.getFeaturedEvent();
+    if (!event) {
+      container.hidden = true;
+      return;
     }
 
-    async init() {
-        const [eventsData, achievementsData, standingsData, leadershipData] = await Promise.all([
-            AshokaUtils.fetchJSON('./data/events.json'),
-            AshokaUtils.fetchJSON('./data/achievements.json'),
-            AshokaUtils.fetchJSON('./data/standings.json'),
-            AshokaUtils.fetchJSON('./data/leadership.json')
-        ]);
+    container.innerHTML = `
+      <span class="hero__event-label">Upcoming focus</span>
+      <span class="hero__event-title">${event.name}</span>
+      <span class="hero__event-date">${AshokaAPI.formatDate(event.startDate)} · ${AshokaAPI.capitalize(event.category)}</span>
+    `;
+  }
 
-        this.events = eventsData?.events || [];
-        this.houseAchievements = achievementsData?.house_achievements || [];
-        this.individualAchievements = achievementsData?.individual_achievements || [];
-        this.standings = standingsData?.standings || [];
-        this.leadership = leadershipData?.leadership || [];
+  renderFeaturedEvent() {
+    const container = AshokaAPI.qs('[data-home-featured-event]');
+    if (!container) return;
 
-        this.renderFeaturedEvent();
-        this.renderAchievementPreview();
-        this.renderLeaderRotation();
-        this.renderTimeline();
-        this.renderHouseDNA();
-        this.renderStatusTicker();
-        this.initTickerLoop();
+    const event = this.getFeaturedEvent();
+    if (!event) {
+      container.innerHTML = '<p class="empty-state">No events scheduled.</p>';
+      return;
     }
 
-    renderFeaturedEvent() {
-        const container = AshokaUtils.qs('.featured-event-card');
-        if (!container) return;
+    container.innerHTML = `
+      <article class="card card--featured">
+        <p class="eyebrow card__eyebrow">Featured event</p>
+        <h3 class="card-title card__title">${event.name}</h3>
+        <p class="body-md card__desc">${event.description}</p>
+        <dl class="meta-list">
+          <div>
+            <dt>Category</dt>
+            <dd>${AshokaAPI.capitalize(event.category)}</dd>
+          </div>
+          <div>
+            <dt>Status</dt>
+            <dd><span class="tag tag--status">${AshokaAPI.capitalize(event.status)}</span></dd>
+          </div>
+          <div>
+            <dt>Date</dt>
+            <dd>${AshokaAPI.formatDate(event.startDate)}</dd>
+          </div>
+        </dl>
+        <a href="./events.html" class="text-link">View all events</a>
+      </article>
+    `;
+  }
 
-        const featured = this.getFeaturedEvent();
-        if (!featured) {
-            container.innerHTML = '<div class="premium-card"><p>No featured event available.</p></div>';
-            return;
-        }
+  renderAchievementsPreview() {
+    const container = AshokaAPI.qs('[data-home-achievements]');
+    if (!container) return;
 
-        container.innerHTML = `
-            <div class="premium-card featured-event-card-inner">
-                <div class="section-label">Featured Event</div>
-                <h2 class="section-title">${featured.name}</h2>
-                <p class="section-subtitle">${featured.description}</p>
-                <div class="event-details-grid">
-                    <div class="event-detail">
-                        <span>Category</span>
-                        <strong>${this.formatCategory(featured.category)}</strong>
-                    </div>
-                    <div class="event-detail">
-                        <span>Status</span>
-                        <strong>${this.formatStatus(featured.status)}</strong>
-                    </div>
-                    <div class="event-detail">
-                        <span>Start</span>
-                        <strong>${AshokaUtils.formatDate(featured.startDate)}</strong>
-                    </div>
-                    <div class="event-detail">
-                        <span>Points</span>
-                        <strong>${featured.points}</strong>
-                    </div>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-bar-fill" style="width: ${featured.progress}%"></div>
-                </div>
-                <div class="featured-meta">
-                    <span>${featured.houses.length} Houses</span>
-                    <span>${featured.participants} Participants</span>
-                    <span>${featured.progress}% complete</span>
-                </div>
+    const items = this.achievements
+      .filter((a) => a.house === 'Ashoka' || a.featured)
+      .slice(0, 2);
+
+    if (!items.length) {
+      container.innerHTML = '<p class="empty-state">No achievements to display.</p>';
+      return;
+    }
+
+    container.innerHTML = items
+      .map(
+        (item) => `
+      <article class="card">
+        <p class="eyebrow card__eyebrow">Recognition</p>
+        <h3 class="card-title card__title">${item.title}</h3>
+        <p class="body-md card__desc">${item.description}</p>
+        <p class="caption card__foot">${AshokaAPI.formatDate(item.date)} · ${item.recipient}</p>
+      </article>
+    `
+      )
+      .join('');
+  }
+
+  renderStandingsPreview() {
+    const container = AshokaAPI.qs('[data-home-standings]');
+    if (!container || !this.standings.length) return;
+
+    const sorted = [...this.standings].sort((a, b) => a.rank - b.rank);
+
+    container.innerHTML = `
+      <article class="card">
+        <p class="eyebrow card__eyebrow">House standings</p>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th class="col-rank" scope="col">#</th>
+              <th scope="col">House</th>
+              <th class="col-points" scope="col">Points</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${sorted
+              .map(
+                (row) => `
+              <tr class="${row.house === 'Ashoka' ? 'is-highlight' : ''}">
+                <td class="col-rank">${row.rank}</td>
+                <td>${row.house}</td>
+                <td class="col-points">${row.points.toLocaleString('en-IN')}</td>
+              </tr>
+            `
+              )
+              .join('')}
+          </tbody>
+        </table>
+        <p style="margin-top: var(--space-6);">
+          <a href="./standings.html" class="text-link">Full standings</a>
+        </p>
+      </article>
+    `;
+  }
+
+  renderLeadershipPreview() {
+    const container = AshokaAPI.qs('[data-home-leadership]');
+    if (!container) return;
+
+    const leaders = this.leadership
+      .filter((l) => l.house === 'Ashoka' || l.category === 'principal')
+      .slice(0, 3);
+
+    if (!leaders.length) {
+      container.innerHTML = '<p class="empty-state">Leadership profiles coming soon.</p>';
+      return;
+    }
+
+    container.innerHTML = `
+      <article class="card">
+        <p class="eyebrow card__eyebrow">Leadership</p>
+        ${leaders
+          .map(
+            (leader) => `
+          <div class="leader-row">
+            <span class="leader-row__avatar">${leader.initials}</span>
+            <div>
+              <p class="leader-row__name">${leader.name}</p>
+              <p class="leader-row__role">${leader.role}</p>
             </div>
-        `;
+          </div>
+        `
+          )
+          .join('')}
+        <p style="margin-top: var(--space-6);">
+          <a href="./leadership.html" class="text-link">Meet leadership</a>
+        </p>
+      </article>
+    `;
+  }
+
+  renderGalleryGlimpse() {
+    const container = AshokaAPI.qs('[data-home-gallery]');
+    if (!container) return;
+
+    const items = this.gallery.slice(0, 4);
+    if (!items.length) {
+      container.innerHTML = '<p class="empty-state">Gallery coming soon.</p>';
+      return;
     }
 
-    getFeaturedEvent() {
-        const ongoing = this.events.filter(event => event.status === 'ongoing');
-        if (ongoing.length) return ongoing[0];
-
-        const upcoming = this.events.filter(event => event.status === 'upcoming');
-        return upcoming[0] || this.events[0];
-    }
-
-    renderAchievementPreview() {
-        const container = AshokaUtils.qs('.achievement-preview');
-        if (!container) return;
-
-        const achievements = this.getBalancedAchievements(this.houseAchievements).slice(0, 3);
-        container.innerHTML = `
-            <div class="section-label">Recent Recognition</div>
-            <div class="achievement-preview-grid">
-                ${achievements.map((achievement, index) => `
-                    <div class="premium-card preview-card" style="animation-delay: ${index * 0.08}s">
-                        <div class="badge ${achievement.category}">${achievement.house} House</div>
-                        <h3>${achievement.title}</h3>
-                        <p>${achievement.description}</p>
-                        <div class="achievement-preview-meta">
-                            <span>${AshokaUtils.formatDate(achievement.date)}</span>
-                            <span>${achievement.points} pts</span>
-                        </div>
-                    </div>
-                `).join('')}
-            </div>
-        `;
-    }
-
-    getBalancedAchievements(achievements) {
-        const groups = achievements.reduce((acc, item) => {
-            acc[item.house] = acc[item.house] || [];
-            acc[item.house].push(item);
-            return acc;
-        }, {});
-
-        Object.values(groups).forEach(list => list.sort((a, b) => Number(b.featured) - Number(a.featured)));
-
-        const houses = Object.keys(groups);
-        const balanced = [];
-        let index = 0;
-
-        while (true) {
-            let added = false;
-            houses.forEach(house => {
-                const item = groups[house][index];
-                if (item) {
-                    balanced.push(item);
-                    added = true;
-                }
-            });
-            if (!added) break;
-            index += 1;
-        }
-
-        return balanced;
-    }
-
-    renderLeaderRotation() {
-        const container = AshokaUtils.qs('.leader-rotation');
-        if (!container) return;
-
-        const leaders = this.leadership.slice(0, 4);
-        container.innerHTML = `
-            <div class="section-label">Featured Leaders</div>
-            <div class="leader-rotation-inner">
-                ${leaders.map((leader, index) => `
-                    <div class="leader-rotation-card ${index === 0 ? 'active' : ''}" data-index="${index}">
-                        <div class="leader-avatar">${leader.initials}</div>
-                        <h3>${leader.name}</h3>
-                        <p class="leader-role">${leader.role}</p>
-                        <p class="leader-summary">${leader.bio}</p>
-                    </div>
-                `).join('')}
-            </div>
-            <div class="leader-rotation-controls">
-                ${leaders.map((_, index) => `<button class="leader-dot ${index === 0 ? 'active' : ''}" aria-label="Show leader ${index + 1}" data-index="${index}"></button>`).join('')}
-            </div>
-        `;
-
-        container.querySelectorAll('.leader-dot').forEach(dot => {
-            dot.addEventListener('click', () => this.showLeaderCard(Number(dot.dataset.index)));
-        });
-    }
-
-    showLeaderCard(index) {
-        const cards = document.querySelectorAll('.leader-rotation-card');
-        const dots = document.querySelectorAll('.leader-dot');
-        cards.forEach(card => card.classList.toggle('active', Number(card.dataset.index) === index));
-        dots.forEach(dot => dot.classList.toggle('active', Number(dot.dataset.index) === index));
-    }
-
-    initTickerLoop() {
-        const dots = document.querySelectorAll('.leader-dot');
-        let activeIndex = 0;
-        setInterval(() => {
-            activeIndex = (activeIndex + 1) % dots.length;
-            this.showLeaderCard(activeIndex);
-        }, 5000);
-    }
-
-    renderTimeline() {
-        const container = AshokaUtils.qs('.timeline-grid');
-        if (!container) return;
-
-        const upcoming = this.events
-            .filter(event => event.status === 'upcoming')
-            .sort((a, b) => new Date(a.startDate) - new Date(b.startDate))
-            .slice(0, 4);
-
-        container.innerHTML = upcoming.map((event, index) => `
-            <div class="timeline-card premium-card" style="animation-delay: ${index * 0.08}s">
-                <div class="timeline-date">${AshokaUtils.formatDate(event.startDate)}</div>
-                <h3>${event.name}</h3>
-                <p>${event.description}</p>
-                <div class="timeline-meta">
-                    <span>${event.category.toUpperCase()}</span>
-                    <span>${event.houses.length} Houses</span>
-                </div>
-            </div>
-        `).join('');
-    }
-
-    renderHouseDNA() {
-        const container = AshokaUtils.qs('.house-dna');
-        if (!container) return;
-
-        const houses = this.standings.slice(0, 4);
-        container.innerHTML = houses.map((standing, index) => `
-            <div class="dna-card premium-card" style="animation-delay: ${index * 0.08}s">
-                <div class="dna-heading">
-                    <div class="dna-badge" style="background: ${standing.color}20; border-color: ${standing.color}; color: ${standing.color};">${standing.house}</div>
-                    <span class="dna-momentum ${standing.momentum}">${standing.momentum.toUpperCase()}</span>
-                </div>
-                <div class="dna-value">${standing.points} pts</div>
-                <p class="dna-description">${standing.description}</p>
-                <div class="dna-scores">
-                    <span>Sport ${standing.sportPoints}</span>
-                    <span>Academic ${standing.academicPoints}</span>
-                    <span>Cultural ${standing.culturalPoints}</span>
-                </div>
-            </div>
-        `;
-    }
-
-    renderStatusTicker() {
-        const ticker = AshokaUtils.qs('.ticker-content');
-        if (!ticker) return;
-
-        const eventHighlights = this.events.slice(0, 4).map(event => {
-            return `${event.name} ${event.status === 'ongoing' ? 'is active now' : event.status === 'upcoming' ? 'starts soon' : 'has completed.'}`;
-        });
-
-        const leaders = this.leadership.slice(0, 2).map(leader => `${leader.name} now featured in leadership spotlight`);
-        const trend = this.standings.slice(0, 2).map(standing => `${standing.house} is ${standing.momentum} with ${standing.points} points`);
-
-        ticker.innerHTML = [...eventHighlights, ...leaders, ...trend].map(item => `
-            <div class="ticker-item">${item}</div>
-        `).join('');
-    }
+    container.innerHTML = `
+      <div class="grid-4">
+        ${items
+          .map(
+            (item) => `
+          <a href="./gallery.html" class="gallery-tile">
+            <span class="gallery-tile__fill" aria-hidden="true"></span>
+            <span class="gallery-tile__label">${item.title}</span>
+          </a>
+        `
+          )
+          .join('')}
+      </div>
+    `;
+  }
 }
 
-if (document.querySelector('.hero')) {
-    document.addEventListener('DOMContentLoaded', () => new HomeSystem());
+if (document.body.classList.contains('page-home')) {
+  document.addEventListener('DOMContentLoaded', () => new HomePage());
 }
-
-console.log('%cAshoka House - Home System Initialized', 'color: #2d9d78; font-size: 12px; font-weight: bold;');

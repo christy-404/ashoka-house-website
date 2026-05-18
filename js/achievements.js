@@ -1,136 +1,209 @@
-// ==========================================
-// ASHOKA HOUSE - ACHIEVEMENTS SYSTEM
-// FAIR RECOGNITION ENGINE
-// ==========================================
+// Ashoka House — Achievements page
 
-class AchievementsSystem {
-    constructor() {
-        this.houseAchievements = [];
-        this.individualAchievements = [];
-        this.currentTab = 'house';
-        this.init();
-    }
+class AchievementsPage {
+  constructor() {
+    this.achievements = [];
+    this.category = 'all';
+    this.root = AshokaAPI.qs('[data-achievements-root]');
+    this.init();
+  }
 
-    async init() {
-        await this.loadAchievements();
-        this.setupEventListeners();
-        this.render();
-    }
+  async init() {
+    const data = await AshokaAPI.fetchJSON('./data/achievements.json');
+    this.achievements = data?.achievements || [];
+    this.bindCategoryFilters();
+    this.render();
+  }
 
-    async loadAchievements() {
-        const data = await AshokaUtils.fetchJSON('./data/achievements.json');
-        if (data) {
-            this.houseAchievements = data.house_achievements;
-            this.individualAchievements = data.individual_achievements;
-        }
-    }
-
-    setupEventListeners() {
-        const tabBtns = AshokaUtils.qsa('[data-achievement-tab]');
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => this.switchTab(btn));
-        });
-    }
-
-    switchTab(btn) {
-        const tab = btn.dataset.achievementTab;
-        this.currentTab = tab;
-
-        // Update active state
-        AshokaUtils.qsa('[data-achievement-tab]').forEach(b => 
-            AshokaUtils.removeClass(b, 'active')
+  bindCategoryFilters() {
+    AshokaAPI.qsa('[data-category]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        this.category = btn.dataset.category;
+        AshokaAPI.qsa('[data-category]').forEach((b) =>
+          b.classList.toggle('is-active', b === btn)
         );
-        AshokaUtils.addClass(btn, 'active');
-
+        this.root?.classList.toggle('is-filtered', this.category !== 'all');
         this.render();
-    }
-
-    render() {
-        const container = AshokaUtils.qs('.achievements-grid');
-        if (!container) return;
-
-        const achievements = this.currentTab === 'house' 
-            ? this.getBalancedAchievements(this.houseAchievements)
-            : this.getBalancedAchievements(this.individualAchievements, 'house');
-
-        if (achievements.length === 0) {
-            container.innerHTML = '<div class="empty-state">No achievements yet</div>';
-            return;
-        }
-
-        container.innerHTML = achievements.map((ach, index) => 
-            this.createAchievementCard(ach, index, this.currentTab)
-        ).join('');
-    }
-
-    createAchievementCard(achievement, index, type) {
-        const isFeatured = achievement.featured;
-        const houseLabel = type === 'house' ? achievement.house : achievement.house;
-        
-        return `
-            <div class="achievement-card ${isFeatured ? 'featured-achievement' : ''} scale-in" 
-                 style="animation-delay: ${index * 0.08}s">
-                <div class="achievement-icon">${this.getIcon(achievement.category)}</div>
-                <h3 class="achievement-title">${achievement.title}</h3>
-                <span class="achievement-house">${houseLabel} House</span>
-                <p class="achievement-desc">${achievement.description}</p>
-                <div class="achievement-footer">
-                    <span class="achievement-date">${AshokaUtils.formatDate(achievement.date)}</span>
-                    ${isFeatured ? '<span class="achievement-badge">Featured</span>' : ''}
-                </div>
-            </div>
-        `;
-    }
-
-    getIcon(category) {
-        const icons = {
-            'sports': '⚽',
-            'literary': '📚',
-            'cultural': '🎭',
-            'academic': '🧪',
-            'community': '🤝'
-        };
-        return icons[category] || '★';
-    }
-
-    getBalancedAchievements(achievements, criteria = 'house') {
-        const groups = achievements.reduce((acc, achievement) => {
-            const key = achievement[criteria] || 'other';
-            acc[key] = acc[key] || [];
-            acc[key].push(achievement);
-            return acc;
-        }, {});
-
-        Object.values(groups).forEach(group => {
-            group.sort((a, b) => Number(b.featured || false) - Number(a.featured || false));
-        });
-
-        const buckets = Object.keys(groups).sort();
-        const balanced = [];
-        let index = 0;
-
-        while (true) {
-            let added = false;
-            buckets.forEach(key => {
-                const item = groups[key][index];
-                if (item) {
-                    balanced.push(item);
-                    added = true;
-                }
-            });
-            if (!added) break;
-            index += 1;
-        }
-
-        return balanced;
-    }
-}
-
-// Initialize achievements system
-if (document.querySelector('.achievements-page')) {
-    document.addEventListener('DOMContentLoaded', () => {
-        new AchievementsSystem();
+      });
     });
+  }
+
+  getFiltered() {
+    if (this.category === 'all') return this.achievements;
+    return this.achievements.filter((a) => a.category === this.category);
+  }
+
+  getFeatured(list) {
+    if (!list.length) return null;
+    const featured = list.find((a) => a.featured);
+    if (featured) return featured;
+    const ashokaMajor = list.find(
+      (a) => a.house === 'Ashoka' && a.tier === 'major' && a.type === 'house'
+    );
+    if (ashokaMajor) return ashokaMajor;
+    return list[0];
+  }
+
+  formatCategory(category) {
+    const labels = {
+      sports: 'Sports',
+      cultural: 'Cultural',
+      academic: 'Academic',
+      leadership: 'Leadership',
+      house: 'House contributions'
+    };
+    return labels[category] || AshokaAPI.capitalize(category);
+  }
+
+  getYear(dateStr) {
+    return new Date(dateStr).getFullYear();
+  }
+
+  itemsForTier(list, tierKey) {
+    const withoutFeatured = (items) => {
+      const featured = this.getFeatured(list);
+      const id = featured?.id;
+      return id ? items.filter((a) => a.id !== id) : items;
+    };
+
+    if (tierKey === 'individual') {
+      return withoutFeatured(list.filter((a) => a.type === 'individual'));
+    }
+
+    return withoutFeatured(
+      list.filter((a) => a.type === 'house' && a.tier === tierKey)
+    );
+  }
+
+  renderFeatured(list) {
+    const container = AshokaAPI.qs('[data-achievements-featured]');
+    if (!container) return;
+
+    const item = this.getFeatured(list);
+    if (!item) {
+      container.innerHTML = '<p class="empty-state">No achievements recorded yet.</p>';
+      return;
+    }
+
+    const eventRow = item.event
+      ? `<div class="achievement-card__meta-row">
+          <span class="achievement-card__meta-label">Event</span>
+          <span class="achievement-card__meta-value">${item.event}</span>
+        </div>`
+      : '';
+
+    container.innerHTML = `
+      <article class="card card--featured">
+        <div class="achievements-featured__layout">
+        <div>
+          <span class="achievements-featured__badge">Featured recognition</span>
+          <p class="eyebrow card__eyebrow" style="margin-top: var(--space-4);">${this.formatCategory(item.category)}</p>
+          <h2 class="section-title card__title">${item.title}</h2>
+          <p class="body-md card__desc">${item.description}</p>
+          <dl class="meta-list">
+            <div>
+              <dt>Recipient</dt>
+              <dd>${item.recipient}</dd>
+            </div>
+            <div>
+              <dt>House</dt>
+              <dd>${item.house} House</dd>
+            </div>
+            <div>
+              <dt>Date</dt>
+              <dd>${AshokaAPI.formatDate(item.date)}</dd>
+            </div>
+          </dl>
+          ${eventRow}
+        </div>
+        <div class="achievements-featured__date">
+          ${AshokaAPI.formatDate(item.date)}
+          <span class="achievements-featured__year">${this.getYear(item.date)}</span>
+        </div>
+        </div>
+      </article>
+    `;
+  }
+
+  renderCard(item) {
+    const tierBadge =
+      item.tier === 'hall'
+        ? '<span class="achievement-card__badge">Legacy</span>'
+        : '';
+
+    const eventRow = item.event
+      ? `<div class="achievement-card__meta-row">
+          <span class="achievement-card__meta-label">Event</span>
+          <span class="achievement-card__meta-value">${item.event}</span>
+        </div>`
+      : '';
+
+    return `
+      <article class="achievement-card">
+        <div class="achievement-card__top">
+          <span class="tag tag--category">${this.formatCategory(item.category)}</span>
+          ${tierBadge}
+        </div>
+        <h3 class="achievement-card__title">${item.title}</h3>
+        <p class="achievement-card__recipient">${item.recipient}</p>
+        <p class="achievement-card__desc">${item.description}</p>
+        <div class="achievement-card__meta">
+          <div class="achievement-card__meta-row">
+            <span class="achievement-card__meta-label">Date</span>
+            <span class="achievement-card__meta-value">${AshokaAPI.formatDate(item.date)}</span>
+          </div>
+          <div class="achievement-card__meta-row">
+            <span class="achievement-card__meta-label">House</span>
+            <span class="achievement-card__meta-value">${item.house} House</span>
+          </div>
+          ${eventRow}
+        </div>
+      </article>
+    `;
+  }
+
+  renderTier(tierKey, list) {
+    const section = AshokaAPI.qs(`[data-tier-section="${tierKey}"]`);
+    const grid = AshokaAPI.qs(`[data-achievements-grid="${tierKey}"]`);
+    const countEl = AshokaAPI.qs(`[data-tier-count="${tierKey}"]`);
+
+    if (!section || !grid) return;
+
+    const items = this.itemsForTier(list, tierKey).sort(
+      (a, b) => new Date(b.date) - new Date(a.date)
+    );
+
+    section.classList.toggle('is-empty', items.length === 0);
+
+    if (countEl) {
+      countEl.textContent =
+        items.length === 1 ? '1 entry' : `${items.length} entries`;
+    }
+
+    grid.innerHTML =
+      items.length === 0
+        ? ''
+        : items.map((item) => this.renderCard(item)).join('');
+  }
+
+  render() {
+    const list = this.getFiltered();
+    const tiers = ['recent', 'major', 'hall', 'individual'];
+
+    const hasVisible = tiers.some(
+      (tier) => this.itemsForTier(list, tier).length > 0
+    );
+
+    const emptyEl = AshokaAPI.qs('[data-achievements-empty]');
+    if (emptyEl) {
+      emptyEl.hidden = hasVisible || list.length > 0;
+    }
+
+    this.renderFeatured(list);
+    tiers.forEach((tier) => this.renderTier(tier, list));
+  }
 }
 
-console.log('%cAshoka House - Achievements System', 'color: #2d9d78; font-size: 12px; font-weight: bold;');
+if (document.body.classList.contains('page-achievements')) {
+  document.addEventListener('DOMContentLoaded', () => new AchievementsPage());
+}
