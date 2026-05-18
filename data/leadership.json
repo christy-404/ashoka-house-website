@@ -2,62 +2,112 @@
   "leadership": [
     {
       "id": 1,
-      "name": "Dr. Rajesh Kumar",
+      "name": "Mr. Sasi E K",
       "role": "Principal",
       "category": "principal",
-      "bio": "Visionary educational leader with 20+ years pioneering institutional excellence",
-      "email": "principal@school.edu",
-      "initials": "RK"
+      "bio": "Institutional leadership providing vision, direction, and responsibility for all academic and administrative matters.",
+      "initials": "SK"
     },
     {
       "id": 2,
-      "name": "Ms. Anita Sharma",
+      "name": "Mrs. Bindu R",
       "role": "Vice Principal",
       "category": "vice_principal",
-      "bio": "Dedicated to academic excellence and comprehensive student welfare",
-      "email": "vp@school.edu",
-      "initials": "AS"
+      "bio": "Dedicated to academic excellence and comprehensive student welfare across the institution.",
+      "initials": "BR"
     },
     {
       "id": 3,
-      "name": "Mr. Vikram Patel",
-      "role": "Ashoka House Master",
+      "name": "To be announced",
+      "role": "House Master, Ashoka",
       "category": "house_master",
       "house": "Ashoka",
-      "bio": "Mentor and strategic guide for Ashoka House excellence",
-      "email": "ashoka.master@school.edu",
-      "initials": "VP",
-      "featured": true
+      "bio": "Mentor and strategic guide for Ashoka House development and excellence.",
+      "initials": "TBA",
+      "placeholder": true
     },
     {
       "id": 4,
-      "name": "Ridhima Chopra",
-      "role": "Ashoka House Council President",
-      "category": "house_council",
+      "name": "To be announced",
+      "role": "Associate House Master",
+      "category": "house_mentor",
       "house": "Ashoka",
-      "bio": "Student leader steering Ashoka House toward excellence",
-      "email": "ashoka.president@school.edu",
-      "initials": "RC",
-      "featured": true
+      "bio": "Co-mentor supporting house operations and student development.",
+      "initials": "TBA",
+      "placeholder": true
     },
     {
       "id": 5,
-      "name": "Arjun Singh",
-      "role": "Ashoka House Vice President",
+      "name": "To be announced",
+      "role": "House Captain (Boy)",
       "category": "house_council",
       "house": "Ashoka",
-      "bio": "Supporting strategic initiatives and member engagement",
-      "email": "ashoka.vp@school.edu",
-      "initials": "AS"
+      "bio": "Elected leadership representative for house governance.",
+      "initials": "TBA",
+      "placeholder": true
     },
     {
       "id": 6,
-      "name": "Aditya Malhotra",
-      "role": "School Council President",
-      "category": "school_council",
-      "bio": "Representative voice for school-wide institutional initiatives",
-      "email": "council.president@school.edu",
-      "initials": "AM"
+      "name": "To be announced",
+      "role": "House Captain (Girl)",
+      "category": "house_council",
+      "house": "Ashoka",
+      "bio": "Elected leadership representative for house governance.",
+      "initials": "TBA",
+      "placeholder": true
+    },
+    {
+      "id": 7,
+      "name": "To be announced",
+      "role": "Vice Captain (Boy)",
+      "category": "house_council",
+      "house": "Ashoka",
+      "bio": "Assists house captains in council administration.",
+      "initials": "TBA",
+      "placeholder": true
+    },
+    {
+      "id": 8,
+      "name": "To be announced",
+      "role": "Vice Captain (Girl)",
+      "category": "house_council",
+      "house": "Ashoka",
+      "bio": "Assists house captains in council administration.",
+      "initials": "TBA",
+      "placeholder": true
+    },
+    {
+      "id": 9,
+      "name": "To be announced",
+      "role": "CCA Captain",
+      "category": "house_council",
+      "house": "Ashoka",
+      "bio": "Leads co-curricular and cultural affairs.",
+      "initials": "TBA",
+      "placeholder": true
+    },
+    {
+      "id": 10,
+      "name": "To be announced",
+      "role": "CCA Vice Captain",
+      "category": "house_council",
+      "house": "Ashoka",
+      "bio": "Supports co-curricular and cultural initiatives.",
+      "initials": "TBA",
+      "placeholder": true
+    },
+    {
+      "id": 11,
+      "name": "To be announced",
+      "role": "Publication In-Charge",
+      "category": "house_council",
+      "house": "Ashoka",
+      "bio": "Manages house communications and publications.",
+      "initials": "TBA",
+      "placeholder": true
+    }
+  ]
+}
     },
     {
       "id": 7,

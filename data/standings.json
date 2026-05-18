@@ -3,62 +3,52 @@
     {
       "rank": 1,
       "house": "Ashoka",
-      "color": "#2d9d78",
-      "accentColor": "#3db08a",
-      "points": 2847,
-      "sportPoints": 680,
-      "literaryPoints": 450,
-      "culturalPoints": 520,
-      "academicPoints": 420,
-      "wins": 12,
-      "momentum": "rising",
-      "recentTrend": [65, 70, 75, 80, 90],
-      "description": "Leading with consistent excellence and rising momentum"
+      "division": "Division C",
+      "color": "#1a7a62",
+      "points": 1240,
+      "eventsParticipated": 18,
+      "statement": "Leading Section C through consistent performance across sport, culture, and scholarship."
     },
     {
       "rank": 2,
       "house": "Shivaji",
-      "color": "#ff6b6b",
-      "accentColor": "#ff8787",
-      "points": 2765,
-      "sportPoints": 650,
-      "literaryPoints": 520,
-      "culturalPoints": 480,
-      "academicPoints": 480,
-      "wins": 11,
-      "momentum": "stable",
-      "recentTrend": [65, 65, 68, 65, 65],
-      "description": "Steady performance with balanced strength across categories"
+      "division": "Division A",
+      "color": "#7a6f5c",
+      "points": 1185,
+      "eventsParticipated": 17,
+      "statement": "Balanced results across academic and literary competitions this term."
     },
     {
       "rank": 3,
       "house": "Tagore",
-      "color": "#4ecdc4",
-      "accentColor": "#64e8d8",
-      "points": 2634,
-      "sportPoints": 600,
-      "literaryPoints": 480,
-      "culturalPoints": 560,
-      "academicPoints": 390,
-      "wins": 10,
-      "momentum": "dropping",
-      "recentTrend": [60, 58, 55, 52, 50],
-      "description": "Cultural strength evident, but overall momentum declining"
+      "division": "Division B",
+      "color": "#5a6d78",
+      "points": 1120,
+      "eventsParticipated": 16,
+      "statement": "Notable strength in cultural events and collective house participation."
     },
     {
       "rank": 4,
       "house": "Raman",
-      "color": "#ffe66d",
-      "accentColor": "#ffeb99",
-      "points": 2512,
-      "sportPoints": 520,
-      "literaryPoints": 450,
-      "culturalPoints": 480,
-      "academicPoints": 510,
-      "wins": 8,
-      "momentum": "rising",
-      "recentTrend": [50, 55, 60, 65, 72],
-      "description": "Climbing rapidly with strong academic performance"
+      "division": "Division D",
+      "color": "#8a7d62",
+      "points": 1065,
+      "eventsParticipated": 15,
+      "statement": "Steady academic contribution with growing presence in inter-house sport."
+    }
+  ],
+  "highlights": [
+    {
+      "title": "Inter-house sport",
+      "text": "Ashoka House leads the standings following the inter-house sports championship and Science Olympiad."
+    },
+    {
+      "title": "Cultural recognition",
+      "text": "Tagore House holds the overall cultural festival trophy; standings reflect participation across all Section C houses."
+    },
+    {
+      "title": "Scholarship",
+      "text": "Points are awarded for documented participation and placement in sanctioned inter-house events only."
     }
   ]
 }

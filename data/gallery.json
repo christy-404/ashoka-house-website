@@ -1,0 +1,8 @@
+{
+  "items": [
+    { "id": 1, "title": "House Assembly", "category": "ceremony" },
+    { "id": 2, "title": "Sports Day", "category": "sports" },
+    { "id": 3, "title": "Cultural Evening", "category": "cultural" },
+    { "id": 4, "title": "Award Ceremony", "category": "recognition" }
+  ]
+}

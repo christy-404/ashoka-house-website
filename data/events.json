@@ -7,11 +7,9 @@
       "startDate": "2026-05-15",
       "endDate": "2026-05-18",
       "status": "ongoing",
-      "description": "Elite championship tournament featuring competitive basketball matches across all houses",
-      "points": 150,
-      "houses": ["Ashoka", "Shivaji", "Tagore", "Raman"],
-      "progress": 65,
-      "participants": 48
+      "description": "Inter-house basketball tournament across Section C houses.",
+      "venue": "Main Sports Complex",
+      "houses": ["Ashoka", "Shivaji", "Tagore", "Raman"]
     },
     {
       "id": 2,
@@ -20,11 +18,9 @@
       "startDate": "2026-05-20",
       "endDate": "2026-05-22",
       "status": "upcoming",
-      "description": "Premium debate and essay competition celebrating intellectual discourse",
-      "points": 120,
-      "houses": ["Ashoka", "Shivaji", "Tagore", "Raman"],
-      "progress": 0,
-      "participants": 32
+      "description": "Debate and essay competition celebrating intellectual discourse.",
+      "venue": "Auditorium Block B",
+      "houses": ["Ashoka", "Shivaji", "Tagore", "Raman"]
     },
     {
       "id": 3,
@@ -33,11 +29,9 @@
       "startDate": "2026-05-25",
       "endDate": "2026-05-27",
       "status": "upcoming",
-      "description": "Cinematic celebration of music, dance, and artistic expression",
-      "points": 180,
-      "houses": ["Ashoka", "Shivaji", "Tagore", "Raman"],
-      "progress": 0,
-      "participants": 156
+      "description": "Music, dance, and artistic performances from all houses.",
+      "venue": "Open Air Theatre",
+      "houses": ["Ashoka", "Shivaji", "Tagore", "Raman"]
     },
     {
       "id": 4,
@@ -46,12 +40,10 @@
       "startDate": "2026-05-12",
       "endDate": "2026-05-14",
       "status": "completed",
-      "description": "Premier science competition showcasing innovation and research excellence",
-      "points": 140,
+      "description": "Science competition across practical and theory rounds.",
+      "venue": "Science Wing Labs",
       "houses": ["Ashoka", "Shivaji", "Tagore", "Raman"],
-      "progress": 100,
-      "winner": "Ashoka",
-      "participants": 28
+      "winner": "Ashoka"
     },
     {
       "id": 5,
@@ -60,12 +52,10 @@
       "startDate": "2026-05-08",
       "endDate": "2026-05-10",
       "status": "completed",
-      "description": "Premier badminton championship with elite players",
-      "points": 100,
+      "description": "Singles badminton championship for house representatives.",
+      "venue": "Indoor Courts",
       "houses": ["Ashoka", "Shivaji", "Tagore", "Raman"],
-      "progress": 100,
-      "winner": "Shivaji",
-      "participants": 24
+      "winner": "Shivaji"
     },
     {
       "id": 6,
@@ -74,11 +64,9 @@
       "startDate": "2026-05-18",
       "endDate": "2026-05-20",
       "status": "ongoing",
-      "description": "Futuristic UI/UX design competition for creative technologists",
-      "points": 110,
-      "houses": ["Ashoka", "Shivaji", "Tagore", "Raman"],
-      "progress": 42,
-      "participants": 36
+      "description": "Poster and presentation design challenge for senior students.",
+      "venue": "Computer Lab 2",
+      "houses": ["Ashoka", "Shivaji", "Tagore", "Raman"]
     },
     {
       "id": 7,
@@ -87,11 +75,10 @@
       "startDate": "2026-05-22",
       "endDate": "2026-05-23",
       "status": "upcoming",
-      "description": "High-performance swimming competition featuring relay events",
-      "points": 80,
+      "description": "Relay swimming events for boys and girls categories.",
+      "venue": "School Swimming Pool",
       "houses": ["Ashoka", "Shivaji", "Tagore", "Raman"],
-      "progress": 0,
-      "participants": 40
+      "registrationUrl": "#register-swimming"
     },
     {
       "id": 8,
@@ -100,12 +87,21 @@
       "startDate": "2026-05-05",
       "endDate": "2026-05-07",
       "status": "completed",
-      "description": "Celebration of literary artistry and creative expression",
-      "points": 95,
+      "description": "Original poetry and short fiction readings by house teams.",
+      "venue": "Library Hall",
       "houses": ["Ashoka", "Shivaji", "Tagore", "Raman"],
-      "progress": 100,
-      "winner": "Tagore",
-      "participants": 20
+      "winner": "Tagore"
+    },
+    {
+      "id": 9,
+      "name": "Ashoka House Assembly",
+      "category": "house",
+      "startDate": "2026-05-28",
+      "endDate": "2026-05-28",
+      "status": "upcoming",
+      "description": "Monthly house assembly — notices, recognitions, and council updates.",
+      "venue": "Ashoka Common Room",
+      "houses": ["Ashoka"]
     }
   ]
 }
