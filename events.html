@@ -1,158 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ashoka House - Events</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events — Ashoka House</title>
+    <meta name="description" content="Competitions and house events for Ashoka House, Section C.">
 
-    <link rel="stylesheet" href="./css/global.css" />
-    <link rel="stylesheet" href="./css/premium-components.css" />
-    <link rel="stylesheet" href="./css/base-pages.css" />
-    <link rel="stylesheet" href="./css/preloader.css" />
-    <link rel="stylesheet" href="./css/events.css" />
-    <link rel="stylesheet" href="./css/events-premium.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/pages/shared.css">
+    <link rel="stylesheet" href="./css/pages/events.css">
+    <link rel="stylesheet" href="./css/preloader-new.css">
 </head>
-<body>
-    <!-- Cinematic Preloader -->
+<body class="page-events">
     <div class="preloader" aria-hidden="true">
-        <div class="preloader-transition"></div>
-        <div class="preloader-particles" aria-hidden="true">
-            <div class="preloader-particle"></div>
-            <div class="preloader-particle"></div>
-            <div class="preloader-particle"></div>
-            <div class="preloader-particle"></div>
-            <div class="preloader-particle"></div>
+        <div class="preloader__bg">
+            <div class="preloader__gradient"></div>
         </div>
-
-        <div class="preloader-content">
-            <div class="preloader-logo">
-                <div class="preloader-logo-icon">◆</div>
+        <div class="preloader__content">
+            <div class="preloader__logo">
+                <div class="preloader__logo-icon">◆</div>
             </div>
-
-            <div class="preloader-text">
-                <div class="preloader-title">ASHOKA HOUSE</div>
-                <div class="preloader-subtitle">INITIALIZING INSTITUTIONAL SYSTEM</div>
+            <div class="preloader__text">
+                <h1 class="preloader__title">Ashoka House</h1>
+                <p class="preloader__subtitle">Loading events calendar</p>
             </div>
-
-            <div class="preloader-segments" aria-hidden="true">
-                <div class="preloader-segment"></div>
-                <div class="preloader-segment"></div>
-                <div class="preloader-segment"></div>
-                <div class="preloader-segment"></div>
-                <div class="preloader-segment"></div>
-                <div class="preloader-segment"></div>
+            <div class="preloader__progress">
+                <div class="preloader__progress-bar"></div>
             </div>
-
-            <div class="preloader-progress">
-                <span class="preloader-percent">0%</span>
-            </div>
-
-            <div class="preloader-bar-container" aria-hidden="true">
-                <div class="preloader-bar"></div>
-            </div>
+            <span class="preloader__percent">0%</span>
         </div>
     </div>
 
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="navbar-container">
-            <a href="./index.html" class="navbar-logo nav-logo" aria-label="Ashoka House">
-                <div class="logo-icon">◆</div>
-                <span>ASHOKA HOUSE</span>
-            </a>
-
-            <ul class="navbar-menu nav-menu">
-                <li><a href="./index.html" class="navbar-link nav-link">Home</a></li>
-                <li><a href="./events.html" class="navbar-link nav-link active">Events</a></li>
-                <li><a href="./achievements.html" class="navbar-link nav-link">Achievements</a></li>
-                <li><a href="./standings.html" class="navbar-link nav-link">Standings</a></li>
-                <li><a href="./leadership.html" class="navbar-link nav-link">Leadership</a></li>
-                <li><a href="./gallery.html" class="navbar-link nav-link">Gallery</a></li>
-                <li><a href="./about.html" class="navbar-link nav-link">About</a></li>
-            </ul>
-
-            <div class="navbar-toggle nav-toggle" aria-label="Toggle navigation" role="button" tabindex="0">
-                <span></span>
-                <span></span>
-                <span></span>
+    <div class="site-shell">
+        <header class="navbar">
+            <div class="navbar__inner">
+                <a href="./index.html" class="navbar__brand" aria-label="Ashoka House home">
+                    <img src="./assets/brand/ashoka-logo.svg" alt="" class="navbar__logo" width="32" height="32">
+                    <span class="navbar__name">Ashoka House</span>
+                </a>
+                <nav class="navbar__menu" aria-label="Primary">
+                    <a href="./index.html" class="navbar__link">Home</a>
+                    <a href="./events.html" class="navbar__link is-active">Events</a>
+                    <a href="./achievements.html" class="navbar__link">Achievements</a>
+                    <a href="./standings.html" class="navbar__link">Standings</a>
+                    <a href="./leadership.html" class="navbar__link">Leadership</a>
+                    <a href="./gallery.html" class="navbar__link">Gallery</a>
+                    <a href="./about.html" class="navbar__link">About</a>
+                </nav>
+                <button type="button" class="navbar__toggle" aria-label="Open menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
-        </div>
-    </nav>
+        </header>
 
-    <!-- Events Page -->
-    <main class="page">
-        <section class="page-hero">
-            <div class="section-label">COMPETITIONS & EVENTS</div>
-            <h1 class="page-title">Institutional Schedule</h1>
-            <p class="page-subtitle">Ongoing operations, upcoming missions, and completed victories—engineered for clarity.</p>
-        </section>
-
-        <section class="events-section events-page" aria-label="Events">
-            <div class="filter-bar">
-                <div class="filter-group">
-                    <div class="filter-label">STATUS</div>
-                    <button class="filter-btn active" type="button" data-status-filter="all">All</button>
-                    <button class="filter-btn" type="button" data-status-filter="ongoing">Ongoing</button>
-                    <button class="filter-btn" type="button" data-status-filter="upcoming">Upcoming</button>
-                    <button class="filter-btn" type="button" data-status-filter="completed">Completed</button>
+        <main class="site-main">
+            <header class="page-hero" aria-labelledby="events-page-title">
+                <div class="page-hero__bg" aria-hidden="true">
+                    <div class="page-hero__gradient"></div>
                 </div>
+                <div class="container page-hero__inner">
+                    <p class="eyebrow">Competitions &amp; calendar</p>
+                    <h1 id="events-page-title" class="display-title page-hero__title">House events</h1>
+                    <p class="body-lg page-hero__lead">
+                        Inter-house competitions, cultural programmes, and academic fixtures —
+                        organised with clarity for students, mentors, and staff.
+                    </p>
+                </div>
+            </header>
 
-                <div class="filter-group">
-                    <div class="filter-label">CATEGORY</div>
-                    <button class="filter-btn active" type="button" data-category-filter="all">All</button>
-                    <button class="filter-btn" type="button" data-category-filter="sports">Sports</button>
-                    <button class="filter-btn" type="button" data-category-filter="literary">Literary</button>
-                    <button class="filter-btn" type="button" data-category-filter="cultural">Cultural</button>
+            <section class="page-section events-featured" aria-label="Featured event">
+                <div class="container">
+                    <div data-events-featured></div>
+                </div>
+            </section>
+
+            <section class="page-section" aria-label="Browse by category">
+                <div class="container">
+                    <div class="filter-bar" role="group" aria-label="Event categories">
+                        <span class="filter-bar__label">Category</span>
+                        <button type="button" class="pill is-active" data-category="all">All</button>
+                        <button type="button" class="pill" data-category="sports">Sports</button>
+                        <button type="button" class="pill" data-category="cultural">Cultural</button>
+                        <button type="button" class="pill" data-category="academic">Academic</button>
+                        <button type="button" class="pill" data-category="literary">Literary</button>
+                        <button type="button" class="pill" data-category="house">House activities</button>
+                    </div>
+                </div>
+            </section>
+
+            <div class="container events-page" data-events-root>
+                <p class="events-empty" data-events-empty hidden>No events match this category.</p>
+                <section class="events-status-block" data-status-section="ongoing" aria-labelledby="events-ongoing-title">
+                    <div class="events-status-block__head">
+                        <h2 id="events-ongoing-title" class="events-status-block__title">Ongoing</h2>
+                        <span class="events-status-block__count" data-status-count="ongoing"></span>
+                    </div>
+                    <div class="events-grid" data-events-grid="ongoing"></div>
+                </section>
+
+                <section class="events-status-block" data-status-section="upcoming" aria-labelledby="events-upcoming-title">
+                    <div class="events-status-block__head">
+                        <h2 id="events-upcoming-title" class="events-status-block__title">Upcoming</h2>
+                        <span class="events-status-block__count" data-status-count="upcoming"></span>
+                    </div>
+                    <div class="events-grid" data-events-grid="upcoming"></div>
+                </section>
+
+                <section class="events-status-block" data-status-section="completed" aria-labelledby="events-completed-title">
+                    <div class="events-status-block__head">
+                        <h2 id="events-completed-title" class="events-status-block__title">Completed</h2>
+                        <span class="events-status-block__count" data-status-count="completed"></span>
+                    </div>
+                    <div class="events-grid" data-events-grid="completed"></div>
+                </section>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="container footer__inner">
+                <div class="footer__brand">
+                    <img src="./assets/brand/ashoka-logo.svg" alt="" class="footer__logo" width="28" height="28">
+                    <p class="footer__statement">
+                        Section C house system — leadership through discipline and excellence.
+                    </p>
+                </div>
+                <div class="footer__meta">
+                    <a href="mailto:ashoka@school.edu" class="footer__contact">ashoka@school.edu</a>
+                    <p class="footer__copy">© 2026 Ashoka House. All rights reserved.</p>
                 </div>
             </div>
+        </footer>
+    </div>
 
-            <div class="events-grid" aria-live="polite"></div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-divider"></div>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4 class="footer-title">ASHOKA HOUSE</h4>
-                <p class="footer-desc">Elite institutional platform for Section C house system</p>
-            </div>
-
-            <div class="footer-section">
-                <h4 class="footer-title">Quick Links</h4>
-                <ul class="footer-links">
-                    <li><a href="./index.html">Home</a></li>
-                    <li><a href="./events.html">Events</a></li>
-                    <li><a href="./achievements.html">Achievements</a></li>
-                    <li><a href="./standings.html">Standings</a></li>
-                    <li><a href="./leadership.html">Leadership</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4 class="footer-title">Connect</h4>
-                <ul class="footer-links">
-                    <li><a href="#">Instagram</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">Email</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4 class="footer-title">School</h4>
-                <p class="footer-text">© 2026 Ashoka House - Section C</p>
-                <p class="footer-text">All rights reserved</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Scripts (order matters) -->
-    <script src="./js/preloader.js"></script>
-    <script src="./js/page-init.js"></script>
-    <script src="./js/utils.js"></script>
+    <script src="./js/preloader-global.js"></script>
+    <script src="./js/core/api.js"></script>
+    <script src="./js/nav.js"></script>
     <script src="./js/events.js"></script>
 </body>
 </html>
-

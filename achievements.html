@@ -1,134 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ashoka House - Achievements</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements — Ashoka House</title>
+    <meta name="description" content="Recognition and achievements for Ashoka House, Section C.">
 
-    <link rel="stylesheet" href="./css/global.css" />
-    <link rel="stylesheet" href="./css/premium-components.css" />
-    <link rel="stylesheet" href="./css/base-pages.css" />
-    <link rel="stylesheet" href="./css/preloader.css" />
-    <link rel="stylesheet" href="./css/achievements-premium.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/pages/shared.css">
+    <link rel="stylesheet" href="./css/pages/achievements.css">
+    <link rel="stylesheet" href="./css/preloader-new.css">
 </head>
-<body>
+<body class="page-achievements">
     <div class="preloader" aria-hidden="true">
-        <div class="preloader-transition"></div>
-        <div class="preloader-particles" aria-hidden="true">
-            <div class="preloader-particle"></div>
-            <div class="preloader-particle"></div>
-            <div class="preloader-particle"></div>
-            <div class="preloader-particle"></div>
-            <div class="preloader-particle"></div>
+        <div class="preloader__bg">
+            <div class="preloader__gradient"></div>
         </div>
-        <div class="preloader-content">
-            <div class="preloader-logo">
-                <div class="preloader-logo-icon">◆</div>
+        <div class="preloader__content">
+            <div class="preloader__logo">
+                <div class="preloader__logo-icon">◆</div>
             </div>
-            <div class="preloader-text">
-                <div class="preloader-title">ASHOKA HOUSE</div>
-                <div class="preloader-subtitle">RECONSTRUCTING RECOGNITION MODULE</div>
+            <div class="preloader__text">
+                <h1 class="preloader__title">Ashoka House</h1>
+                <p class="preloader__subtitle">Loading achievements</p>
             </div>
-            <div class="preloader-segments" aria-hidden="true">
-                <div class="preloader-segment"></div>
-                <div class="preloader-segment"></div>
-                <div class="preloader-segment"></div>
-                <div class="preloader-segment"></div>
-                <div class="preloader-segment"></div>
-                <div class="preloader-segment"></div>
+            <div class="preloader__progress">
+                <div class="preloader__progress-bar"></div>
             </div>
-            <div class="preloader-progress">
-                <span class="preloader-percent">0%</span>
-            </div>
-            <div class="preloader-bar-container" aria-hidden="true">
-                <div class="preloader-bar"></div>
-            </div>
+            <span class="preloader__percent">0%</span>
         </div>
     </div>
 
-    <nav class="navbar">
-        <div class="navbar-container">
-            <a href="./index.html" class="navbar-logo nav-logo" aria-label="Ashoka House">
-                <div class="logo-icon">◆</div>
-                <span>ASHOKA HOUSE</span>
-            </a>
-
-            <ul class="navbar-menu nav-menu">
-                <li><a href="./index.html" class="navbar-link nav-link">Home</a></li>
-                <li><a href="./events.html" class="navbar-link nav-link">Events</a></li>
-                <li><a href="./achievements.html" class="navbar-link nav-link active">Achievements</a></li>
-                <li><a href="./standings.html" class="navbar-link nav-link">Standings</a></li>
-                <li><a href="./leadership.html" class="navbar-link nav-link">Leadership</a></li>
-                <li><a href="./gallery.html" class="navbar-link nav-link">Gallery</a></li>
-                <li><a href="./about.html" class="navbar-link nav-link">About</a></li>
-            </ul>
-
-            <div class="navbar-toggle nav-toggle" aria-label="Toggle navigation" role="button" tabindex="0">
-                <span></span>
-                <span></span>
-                <span></span>
+    <div class="site-shell">
+        <header class="navbar">
+            <div class="navbar__inner">
+                <a href="./index.html" class="navbar__brand" aria-label="Ashoka House home">
+                    <img src="./assets/brand/ashoka-logo.svg" alt="" class="navbar__logo" width="32" height="32">
+                    <span class="navbar__name">Ashoka House</span>
+                </a>
+                <nav class="navbar__menu" aria-label="Primary">
+                    <a href="./index.html" class="navbar__link">Home</a>
+                    <a href="./events.html" class="navbar__link">Events</a>
+                    <a href="./achievements.html" class="navbar__link is-active">Achievements</a>
+                    <a href="./standings.html" class="navbar__link">Standings</a>
+                    <a href="./leadership.html" class="navbar__link">Leadership</a>
+                    <a href="./gallery.html" class="navbar__link">Gallery</a>
+                    <a href="./about.html" class="navbar__link">About</a>
+                </nav>
+                <button type="button" class="navbar__toggle" aria-label="Open menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
-        </div>
-    </nav>
+        </header>
 
-    <main class="page">
-        <section class="page-hero">
-            <div class="section-label">ACHIEVEMENTS & RECOGNITION</div>
-            <h1 class="page-title">Fair Recognition Engine</h1>
-            <p class="page-subtitle">Spotlights are balanced across ALL houses—discipline, achievement, innovation, and community.</p>
-        </section>
+        <main class="site-main">
+            <header class="page-hero" aria-labelledby="achievements-page-title">
+                <div class="page-hero__bg" aria-hidden="true">
+                    <div class="page-hero__gradient"></div>
+                </div>
+                <div class="container page-hero__inner">
+                    <p class="eyebrow">Recognition &amp; legacy</p>
+                    <h1 id="achievements-page-title" class="display-title page-hero__title">Achievements</h1>
+                    <p class="body-lg page-hero__lead">
+                        A record of house and individual distinction — honouring excellence
+                        across sport, culture, scholarship, and leadership.
+                    </p>
+                </div>
+            </header>
 
-        <section class="achievements-section achievements-page" aria-label="Achievements">
-            <div class="achievement-tabs">
-                <button class="tab-btn active" type="button" data-achievement-tab="house">House Achievements</button>
-                <button class="tab-btn" type="button" data-achievement-tab="individual">Individual Achievements</button>
+            <section class="page-section achievements-featured" aria-label="Featured recognition">
+                <div class="container">
+                    <div data-achievements-featured></div>
+                </div>
+            </section>
+
+            <section class="page-section" aria-label="Browse by category">
+                <div class="container">
+                    <div class="filter-bar" role="group" aria-label="Achievement categories">
+                        <span class="filter-bar__label">Category</span>
+                        <button type="button" class="pill is-active" data-category="all">All</button>
+                        <button type="button" class="pill" data-category="sports">Sports</button>
+                        <button type="button" class="pill" data-category="cultural">Cultural</button>
+                        <button type="button" class="pill" data-category="academic">Academic</button>
+                        <button type="button" class="pill" data-category="leadership">Leadership</button>
+                        <button type="button" class="pill" data-category="house">House contributions</button>
+                    </div>
+                </div>
+            </section>
+
+            <div class="container achievements-page" data-achievements-root>
+                <p class="achievements-empty" data-achievements-empty hidden>No achievements match this category.</p>
+
+                <section class="achievements-tier-block" data-tier-section="recent" aria-labelledby="achievements-recent-title">
+                    <div class="achievements-tier-block__head">
+                        <h2 id="achievements-recent-title" class="achievements-tier-block__title">Recent</h2>
+                        <span class="achievements-tier-block__count" data-tier-count="recent"></span>
+                    </div>
+                    <div class="achievements-grid" data-achievements-grid="recent"></div>
+                </section>
+
+                <section class="achievements-tier-block" data-tier-section="major" aria-labelledby="achievements-major-title">
+                    <div class="achievements-tier-block__head">
+                        <h2 id="achievements-major-title" class="achievements-tier-block__title">Major</h2>
+                        <span class="achievements-tier-block__count" data-tier-count="major"></span>
+                    </div>
+                    <div class="achievements-grid" data-achievements-grid="major"></div>
+                </section>
+
+                <section class="achievements-tier-block" data-tier-section="hall" aria-labelledby="achievements-hall-title">
+                    <div class="achievements-tier-block__head">
+                        <h2 id="achievements-hall-title" class="achievements-tier-block__title">Hall of recognition</h2>
+                        <span class="achievements-tier-block__count" data-tier-count="hall"></span>
+                    </div>
+                    <div class="achievements-grid" data-achievements-grid="hall"></div>
+                </section>
+
+                <section class="achievements-tier-block" data-tier-section="individual" aria-labelledby="achievements-individual-title">
+                    <div class="achievements-tier-block__head">
+                        <h2 id="achievements-individual-title" class="achievements-tier-block__title">Individual recognition</h2>
+                        <span class="achievements-tier-block__count" data-tier-count="individual"></span>
+                    </div>
+                    <div class="achievements-grid" data-achievements-grid="individual"></div>
+                </section>
             </div>
+        </main>
 
-            <div class="achievements-grid" aria-live="polite"></div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="footer-divider"></div>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4 class="footer-title">ASHOKA HOUSE</h4>
-                <p class="footer-desc">Elite institutional platform for Section C house system</p>
+        <footer class="footer">
+            <div class="container footer__inner">
+                <div class="footer__brand">
+                    <img src="./assets/brand/ashoka-logo.svg" alt="" class="footer__logo" width="28" height="28">
+                    <p class="footer__statement">
+                        Section C house system — leadership through discipline and excellence.
+                    </p>
+                </div>
+                <div class="footer__meta">
+                    <a href="mailto:ashoka@school.edu" class="footer__contact">ashoka@school.edu</a>
+                    <p class="footer__copy">© 2026 Ashoka House. All rights reserved.</p>
+                </div>
             </div>
+        </footer>
+    </div>
 
-            <div class="footer-section">
-                <h4 class="footer-title">Quick Links</h4>
-                <ul class="footer-links">
-                    <li><a href="./index.html">Home</a></li>
-                    <li><a href="./events.html">Events</a></li>
-                    <li><a href="./achievements.html">Achievements</a></li>
-                    <li><a href="./standings.html">Standings</a></li>
-                    <li><a href="./leadership.html">Leadership</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4 class="footer-title">Connect</h4>
-                <ul class="footer-links">
-                    <li><a href="#">Instagram</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">Email</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4 class="footer-title">School</h4>
-                <p class="footer-text">© 2026 Ashoka House - Section C</p>
-                <p class="footer-text">All rights reserved</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="./js/preloader.js"></script>
-    <script src="./js/utils.js"></script>
-    <script src="./js/page-init.js"></script>
+    <script src="./js/preloader-global.js"></script>
+    <script src="./js/core/api.js"></script>
+    <script src="./js/nav.js"></script>
     <script src="./js/achievements.js"></script>
 </body>
 </html>
-

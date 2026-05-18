@@ -3,734 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashoka House - Premium Institutional Platform</title>
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="./css/global.css">
-    <link rel="stylesheet" href="./css/premium-components.css">
-    <link rel="stylesheet" href="./css/base-pages.css">
-    <link rel="stylesheet" href="./css/preloader.css">
+    <title>Ashoka House — Section C</title>
+    <meta name="description" content="Official digital platform for Ashoka House, Section C.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/tokens.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/typography.css">
+    <link rel="stylesheet" href="./css/layout.css">
+    <link rel="stylesheet" href="./css/components.css">
+    <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/home.css">
-    <link rel="stylesheet" href="./css/events.css">
-    <link rel="stylesheet" href="./css/standings.css">
-    <link rel="stylesheet" href="./css/leadership.css">
-
+    <link rel="stylesheet" href="./css/preloader-new.css">
 </head>
-<body>
-    <!-- Cinematic Preloader -->
+<body class="page-home">
     <div class="preloader" aria-hidden="true">
-        <div class="preloader-transition"></div>
-        <div class="preloader-particles" aria-hidden="true">
-            <div class="preloader-particle"></div>
-            <div class="preloader-particle"></div>
-            <div class="preloader-particle"></div>
-            <div class="preloader-particle"></div>
-            <div class="preloader-particle"></div>
+        <div class="preloader__bg">
+            <div class="preloader__gradient"></div>
         </div>
-
-        <div class="preloader-content">
-            <div class="preloader-logo">
-                <div class="preloader-logo-icon">◆</div>
+        <div class="preloader__content">
+            <div class="preloader__logo">
+                <div class="preloader__logo-icon">◆</div>
             </div>
-
-            <div class="preloader-text">
-                <div class="preloader-title">ASHOKA HOUSE</div>
-                <div class="preloader-subtitle">INITIALIZING INSTITUTIONAL SYSTEM</div>
+            <div class="preloader__text">
+                <h1 class="preloader__title">Ashoka House</h1>
+                <p class="preloader__subtitle">Loading institutional platform</p>
             </div>
-
-            <div class="preloader-segments" aria-hidden="true">
-                <div class="preloader-segment"></div>
-                <div class="preloader-segment"></div>
-                <div class="preloader-segment"></div>
-                <div class="preloader-segment"></div>
-                <div class="preloader-segment"></div>
-                <div class="preloader-segment"></div>
+            <div class="preloader__progress">
+                <div class="preloader__progress-bar"></div>
             </div>
-
-            <div class="preloader-progress">
-                <span class="preloader-percent">0%</span>
-            </div>
-
-            <div class="preloader-bar-container" aria-hidden="true">
-                <div class="preloader-bar"></div>
-            </div>
-
-            <div class="preloader-status">Preparing secure interface...</div>
+            <span class="preloader__percent">0%</span>
         </div>
     </div>
 
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-
-
-        <div class="navbar-container">
-            <a href="#home" class="navbar-logo nav-logo">
-                <div class="logo-icon">◆</div>
-                <span>ASHOKA HOUSE</span>
-            </a>
-
-            <ul class="navbar-menu nav-menu">
-                <li><a href="./index.html#home" class="navbar-link nav-link active">Home</a></li>
-                <li><a href="./index.html#events" class="navbar-link nav-link">Events</a></li>
-                <li><a href="./index.html#achievements" class="navbar-link nav-link">Achievements</a></li>
-                <li><a href="./index.html#standings" class="navbar-link nav-link">Standings</a></li>
-                <li><a href="./index.html#leadership" class="navbar-link nav-link">Leadership</a></li>
-            </ul>
-
-            <div class="navbar-toggle nav-toggle" aria-label="Toggle navigation" role="button" tabindex="0">
-                <span></span>
-                <span></span>
-                <span></span>
+    <div class="site-shell">
+        <header class="navbar">
+            <div class="navbar__inner">
+                <a href="./index.html" class="navbar__brand" aria-label="Ashoka House home">
+                    <img src="./assets/brand/ashoka-logo.svg" alt="" class="navbar__logo" width="32" height="32">
+                    <span class="navbar__name">Ashoka House</span>
+                </a>
+                <nav class="navbar__menu" aria-label="Primary">
+                    <a href="./index.html" class="navbar__link is-active">Home</a>
+                    <a href="./events.html" class="navbar__link">Events</a>
+                    <a href="./achievements.html" class="navbar__link">Achievements</a>
+                    <a href="./standings.html" class="navbar__link">Standings</a>
+                    <a href="./leadership.html" class="navbar__link">Leadership</a>
+                    <a href="./gallery.html" class="navbar__link">Gallery</a>
+                    <a href="./about.html" class="navbar__link">About</a>
+                </nav>
+                <button type="button" class="navbar__toggle" aria-label="Open menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
-        </div>
-    </nav>
+        </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-background">
-            <div class="gradient-orb"></div>
-            <div class="particle-field"></div>
-        </div>
-
-        <div class="hero-content">
-            <div class="hero-left">
-                <div class="hero-label">ASHOKA HOUSE - SECTION C</div>
-                <h1 class="hero-title">Leadership Through Excellence</h1>
-                <p class="hero-subtitle">A modern institutional platform focused on discipline, achievement, innovation, and community excellence.</p>
-                
-                <div class="hero-buttons">
-                    <button class="btn btn-primary">Explore Events</button>
-                    <button class="btn btn-secondary">View Standings</button>
+        <main class="site-main">
+            <section class="hero" aria-label="Introduction">
+                <div class="hero__bg" aria-hidden="true">
+                    <div class="hero__gradient"></div>
+                    <div class="hero__grid"></div>
                 </div>
-            </div>
+                <div class="container hero__inner">
+                    <p class="eyebrow hero__eyebrow">Ashoka House · Section C</p>
+                    <h1 class="display-title hero__title">Leadership through discipline and excellence.</h1>
+                    <hr class="rule hero__rule">
+                    <p class="body-lg hero__lead">
+                        The official digital home of Ashoka House — competitions, recognition,
+                        standings, and school leadership presented with institutional clarity.
+                    </p>
+                    <div class="hero__event" data-hero-event></div>
+                </div>
+            </section>
 
-            <div class="hero-right">
-                <div class="countdown-container">
-                    <div class="countdown-label">NEXT MAJOR EVENT</div>
-                    <div class="countdown-title">INTER-HOUSE SPORTS FEST</div>
-                    
-                    <div class="countdown-grid">
-                        <div class="countdown-block">
-                            <div class="countdown-value" data-type="days">24</div>
-                            <div class="countdown-unit">DAYS</div>
+            <section class="section" aria-labelledby="home-events-heading">
+                <div class="container">
+                    <header class="section-header section-header--row">
+                        <div class="section-header-text">
+                            <p class="eyebrow">Competitions</p>
+                            <h2 id="home-events-heading" class="section-title">Featured event</h2>
                         </div>
-                        <div class="countdown-block">
-                            <div class="countdown-value" data-type="hours">15</div>
-                            <div class="countdown-unit">HOURS</div>
+                        <a href="./events.html" class="text-link">All events</a>
+                    </header>
+                    <div data-home-featured-event></div>
+                </div>
+            </section>
+
+            <section class="section" aria-labelledby="home-achievements-heading">
+                <div class="container">
+                    <header class="section-header section-header--row">
+                        <div class="section-header-text">
+                            <p class="eyebrow">Recognition</p>
+                            <h2 id="home-achievements-heading" class="section-title">Recent achievements</h2>
                         </div>
-                        <div class="countdown-block">
-                            <div class="countdown-value" data-type="minutes">42</div>
-                            <div class="countdown-unit">MINUTES</div>
+                        <a href="./achievements.html" class="text-link">All achievements</a>
+                    </header>
+                    <div class="grid-2" data-home-achievements></div>
+                </div>
+            </section>
+
+            <section class="section" aria-labelledby="home-standings-heading">
+                <div class="container home-preview__grid">
+                    <div>
+                        <header class="section-header">
+                            <p class="eyebrow">Rankings</p>
+                            <h2 id="home-standings-heading" class="section-title">House standings</h2>
+                            <p class="body-md">Current inter-house points for Section C.</p>
+                        </header>
+                        <div data-home-standings></div>
+                    </div>
+                    <div>
+                        <header class="section-header">
+                            <p class="eyebrow">People</p>
+                            <h2 class="section-title">Leadership</h2>
+                            <p class="body-md">Principal, mentors, and student council.</p>
+                        </header>
+                        <div data-home-leadership></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" aria-labelledby="home-gallery-heading">
+                <div class="container">
+                    <header class="section-header section-header--row">
+                        <div class="section-header-text">
+                            <p class="eyebrow">Archive</p>
+                            <h2 id="home-gallery-heading" class="section-title">Gallery</h2>
                         </div>
-                        <div class="countdown-block">
-                            <div class="countdown-value" data-type="seconds">38</div>
-                            <div class="countdown-unit">SECONDS</div>
+                        <a href="./gallery.html" class="text-link">View gallery</a>
+                    </header>
+                    <div data-home-gallery></div>
+                </div>
+            </section>
+
+            <section class="section home-philosophy" aria-labelledby="home-about-heading">
+                <div class="container home-philosophy__grid">
+                    <div>
+                        <p class="eyebrow eyebrow--gold">Institutional identity</p>
+                        <h2 id="home-about-heading" class="section-title">Built on purpose, not spectacle.</h2>
+                        <p class="body-lg" style="margin-top: var(--space-6);">
+                            Ashoka House exists to develop character, academic rigour, and collective
+                            achievement within Section C — through sport, culture, scholarship, and service.
+                        </p>
+                        <p style="margin-top: var(--space-8);">
+                            <a href="./about.html" class="text-link">Read our story</a>
+                        </p>
+                    </div>
+                    <div class="home-philosophy__values">
+                        <div class="value-item">
+                            <h3>Discipline</h3>
+                            <p>Structure and accountability in every competition and classroom endeavour.</p>
+                        </div>
+                        <div class="value-item">
+                            <h3>Excellence</h3>
+                            <p>Sustained effort across sport, academics, and cultural life — measured honestly.</p>
+                        </div>
+                        <div class="value-item">
+                            <h3>Integrity</h3>
+                            <p>Recognition earned fairly; standings and achievements reflect real participation.</p>
                         </div>
                     </div>
+                </div>
+            </section>
+        </main>
 
-                    <div class="floating-mesh">
-                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="meshGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#2d9d78;stop-opacity:0.3" />
-                                    <stop offset="100%" style="stop-color:#1a5f3f;stop-opacity:0.1" />
-                                </linearGradient>
-                            </defs>
-                            <circle cx="100" cy="100" r="80" fill="none" stroke="url(#meshGradient)" stroke-width="1" opacity="0.5"/>
-                            <circle cx="100" cy="100" r="60" fill="none" stroke="url(#meshGradient)" stroke-width="1" opacity="0.3"/>
-                            <circle cx="100" cy="100" r="40" fill="none" stroke="url(#meshGradient)" stroke-width="1" opacity="0.2"/>
-                            <line x1="100" y1="20" x2="100" y2="180" stroke="url(#meshGradient)" stroke-width="0.5" opacity="0.3"/>
-                            <line x1="20" y1="100" x2="180" y2="100" stroke="url(#meshGradient)" stroke-width="0.5" opacity="0.3"/>
-                        </svg>
-                    </div>
+        <footer class="footer">
+            <div class="container footer__inner">
+                <div class="footer__brand">
+                    <img src="./assets/brand/ashoka-logo.svg" alt="" class="footer__logo" width="28" height="28">
+                    <p class="footer__statement">
+                        Section C house system — leadership through discipline and excellence.
+                    </p>
+                </div>
+                <div class="footer__meta">
+                    <a href="mailto:ashoka@school.edu" class="footer__contact">ashoka@school.edu</a>
+                    <p class="footer__copy">© 2026 Ashoka House. All rights reserved.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </footer>
+    </div>
 
-    <!-- Live Status Strip -->
-    <section class="live-strip">
-        <div class="live-ticker">
-            <span class="live-badge">● LIVE</span>
-            <div class="ticker-content">
-                <div class="ticker-item">Ashoka House leads by 5 points in sports rankings</div>
-                <div class="ticker-item">Basketball finals scheduled for tomorrow at 4 PM</div>
-                <div class="ticker-item">Literary competition submissions close in 2 days</div>
-                <div class="ticker-item">Cultural fest registration now open - 48 spots available</div>
-                <div class="ticker-item">Ashoka House leads by 5 points in sports rankings</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats-section">
-        <div class="section-label">PERFORMANCE DASHBOARD</div>
-        
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-icon">★</div>
-                <div class="stat-value" data-target="2847">0</div>
-                <div class="stat-label">Total Points</div>
-                <div class="stat-trend">↑ +124 this week</div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-icon">◆</div>
-                <div class="stat-value" data-target="156">0</div>
-                <div class="stat-label">Active Members</div>
-                <div class="stat-trend">↑ +8 new members</div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-icon">◉</div>
-                <div class="stat-value" data-target="34">0</div>
-                <div class="stat-label">Competitions Won</div>
-                <div class="stat-trend">↑ +3 this month</div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-icon">◈</div>
-                <div class="stat-value" data-target="89">0</div>
-                <div class="stat-label">Achievements</div>
-                <div class="stat-trend">↑ +12 new awards</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Data-driven Home Preview -->
-    <section class="home-preview-grid">
-        <div class="featured-event-card"></div>
-        <div class="home-side-panel">
-            <div class="achievement-preview"></div>
-            <div class="leader-rotation"></div>
-        </div>
-    </section>
-
-    <section class="timeline-section">
-        <div class="section-label">ACTION TIMELINE</div>
-        <div class="section-title">Upcoming institutional missions</div>
-        <div class="timeline-grid"></div>
-    </section>
-
-    <section class="house-dna-section">
-        <div class="section-label">HOUSE DNA</div>
-        <p class="section-subtitle">Core performance and momentum metrics across all houses.</p>
-        <div class="house-dna"></div>
-    </section>
-
-    <!-- Events Section -->
-    <section id="events" class="events-section">
-        <div class="section-label">COMPETITIONS & EVENTS</div>
-
-        <div class="event-tabs">
-            <button class="tab-btn active" data-tab="ongoing">Ongoing</button>
-            <button class="tab-btn" data-tab="upcoming">Upcoming</button>
-            <button class="tab-btn" data-tab="completed">Completed</button>
-        </div>
-
-        <!-- Ongoing Events -->
-        <div class="tab-content active" id="ongoing">
-            <div class="events-grid">
-                <div class="event-card">
-                    <div class="event-header">
-                        <div class="event-category sports">Sports</div>
-                        <div class="event-status active">● Active</div>
-                    </div>
-                    <h3 class="event-title">Indoor Cricket Tournament</h3>
-                    <p class="event-desc">Inter-house cricket championship</p>
-                    <div class="event-meta">
-                        <span class="event-houses">4 Houses</span>
-                        <span class="event-date">Ends in 3 days</span>
-                    </div>
-                    <div class="event-progress">
-                        <div class="progress-bar" style="width: 65%"></div>
-                    </div>
-                </div>
-
-                <div class="event-card">
-                    <div class="event-header">
-                        <div class="event-category literary">Literary</div>
-                        <div class="event-status active">● Active</div>
-                    </div>
-                    <h3 class="event-title">Essay Writing Competition</h3>
-                    <p class="event-desc">Theme: Leadership & Innovation</p>
-                    <div class="event-meta">
-                        <span class="event-houses">4 Houses</span>
-                        <span class="event-date">Submissions: 48 hours</span>
-                    </div>
-                    <div class="event-progress">
-                        <div class="progress-bar" style="width: 42%"></div>
-                    </div>
-                </div>
-
-                <div class="event-card">
-                    <div class="event-header">
-                        <div class="event-category cultural">Cultural</div>
-                        <div class="event-status active">● Active</div>
-                    </div>
-                    <h3 class="event-title">Digital Design Challenge</h3>
-                    <p class="event-desc">Create futuristic UI/UX designs</p>
-                    <div class="event-meta">
-                        <span class="event-houses">4 Houses</span>
-                        <span class="event-date">Week 2 ongoing</span>
-                    </div>
-                    <div class="event-progress">
-                        <div class="progress-bar" style="width: 55%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Upcoming Events -->
-        <div class="tab-content" id="upcoming">
-            <div class="events-grid">
-                <div class="event-card">
-                    <div class="event-header">
-                        <div class="event-category sports">Sports</div>
-                        <div class="event-status upcoming">◉ Soon</div>
-                    </div>
-                    <h3 class="event-title">Basketball Finals</h3>
-                    <p class="event-desc">Championship playoff matches</p>
-                    <div class="event-meta">
-                        <span class="event-houses">4 Houses</span>
-                        <span class="event-date">Tomorrow 4:00 PM</span>
-                    </div>
-                    <div class="event-progress">
-                        <div class="progress-bar" style="width: 0%"></div>
-                    </div>
-                </div>
-
-                <div class="event-card">
-                    <div class="event-header">
-                        <div class="event-category literary">Literary</div>
-                        <div class="event-status upcoming">◉ Soon</div>
-                    </div>
-                    <h3 class="event-title">Debate Championship</h3>
-                    <p class="event-desc">Inter-house parliamentary debate</p>
-                    <div class="event-meta">
-                        <span class="event-houses">4 Houses</span>
-                        <span class="event-date">In 5 days</span>
-                    </div>
-                    <div class="event-progress">
-                        <div class="progress-bar" style="width: 0%"></div>
-                    </div>
-                </div>
-
-                <div class="event-card">
-                    <div class="event-header">
-                        <div class="event-category cultural">Cultural</div>
-                        <div class="event-status upcoming">◉ Soon</div>
-                    </div>
-                    <h3 class="event-title">Annual Cultural Fest</h3>
-                    <p class="event-desc">Music, dance, and performance showcase</p>
-                    <div class="event-meta">
-                        <span class="event-houses">4 Houses</span>
-                        <span class="event-date">In 2 weeks</span>
-                    </div>
-                    <div class="event-progress">
-                        <div class="progress-bar" style="width: 0%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Completed Events -->
-        <div class="tab-content" id="completed">
-            <div class="events-grid">
-                <div class="event-card completed">
-                    <div class="event-header">
-                        <div class="event-category sports">Sports</div>
-                        <div class="event-status completed">✓ Completed</div>
-                    </div>
-                    <h3 class="event-title">Badminton Championship</h3>
-                    <p class="event-desc">Singles & doubles tournament</p>
-                    <div class="event-meta">
-                        <span class="event-houses">Ashoka Won</span>
-                        <span class="event-date">Completed 5 days ago</span>
-                    </div>
-                    <div class="event-progress">
-                        <div class="progress-bar" style="width: 100%"></div>
-                    </div>
-                </div>
-
-                <div class="event-card completed">
-                    <div class="event-header">
-                        <div class="event-category literary">Literary</div>
-                        <div class="event-status completed">✓ Completed</div>
-                    </div>
-                    <h3 class="event-title">Story Telling Competition</h3>
-                    <p class="event-desc">Narrative performance event</p>
-                    <div class="event-meta">
-                        <span class="event-houses">2nd Place - Ashoka</span>
-                        <span class="event-date">Completed 2 weeks ago</span>
-                    </div>
-                    <div class="event-progress">
-                        <div class="progress-bar" style="width: 100%"></div>
-                    </div>
-                </div>
-
-                <div class="event-card completed">
-                    <div class="event-header">
-                        <div class="event-category cultural">Cultural</div>
-                        <div class="event-status completed">✓ Completed</div>
-                    </div>
-                    <h3 class="event-title">Photography Exhibition</h3>
-                    <p class="event-desc">Contemporary art showcase</p>
-                    <div class="event-meta">
-                        <span class="event-houses">Ashoka Featured</span>
-                        <span class="event-date">Completed 1 week ago</span>
-                    </div>
-                    <div class="event-progress">
-                        <div class="progress-bar" style="width: 100%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Achievements Section -->
-    <section id="achievements" class="achievements-section">
-        <div class="section-label">ACHIEVEMENTS & RECOGNITION</div>
-
-        <div class="achievement-tabs">
-            <button class="tab-btn active" data-tab="house-ach">House Achievements</button>
-            <button class="tab-btn" data-tab="individual-ach">Individual Achievements</button>
-        </div>
-
-        <!-- House Achievements -->
-        <div class="tab-content active" id="house-ach">
-            <div class="achievements-grid">
-                <div class="achievement-card">
-                    <div class="achievement-icon">●</div>
-                    <h3 class="achievement-title">Sports Championship 2026</h3>
-                    <p class="achievement-category">Ashoka House</p>
-                    <p class="achievement-desc">Secured first place in inter-house sports tournament</p>
-                    <div class="achievement-meta">March 2026</div>
-                </div>
-
-                <div class="achievement-card">
-                    <div class="achievement-icon">★</div>
-                    <h3 class="achievement-title">Academic Excellence Award</h3>
-                    <p class="achievement-category">Ashoka House</p>
-                    <p class="achievement-desc">Highest cumulative academic performance</p>
-                    <div class="achievement-meta">February 2026</div>
-                </div>
-
-                <div class="achievement-card">
-                    <div class="achievement-icon">◆</div>
-                    <h3 class="achievement-title">Cultural Festival Victory</h3>
-                    <p class="achievement-category">Ashoka House</p>
-                    <p class="achievement-desc">Outstanding performance in annual cultural fest</p>
-                    <div class="achievement-meta">January 2026</div>
-                </div>
-
-                <div class="achievement-card">
-                    <div class="achievement-icon">◉</div>
-                    <h3 class="achievement-title">Community Service Award</h3>
-                    <p class="achievement-category">Ashoka House</p>
-                    <p class="achievement-desc">Excellence in social responsibility initiatives</p>
-                    <div class="achievement-meta">December 2025</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Individual Achievements -->
-        <div class="tab-content" id="individual-ach">
-            <div class="achievements-grid">
-                <div class="achievement-card individual">
-                    <div class="achievement-icon">◈</div>
-                    <h3 class="achievement-title">National Science Olympiad</h3>
-                    <p class="achievement-category">Aarjav Sharma - Ashoka House</p>
-                    <p class="achievement-desc">Gold medal in national physics competition</p>
-                    <div class="achievement-meta">March 2026</div>
-                </div>
-
-                <div class="achievement-card individual">
-                    <div class="achievement-icon">★</div>
-                    <h3 class="achievement-title">Literary Excellence Award</h3>
-                    <p class="achievement-category">Priya Verma - Shivaji House</p>
-                    <p class="achievement-desc">Best short story in all-India competition</p>
-                    <div class="achievement-meta">February 2026</div>
-                </div>
-
-                <div class="achievement-card individual">
-                    <div class="achievement-icon">◆</div>
-                    <h3 class="achievement-title">Sports Star Recognition</h3>
-                    <p class="achievement-category">Rohan Patel - Tagore House</p>
-                    <p class="achievement-desc">Selected for state-level badminton tournament</p>
-                    <div class="achievement-meta">March 2026</div>
-                </div>
-
-                <div class="achievement-card individual">
-                    <div class="achievement-icon">◉</div>
-                    <h3 class="achievement-title">Tech Innovation Award</h3>
-                    <p class="achievement-category">Yuki Tanaka - Raman House</p>
-                    <p class="achievement-desc">Developed award-winning school app platform</p>
-                    <div class="achievement-meta">January 2026</div>
-                </div>
-
-                <div class="achievement-card individual">
-                    <div class="achievement-icon">◈</div>
-                    <h3 class="achievement-title">Debate Championship</h3>
-                    <p class="achievement-category">Ananya Gupta - Ashoka House</p>
-                    <p class="achievement-desc">Regional champion in parliamentary debate</p>
-                    <div class="achievement-meta">February 2026</div>
-                </div>
-
-                <div class="achievement-card individual">
-                    <div class="achievement-icon">★</div>
-                    <h3 class="achievement-title">Art Excellence</h3>
-                    <p class="achievement-category">Vikram Singh - Shivaji House</p>
-                    <p class="achievement-desc">Featured in national youth art exhibition</p>
-                    <div class="achievement-meta">March 2026</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Standings Section -->
-    <section id="standings" class="standings-section">
-        <div class="section-label">HOUSE STANDINGS</div>
-
-        <div class="standings-container">
-            <table class="standings-table">
-                <thead>
-                    <tr>
-                        <th>RANK</th>
-                        <th>HOUSE</th>
-                        <th>POINTS</th>
-                        <th>MOMENTUM</th>
-                        <th>RECENT</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="standing-row" data-rank="1">
-                        <td class="rank-cell">1</td>
-                        <td class="house-cell ashoka">
-                            <span class="house-badge">◆</span>
-                            <span>ASHOKA</span>
-                        </td>
-                        <td class="points-cell">2847</td>
-                        <td class="momentum-cell">
-                            <div class="momentum-badge rising">↑ Rising</div>
-                        </td>
-                        <td class="recent-cell">
-                            <div class="bar-group">
-                                <div class="mini-bar" style="height: 70%"></div>
-                                <div class="mini-bar" style="height: 75%"></div>
-                                <div class="mini-bar" style="height: 80%"></div>
-                                <div class="mini-bar" style="height: 90%"></div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="standing-row" data-rank="2">
-                        <td class="rank-cell">2</td>
-                        <td class="house-cell shivaji">
-                            <span class="house-badge">◈</span>
-                            <span>SHIVAJI</span>
-                        </td>
-                        <td class="points-cell">2765</td>
-                        <td class="momentum-cell">
-                            <div class="momentum-badge stable">→ Stable</div>
-                        </td>
-                        <td class="recent-cell">
-                            <div class="bar-group">
-                                <div class="mini-bar" style="height: 65%"></div>
-                                <div class="mini-bar" style="height: 65%"></div>
-                                <div class="mini-bar" style="height: 68%"></div>
-                                <div class="mini-bar" style="height: 65%"></div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="standing-row" data-rank="3">
-                        <td class="rank-cell">3</td>
-                        <td class="house-cell tagore">
-                            <span class="house-badge">●</span>
-                            <span>TAGORE</span>
-                        </td>
-                        <td class="points-cell">2634</td>
-                        <td class="momentum-cell">
-                            <div class="momentum-badge dropping">↓ Dropping</div>
-                        </td>
-                        <td class="recent-cell">
-                            <div class="bar-group">
-                                <div class="mini-bar" style="height: 60%"></div>
-                                <div class="mini-bar" style="height: 58%"></div>
-                                <div class="mini-bar" style="height: 55%"></div>
-                                <div class="mini-bar" style="height: 52%"></div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="standing-row" data-rank="4">
-                        <td class="rank-cell">4</td>
-                        <td class="house-cell raman">
-                            <span class="house-badge">◉</span>
-                            <span>RAMAN</span>
-                        </td>
-                        <td class="points-cell">2512</td>
-                        <td class="momentum-cell">
-                            <div class="momentum-badge rising">↑ Rising</div>
-                        </td>
-                        <td class="recent-cell">
-                            <div class="bar-group">
-                                <div class="mini-bar" style="height: 50%"></div>
-                                <div class="mini-bar" style="height: 55%"></div>
-                                <div class="mini-bar" style="height: 60%"></div>
-                                <div class="mini-bar" style="height: 65%"></div>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="standings-info">
-            <p>Last updated: 2 minutes ago • Next update: in 30 minutes</p>
-        </div>
-    </section>
-
-    <!-- Leadership Section -->
-    <section id="leadership" class="leadership-section">
-        <div class="section-label">INSTITUTIONAL LEADERSHIP</div>
-
-        <div class="leadership-grid">
-            <!-- Principal -->
-            <div class="leadership-card">
-                <div class="leader-image">
-                    <div class="avatar-placeholder">
-                        <span>PR</span>
-                    </div>
-                </div>
-                <h3 class="leader-name">Dr. Rajesh Kumar</h3>
-                <p class="leader-role">Principal</p>
-                <p class="leader-bio">Visionary educational leader with 20+ years in institutional excellence</p>
-                <div class="leader-social">
-                    <a href="#" class="social-link">Email</a>
-                </div>
-            </div>
-
-            <!-- Vice Principal -->
-            <div class="leadership-card">
-                <div class="leader-image">
-                    <div class="avatar-placeholder">
-                        <span>VP</span>
-                    </div>
-                </div>
-                <h3 class="leader-name">Ms. Anita Sharma</h3>
-                <p class="leader-role">Vice Principal</p>
-                <p class="leader-bio">Dedicated to academic excellence and student welfare</p>
-                <div class="leader-social">
-                    <a href="#" class="social-link">Email</a>
-                </div>
-            </div>
-
-            <!-- House Master Ashoka -->
-            <div class="leadership-card ashoka-card">
-                <div class="leader-image">
-                    <div class="avatar-placeholder">
-                        <span>AM</span>
-                    </div>
-                </div>
-                <h3 class="leader-name">Mr. Vikram Patel</h3>
-                <p class="leader-role">House Master - Ashoka</p>
-                <p class="leader-bio">Mentor and guide for Ashoka House members</p>
-                <div class="leader-social">
-                    <a href="#" class="social-link">Contact</a>
-                </div>
-            </div>
-
-            <!-- School Council President -->
-            <div class="leadership-card">
-                <div class="leader-image">
-                    <div class="avatar-placeholder">
-                        <span>SC</span>
-                    </div>
-                </div>
-                <h3 class="leader-name">Aditya Malhotra</h3>
-                <p class="leader-role">School Council President</p>
-                <p class="leader-bio">Student leader representing school-wide initiatives</p>
-                <div class="leader-social">
-                    <a href="#" class="social-link">Profile</a>
-                </div>
-            </div>
-
-            <!-- House Council President -->
-            <div class="leadership-card ashoka-card">
-                <div class="leader-image">
-                    <div class="avatar-placeholder">
-                        <span>HC</span>
-                    </div>
-                </div>
-                <h3 class="leader-name">Ridhima Chopra</h3>
-                <p class="leader-role">Ashoka House Council President</p>
-                <p class="leader-bio">Leading Ashoka House members towards excellence</p>
-                <div class="leader-social">
-                    <a href="#" class="social-link">Profile</a>
-                </div>
-            </div>
-
-            <!-- Vice Council President -->
-            <div class="leadership-card ashoka-card">
-                <div class="leader-image">
-                    <div class="avatar-placeholder">
-                        <span>VC</span>
-                    </div>
-                </div>
-                <h3 class="leader-name">Arjun Singh</h3>
-                <p class="leader-role">Ashoka House Vice President</p>
-                <p class="leader-bio">Supporting house initiatives and member engagement</p>
-                <div class="leader-social">
-                    <a href="#" class="social-link">Profile</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-divider"></div>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4 class="footer-title">ASHOKA HOUSE</h4>
-                <p class="footer-desc">Elite institutional platform for Section C house system</p>
-            </div>
-
-            <div class="footer-section">
-                <h4 class="footer-title">Quick Links</h4>
-                <ul class="footer-links">
-                    <li><a href="./index.html#home">Home</a></li>
-                    <li><a href="./index.html#events">Events</a></li>
-                    <li><a href="./index.html#achievements">Achievements</a></li>
-                    <li><a href="./index.html#standings">Standings</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4 class="footer-title">Connect</h4>
-                <ul class="footer-links">
-                    <li><a href="#">Instagram</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">Email</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4 class="footer-title">School</h4>
-                <p class="footer-text">© 2026 Ashoka House - Section C</p>
-                <p class="footer-text">All rights reserved</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="./js/preloader.js"></script>
-    <script src="./js/page-init.js"></script>
-    <script src="./js/utils.js"></script>
+    <script src="./js/preloader-global.js"></script>
+    <script src="./js/core/api.js"></script>
+    <script src="./js/nav.js"></script>
     <script src="./js/home.js"></script>
-    <script src="./js/events.js"></script>
-    <script src="./js/achievements.js"></script>
-    <script src="./js/standings.js"></script>
-    <script src="./js/leadership.js"></script>
-    <script src="./script.js"></script>
 </body>
 </html>
-
