@@ -1,0 +1,230 @@
+/* Ashoka House — Events page */
+
+.page-events .events-page > .page-section:last-child {
+  padding-bottom: var(--space-24);
+}
+
+.page-events .events-page > .page-section:not(:last-child) {
+  padding-bottom: 0;
+}
+
+/* Independent section break: Upcoming → Annual */
+.page-events .events-upcoming-section + .events-annual {
+  padding-top: var(--space-16);
+  border-top: 1px solid var(--color-border);
+}
+
+/* ——— Featured event ——— */
+.events-featured {
+  margin-bottom: var(--section-gap);
+}
+
+.events-featured .card--featured {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-10);
+  align-items: end;
+}
+
+.events-featured__main {
+  min-width: 0;
+}
+
+.events-featured__aside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-4);
+  text-align: right;
+}
+
+.events-featured__date {
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: 500;
+  color: var(--color-text);
+  line-height: var(--leading-snug);
+}
+
+.events-featured__venue {
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 768px) {
+  .events-featured .card--featured {
+    grid-template-columns: 1fr;
+  }
+
+  .events-featured__aside {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+/* ——— Status sections ——— */
+.events-status-block {
+  margin-bottom: var(--space-16);
+}
+
+.events-status-block:last-child {
+  margin-bottom: 0;
+}
+
+.events-status-block.is-empty {
+  display: none;
+}
+
+.events-status-block__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.events-status-block__title {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.events-status-block__count {
+  font-size: var(--text-caption);
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ——— Event grid ——— */
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+  gap: var(--space-6);
+}
+
+/* ——— Event card ——— */
+.event-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-card);
+  transition:
+    border-color var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out),
+    transform var(--duration-normal) var(--ease-out);
+}
+
+.event-card:hover {
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+.event-card__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.event-card__title {
+  min-width: 0;
+  font-size: var(--text-body);
+  font-weight: 600;
+  line-height: var(--leading-snug);
+  color: var(--color-text);
+  margin-bottom: var(--space-3);
+}
+
+.event-card__desc {
+  flex: 1;
+  font-size: var(--text-small);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-6);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.event-card__meta {
+  margin-top: auto;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.event-card__meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-4);
+  font-size: var(--text-caption);
+}
+
+.event-card__meta-label {
+  color: var(--color-text-muted);
+}
+
+.event-card__meta-value {
+  color: var(--color-text-secondary);
+  text-align: right;
+}
+
+.event-card__winner {
+  margin-top: var(--space-3);
+  font-size: var(--text-caption);
+  color: var(--color-gold);
+}
+
+.event-card__cta {
+  margin-top: var(--space-4);
+}
+
+/* Status tag variants */
+.tag--ongoing {
+  color: var(--color-emerald-mid);
+  background: var(--color-emerald-soft);
+}
+
+.tag--upcoming {
+  color: var(--color-text-secondary);
+}
+
+.tag--completed {
+  color: var(--color-text-muted);
+}
+
+/* Category tag — neutral, no neon */
+.tag--category {
+  color: var(--color-text-muted);
+  background: transparent;
+  border-color: var(--color-border);
+}
+
+.events-empty {
+  grid-column: 1 / -1;
+  padding: var(--space-12);
+  text-align: center;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.events-page.is-filtered .events-status-block.is-empty {
+  display: none;
+}

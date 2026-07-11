@@ -1,0 +1,54 @@
+/* Ashoka House — Shared inner-page styles */
+
+.page-hero {
+  position: relative;
+  padding-top: calc(var(--navbar-height) + var(--space-16));
+  padding-bottom: var(--space-16);
+  overflow: hidden;
+}
+
+.page-hero__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.page-hero__gradient {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 45% at 20% 0%, var(--color-emerald-glow), transparent 55%),
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.72) 0%,
+      rgba(0, 0, 0, 0.55) 25%,
+      rgba(0, 0, 0, 0.25) 55%,
+      transparent 85%
+    );
+}
+
+.page-hero__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 40rem;
+  min-width: 0;
+  width: 100%;
+}
+
+.page-hero__title {
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.page-hero__lead {
+  max-width: 34rem;
+}
+
+
+.page-section {
+  padding-bottom: var(--section-gap);
+}
+
+.page-section:last-child {
+  padding-bottom: var(--space-24);
+}

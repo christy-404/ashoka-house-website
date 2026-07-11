@@ -1,0 +1,181 @@
+{
+  "events": [
+    {
+      "title": "House Formation",
+      "month": "APRIL",
+      "day": "",
+      "date": "",
+      "category": "House Activities",
+      "description": "Annual house formation activity."
+    },
+    {
+      "title": "House Meeting",
+      "month": "JUNE",
+      "day": "06",
+      "date": "",
+      "category": "House Activities",
+      "description": "Annual house meeting."
+    },
+    {
+      "title": "Hindi & English Calligraphy",
+      "month": "JUNE",
+      "day": "20",
+      "date": "",
+      "category": "Literary",
+      "description": "Inter-house calligraphy competition."
+    },
+    {
+      "title": "Patriotic Group Song",
+      "month": "JUNE",
+      "day": "27",
+      "date": "",
+      "category": "Cultural",
+      "description": "Patriotic group song performance."
+    },
+    {
+      "title": "Investiture Ceremony",
+      "month": "JULY",
+      "day": "",
+      "date": "",
+      "category": "House Activities",
+      "description": "Official house investiture ceremony."
+    },
+    {
+      "title": "EBSB Traditional Dress of Any State in India",
+      "month": "JULY",
+      "day": "04",
+      "date": "",
+      "category": "Cultural",
+      "description": "EBSB traditional dress showcase."
+    },
+    {
+      "title": "Solo Act – Unsung Heroes",
+      "month": "JULY",
+      "day": "18",
+      "date": "",
+      "category": "Cultural",
+      "description": "Solo act competition honouring unsung heroes."
+    },
+    {
+      "title": "Group Folk Dance (EBSB)",
+      "month": "JULY",
+      "day": "25",
+      "date": "",
+      "category": "Cultural",
+      "description": "EBSB group folk dance performance."
+    },
+    {
+      "title": "Poster Making",
+      "month": "AUGUST",
+      "day": "01",
+      "date": "",
+      "category": "Cultural",
+      "description": "Inter-house poster making activity."
+    },
+    {
+      "title": "Onam Group Song Competition",
+      "month": "AUGUST",
+      "day": "22",
+      "date": "",
+      "category": "Cultural",
+      "description": "Onam themed group song competition."
+    },
+    {
+      "title": "Floral Carpet Competition",
+      "month": "AUGUST",
+      "day": "22",
+      "date": "",
+      "category": "Cultural",
+      "description": "Floral carpet competition."
+    },
+    {
+      "title": "Sanskrit Sloka Competition",
+      "month": "AUGUST",
+      "day": "29",
+      "date": "",
+      "category": "Literary",
+      "description": "Sanskrit shloka recitation competition."
+    },
+    {
+      "title": "Mime",
+      "month": "SEPTEMBER",
+      "day": "05",
+      "date": "",
+      "category": "Cultural",
+      "description": "Inter-house mime competition."
+    },
+    {
+      "title": "Hindi Pakhwada Competitions",
+      "month": "SEPTEMBER",
+      "day": "19",
+      "date": "",
+      "category": "Literary",
+      "description": "Hindi Pakhwada inter-house competitions."
+    },
+    {
+      "title": "Solo Classical Song",
+      "month": "SEPTEMBER",
+      "day": "26",
+      "date": "",
+      "category": "Cultural",
+      "description": "Solo classical song competition."
+    },
+    {
+      "title": "Release of Manuscript Magazine",
+      "month": "OCTOBER",
+      "day": "03",
+      "date": "",
+      "category": "Academic",
+      "description": "Release of the school manuscript magazine."
+    },
+    {
+      "title": "Story Telling",
+      "month": "NOVEMBER",
+      "day": "07",
+      "date": "",
+      "category": "Literary",
+      "description": "Inter-house story telling."
+    },
+    {
+      "title": "Nukkad Natak",
+      "month": "NOVEMBER",
+      "day": "21",
+      "date": "",
+      "category": "Cultural",
+      "description": "Inter-house Nukkad Natak performance."
+    },
+    {
+      "title": "Skit",
+      "month": "NOVEMBER",
+      "day": "28",
+      "date": "",
+      "category": "Cultural",
+      "description": "Inter-house skit competition."
+    },
+    {
+      "title": "Christmas / New Year Card Making",
+      "month": "DECEMBER",
+      "day": "05",
+      "date": "",
+      "category": "Cultural",
+      "description": "Christmas and new year card making activity."
+    },
+    {
+      "title": "Christmas Carol Competition",
+      "month": "DECEMBER",
+      "day": "19",
+      "date": "",
+      "category": "Cultural",
+      "description": "Christmas carol competition."
+    },
+    {
+      "title": "Christmas Celebration",
+      "month": "DECEMBER",
+      "day": "",
+      "date": "",
+      "category": "Cultural",
+      "description": "Annual Christmas celebration."
+    }
+  ]
+}
+

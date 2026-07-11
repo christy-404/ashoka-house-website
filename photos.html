@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photos — Ashoka House</title>
+    <meta name="description" content="Photos archive — Ashoka House">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/pages/shared.css">
+    <link rel="stylesheet" href="./css/pages/gallery.css">
+    <link rel="stylesheet" href="./css/preloader-new.css">
+</head>
+<body class="page-photos">
+    <div class="preloader" aria-hidden="true">
+        <div class="preloader__bg">
+            <div class="preloader__gradient"></div>
+        </div>
+        <div class="preloader__content">
+            <div class="preloader__logo">
+<img src="./assets/brand/ashoka-logo.png" alt="" class="preloader__logo-icon" />
+            </div>
+            <div class="preloader__text">
+                <h1 class="preloader__title">Ashoka House</h1>
+                <p class="preloader__subtitle">Loading visual archive</p>
+            </div>
+            <div class="preloader__progress">
+                <div class="preloader__progress-bar"></div>
+            </div>
+            <span class="preloader__percent">0%</span>
+        </div>
+    </div>
+
+    <div class="site-shell">
+        <header class="navbar">
+            <div class="navbar__inner">
+                <a href="./index.html" class="navbar__brand" aria-label="Ashoka House home">
+<img src="./assets/brand/ashoka-logo.png" alt="" class="navbar__logo" width="32" height="32">
+                    <span class="navbar__name">Ashoka House</span>
+                </a>
+                <nav class="navbar__menu" aria-label="Primary">
+                    <a href="./index.html" class="navbar__link">Home</a>
+                    <a href="./events.html" class="navbar__link">Events</a>
+                    <a href="./standings.html" class="navbar__link">Standings</a>
+                    <a href="./leadership.html" class="navbar__link">Leadership</a>
+                    <a href="./gallery.html" class="navbar__link is-active">Gallery</a>
+                    <a href="./about.html" class="navbar__link">About</a>
+                </nav>
+                <button type="button" class="navbar__toggle" aria-label="Open menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </header>
+
+        <main class="site-main">
+            <header class="page-hero" aria-labelledby="photos-page-title">
+                <div class="page-hero__bg" aria-hidden="true">
+                    <div class="page-hero__gradient"></div>
+                </div>
+                <div class="container page-hero__inner">
+                    <p class="eyebrow">Visual documentation</p>
+                    <h1 id="photos-page-title" class="display-title page-hero__title">Photos</h1>
+                    <p class="body-lg page-hero__lead">
+                        Institutional moments from events, competitions, and house activities — a curated archival collection.
+                    </p>
+                </div>
+            </header>
+
+            <section class="page-section gallery-section" aria-label="Photo gallery">
+                <div class="container">
+                    <!-- Ashoka Highlights: random featured slideshow -->
+                    <div class="highlights" data-highlights-root aria-live="polite">
+                        <h2 class="highlights__title">ASHOKA HIGHLIGHTS</h2>
+                        <div class="highlights__viewport" data-highlights-viewport>
+                            <!-- Slides rendered by JS -->
+                        </div>
+                        <div class="highlights__meta" data-highlights-meta aria-hidden="true"></div>
+                    </div>
+
+                    <!-- Albums: auto-generated grid populated from data/gallery.json -->
+                    <div class="albums">
+                        <h3 class="albums__heading">All Albums</h3>
+                        <div class="album-grid" data-gallery-root>
+                            <!-- Album tiles rendered by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Image viewer overlay (hidden until opened) -->
+                    <div id="image-viewer" class="image-viewer" aria-hidden="true">
+                        <div class="image-viewer__backdrop" data-viewer-backdrop></div>
+                        <div class="image-viewer__content" role="dialog" aria-modal="true">
+                            <button class="image-viewer__close" data-viewer-close aria-label="Close">✕</button>
+                            <button class="image-viewer__prev" data-viewer-prev aria-label="Previous">‹</button>
+                            <img src="" alt="" class="image-viewer__img" data-viewer-img>
+                            <button class="image-viewer__next" data-viewer-next aria-label="Next">›</button>
+                            <div class="image-viewer__caption" data-viewer-caption></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="footer">
+            <div class="container footer__inner">
+                <div class="footer__brand">
+<img src="./assets/brand/ashoka-logo.png" alt="" class="footer__logo" width="28" height="28">
+                    <p class="footer__statement">
+                        Section C house system — leadership through discipline and excellence.
+                    </p>
+                </div>
+                <div class="footer__meta">
+                    <p class="footer__copy">© 2026 Ashoka House. All rights reserved.</p>
+                    <p class="footer__contact">Elite institutional platform</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="./js/preloader-global.js"></script>
+    <script src="./js/nav.js"></script>
+    <script src="./js/gallery.js"></script>
+</body>
+</html>

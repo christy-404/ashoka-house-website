@@ -1,0 +1,35 @@
+{
+  "albums": [
+    {
+      "id": 1,
+      "title": "Annual Day 2027",
+      "date": "2027-01-12",
+      "cover": { "src": "./assets/gallery/annual-day-2027/cover.jpg" },
+      "photos": [
+        { "src": "./assets/gallery/annual-day-2027/1.jpg", "caption": "Welcome speech", "featured": true },
+        { "src": "./assets/gallery/annual-day-2027/2.jpg", "caption": "Dance performance" },
+        { "src": "./assets/gallery/annual-day-2027/3.jpg", "caption": "Prize distribution" }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Sports Day 2027",
+      "date": "2027-02-20",
+      "cover": { "src": "./assets/gallery/sports-day-2027/cover.jpg" },
+      "photos": [
+        { "src": "./assets/gallery/sports-day-2027/1.jpg", "caption": "100m race", "featured": true },
+        { "src": "./assets/gallery/sports-day-2027/2.jpg", "caption": "Relay race" }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Investiture Ceremony 2027",
+      "date": "2027-03-05",
+      "cover": { "src": "./assets/gallery/investiture-2027/cover.jpg" },
+      "photos": [
+        { "src": "./assets/gallery/investiture-2027/1.jpg", "caption": "Badge presentation", "featured": true },
+        { "src": "./assets/gallery/investiture-2027/2.jpg", "caption": "New captains" }
+      ]
+    }
+  ]
+}

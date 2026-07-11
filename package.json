@@ -1,0 +1,11 @@
+{
+  "name": "ashoka-gallery",
+  "version": "1.0.0",
+  "scripts": {
+    "generate": "node ./tools/generate_gallery.js",
+    "start": "python -m http.server 8000"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}

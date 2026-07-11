@@ -1,0 +1,246 @@
+{
+  "leadership": [
+    {
+      "key": "school_administration",
+      "section": "School Administration",
+      "description": "Senior school leadership responsible for academic and operational direction.",
+      "cards": [
+        {
+          "id": 101,
+          "title": "Principal",
+          "name": "To Be Decided",
+          "designation": "Principal",
+          "subject": "To Be Decided",
+          "position": "Principal",
+          "type": "teacher"
+        },
+        {
+          "id": 102,
+          "title": "Vice Principal",
+          "name": "Mrs. Bindu R",
+          "designation": "Vice Principal",
+          "subject": "Physics",
+          "position": "Vice Principal",
+          "type": "teacher"
+        },
+        {
+          "id": 103,
+          "title": "Senior Teacher",
+          "name": "To Be Decided",
+          "designation": "Teacher",
+          "subject": "To Be Decided",
+          "position": "Senior Teacher",
+          "type": "teacher"
+        },
+        {
+          "id": 104,
+          "title": "Cultural In-Charge",
+          "name": "To Be Decided",
+          "designation": "Teacher",
+          "subject": "To Be Decided",
+          "position": "Cultural In-Charge",
+          "type": "teacher"
+        }
+      ]
+    },
+    {
+      "key": "house_faculty",
+      "section": "House Faculty",
+      "description": "The house faculty team supporting mentorship, wellbeing and house culture.",
+      "cards": [
+        {
+          "id": 201,
+          "title": "House Master",
+          "name": "To Be Decided",
+          "designation": "Teacher",
+          "subject": "To Be Decided",
+          "position": "House Master",
+          "type": "teacher"
+        },
+        {
+          "id": 202,
+          "title": "Associate House Masters",
+          "name": "To Be Decided",
+          "designation": "Teacher",
+          "subject": "To Be Decided",
+          "position": "Associate House Master",
+          "type": "teacher"
+        }
+      ]
+    },
+    {
+      "key": "house_council",
+      "section": "House Council",
+      "description": "Student representatives leading Ashoka House through council duties.",
+      "cards": [
+        {
+          "id": 301,
+          "name": "To Be Decided",
+          "classYear": "XII",
+          "section": "C",
+          "position": "House Captain (Boy)",
+          "type": "student"
+        },
+        {
+          "id": 302,
+          "name": "To Be Decided",
+          "classYear": "XII",
+          "section": "C",
+          "position": "House Captain (Girl)",
+          "type": "student"
+        },
+        {
+          "id": 303,
+          "name": "To Be Decided",
+          "classYear": "XI",
+          "section": "C",
+          "position": "House Vice Captain (Boy)",
+          "type": "student"
+        },
+        {
+          "id": 304,
+          "name": "To Be Decided",
+          "classYear": "XI",
+          "section": "C",
+          "position": "House Vice Captain (Girl)",
+          "type": "student"
+        },
+        {
+          "id": 305,
+          "name": "To Be Decided",
+          "classYear": "XII",
+          "section": "C",
+          "position": "CCA Captain (Boy)",
+          "type": "student"
+        },
+        {
+          "id": 306,
+          "name": "To Be Decided",
+          "classYear": "XII",
+          "section": "C",
+          "position": "CCA Captain (Girl)",
+          "type": "student"
+        },
+        {
+          "id": 307,
+          "name": "To Be Decided",
+          "classYear": "XI",
+          "section": "C",
+          "position": "CCA Vice Captain (Boy)",
+          "type": "student"
+        },
+        {
+          "id": 308,
+          "name": "To Be Decided",
+          "classYear": "XI",
+          "section": "C",
+          "position": "CCA Vice Captain (Girl)",
+          "type": "student"
+        },
+        {
+          "id": 309,
+          "name": "To Be Decided",
+          "classYear": "XI",
+          "section": "C",
+          "position": "Publication In-Charge (Boy)",
+          "type": "student"
+        },
+        {
+          "id": 310,
+          "name": "To Be Decided",
+          "classYear": "XI",
+          "section": "C",
+          "position": "Publication In-Charge (Girl)",
+          "type": "student"
+        }
+      ]
+    },
+    {
+      "key": "school_council",
+      "section": "School Council",
+      "description": "Student leadership roles representing the wider school community.",
+      "cards": [
+        {
+          "id": 401,
+          "name": "To Be Decided",
+          "classYear": "XII",
+          "section": "C",
+          "position": "School Captain (Boy)",
+          "type": "student"
+        },
+        {
+          "id": 402,
+          "name": "To Be Decided",
+          "classYear": "XII",
+          "section": "C",
+          "position": "School Captain (Girl)",
+          "type": "student"
+        },
+        {
+          "id": 403,
+          "name": "To Be Decided",
+          "classYear": "XI",
+          "section": "C",
+          "position": "School Vice Captain (Boy)",
+          "type": "student"
+        },
+        {
+          "id": 404,
+          "name": "To Be Decided",
+          "classYear": "XI",
+          "section": "C",
+          "position": "School Vice Captain (Girl)",
+          "type": "student"
+        },
+        {
+          "id": 405,
+          "name": "To Be Decided",
+          "classYear": "XII",
+          "section": "C",
+          "position": "School Sports Captain (Boy)",
+          "type": "student"
+        },
+        {
+          "id": 406,
+          "name": "To Be Decided",
+          "classYear": "XII",
+          "section": "C",
+          "position": "School Sports Captain (Girl)",
+          "type": "student"
+        },
+        {
+          "id": 407,
+          "name": "To Be Decided",
+          "classYear": "XI",
+          "section": "C",
+          "position": "School Prefect 1",
+          "type": "student"
+        },
+        {
+          "id": 408,
+          "name": "To Be Decided",
+          "classYear": "XI",
+          "section": "C",
+          "position": "School Prefect 2",
+          "type": "student"
+        },
+        {
+          "id": 409,
+          "name": "To Be Decided",
+          "classYear": "XI",
+          "section": "C",
+          "position": "School Prefect 3",
+          "type": "student"
+        },
+        {
+          "id": 410,
+          "name": "To Be Decided",
+          "classYear": "XI",
+          "section": "C",
+          "position": "School Prefect 4",
+          "type": "student"
+        }
+      ]
+    }
+  ]
+}

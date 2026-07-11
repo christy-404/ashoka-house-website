@@ -1,0 +1,250 @@
+/* Annual Event Schedule (scrollable academic schedule) */
+
+
+.events-annual {
+  margin-top: 0;
+}
+
+.events-annual__header {
+  margin-bottom: var(--space-10);
+}
+
+.events-annual__notice {
+  margin-top: var(--space-4);
+  font-size: var(--text-small);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-muted);
+}
+
+.events-annual__official {
+  margin-top: var(--space-4);
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+}
+
+.events-annual__official-label {
+  display: block;
+  font-size: var(--text-caption);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.events-annual__official-link {
+  display: inline-block;
+  margin-top: var(--space-2);
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.events-annual__subtitle {
+  margin: 0;
+  max-width: 62ch;
+}
+
+.events-annual__month {
+  margin: 0 0 var(--space-14);
+}
+
+/* Subtle divider above each month */
+.events-annual__month::before {
+  content: '';
+  display: block;
+  height: 1px;
+  background: var(--color-border);
+  margin: 0 0 var(--space-8);
+}
+
+.events-annual__month-label {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.5vw, 2.05rem);
+  font-weight: 500;
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text);
+  text-transform: uppercase;
+  margin: 0 0 var(--space-8);
+}
+
+.events-annual__rows {
+  display: grid;
+  gap: 0;
+}
+
+.events-annual__row {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  column-gap: var(--space-8);
+  align-items: baseline;
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.events-annual__row:last-child {
+  border-bottom: none;
+}
+
+.events-annual__day {
+  width: 4.5rem;
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+  font-family: var(--font-display);
+  font-size: var(--text-body);
+}
+
+.events-annual__main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.events-annual__title {
+  color: var(--color-text);
+  font-size: var(--text-small);
+  font-weight: 600;
+  line-height: var(--leading-snug);
+}
+
+/* Muted category text only (no pills/badges) */
+.events-annual__category {
+  color: var(--color-text-muted);
+  font-size: var(--text-caption);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+/* Scroll container */
+.events-annual__scroll {
+  max-height: 740px;
+  overflow-y: auto;
+  padding: var(--space-8);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+/* custom thin scrollbar */
+.events-annual__scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.events-annual__scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.events-annual__scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+}
+
+.events-annual__empty {
+  color: var(--color-text-muted);
+  text-align: center;
+  padding: var(--space-8) var(--space-4);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.events-annual__month-divider {
+  display: none;
+}
+
+/* Month blocks + table */
+.events-annual__month-block {
+  margin-bottom: var(--space-10);
+}
+
+.events-annual__month-divider {
+  display: block;
+  height: 1px;
+  background: var(--color-border);
+  margin: 0 0 var(--space-8);
+}
+
+.events-annual__month-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.2vw, 2rem);
+  font-weight: 500;
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text);
+  text-transform: uppercase;
+  margin: 0 0 var(--space-6);
+}
+
+.events-annual__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.events-annual__th-date,
+.events-annual__th-event {
+  text-align: left;
+  font-size: var(--text-caption);
+  color: var(--color-text-muted);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  padding: 0 0 var(--space-4) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.events-annual__row {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.events-annual__row:last-child {
+  border-bottom: none;
+}
+
+.events-annual__date {
+  width: 6rem;
+  color: var(--color-text-secondary);
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  padding: var(--space-3) 0;
+}
+
+.events-annual__event {
+  color: var(--color-text);
+  padding: var(--space-3) 0;
+  font-size: var(--text-small);
+  font-weight: 600;
+}
+
+@media (max-width: 650px) {
+  .events-annual__scroll {
+    max-height: 520px;
+    padding: var(--space-6);
+  }
+
+  .events-annual__date {
+    width: 4.5rem;
+    padding-right: var(--space-4);
+  }
+
+  .events-annual__table thead {
+    display: none;
+  }
+
+  /* Mobile: date above title (row becomes stack) */
+  .events-annual__row,
+  .events-annual__date,
+  .events-annual__event {
+    display: block;
+  }
+
+  .events-annual__date {
+    padding: var(--space-4) 0 0 0;
+  }
+
+  .events-annual__event {
+    padding: var(--space-2) 0 var(--space-4) 0;
+  }
+}
+
+
+

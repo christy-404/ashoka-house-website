@@ -1,0 +1,114 @@
+/* Ashoka House — Design Tokens */
+
+:root {
+  /* Color — institutional palette */
+  --color-bg: #080a09;
+  --color-bg-elevated: #0e1210;
+  --color-surface: #121816;
+  --color-surface-2: #181f1c;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-strong: rgba(255, 255, 255, 0.14);
+
+  --color-text: #f4f6f5;
+  --color-text-secondary: rgba(244, 246, 245, 0.72);
+  --color-text-muted: rgba(244, 246, 245, 0.48);
+
+  --color-emerald: #0d5c47;
+  --color-emerald-mid: #1a7a62;
+  --color-emerald-soft: rgba(26, 122, 98, 0.14);
+  --color-emerald-glow: rgba(26, 122, 98, 0.22);
+
+  --color-gold: #c9a227;
+  --color-gold-soft: rgba(201, 162, 39, 0.12);
+
+  /* Navbar accent — premium emerald gradient */
+  --navbar-accent-gradient: linear-gradient(
+    90deg,
+    rgba(10, 80, 45, 0) 0%,
+    rgba(18, 110, 60, 0.55) 35%,
+    rgba(32, 150, 85, 0.75) 50%,
+    rgba(18, 110, 60, 0.55) 65%,
+    rgba(10, 80, 45, 0) 100%
+  );
+
+  /* Typography families */
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Type scale */
+  --text-display: clamp(2.75rem, 5.5vw, 4.25rem);
+  --text-h1: clamp(2.25rem, 4vw, 3.25rem);
+  --text-h2: clamp(1.5rem, 2.5vw, 2rem);
+  --text-h3: 1.25rem;
+  --text-body: 1rem;
+  --text-small: 0.875rem;
+  --text-caption: 0.75rem;
+
+  /* Aliases (used by page-specific styles) */
+  --text-xl: var(--text-h3);
+  --text-base: var(--text-body);
+  --text-sm: var(--text-small);
+
+  --leading-tight: 1.08;
+  --leading-snug: 1.2;
+  --leading-normal: 1.55;
+  --leading-relaxed: 1.7;
+
+  --tracking-tight: -0.02em;
+  --tracking-wide: 0.08em;
+  --tracking-wider: 0.12em;
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* Layout */
+  --container-max: 72rem;
+  --container-narrow: 42rem;
+  --container-padding: clamp(1.25rem, 4vw, 2rem);
+  --section-gap: clamp(4.5rem, 9vw, 7rem);
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+
+  /* Shadows */
+  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    0 12px 40px rgba(0, 0, 0, 0.35);
+  --shadow-card-hover: 0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 20px 50px rgba(0, 0, 0, 0.45);
+
+  /* Motion (used lightly until phase 7) */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 180ms;
+  --duration-normal: 320ms;
+  --duration-slow: 560ms;
+
+  /* Navbar — Floating Premium */
+  --navbar-height: 4.5rem;
+  --navbar-floating-top: 1.25rem; /* 20px */
+  --navbar-floating-max-width: 75rem; /* 1200px */
+  --navbar-floating-radius: 1.125rem; /* 18px */
+  --navbar-floating-bg: rgba(8, 13, 10, 0.45);
+  --navbar-floating-bg-scrolled: rgba(8, 13, 10, 0.55);
+  --navbar-floating-bg-solid: rgba(8, 10, 9, 0.92);
+  --navbar-floating-blur: 20px;
+  --navbar-floating-border: rgba(255, 255, 255, 0.06);
+  --navbar-floating-shadow: 0 2px 12px rgba(0, 0, 0, 0.18),
+    0 1px 0 rgba(255, 255, 255, 0.03) inset;
+  --navbar-floating-shadow-scrolled: 0 4px 20px rgba(0, 0, 0, 0.22),
+    0 1px 0 rgba(255, 255, 255, 0.04) inset;
+}

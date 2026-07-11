@@ -1,0 +1,337 @@
+/* Ashoka House — Standings page */
+
+/* ——— Featured house ——— */
+.standings-featured {
+  margin-bottom: var(--section-gap);
+}
+
+.standings-featured .card--featured {
+  border-color: rgba(26, 122, 98, 0.28);
+}
+
+.standings-featured__layout {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--space-10);
+  align-items: end;
+}
+
+.standings-featured__layout > div {
+  display: flex;
+  align-items: center;
+}
+
+.status-main {
+  position: relative;
+  top: 12px;
+}
+
+.standings-featured__rank,
+.standings-featured__points {
+  align-self: center;
+}
+
+.standings-featured__rank {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 500;
+  line-height: 1;
+  color: var(--color-gold);
+  letter-spacing: var(--tracking-tight);
+}
+
+.standings-featured__rank span {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-top: var(--space-2);
+}
+
+.standings-featured__house {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.standings-featured__dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--house-color, var(--color-emerald-mid));
+  box-shadow: 0 0 0 3px rgba(26, 122, 98, 0.15);
+}
+
+.standings-featured__name {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 500;
+  color: var(--color-text);
+  line-height: var(--leading-snug);
+}
+
+.standings-featured__status-title {
+  font-size: calc(var(--text-h2) * 0.82);
+  line-height: 1.2;
+}
+
+.standings-featured__status-label {
+  font-size: calc(var(--text-caption) * 0.8);
+  letter-spacing: 0.06em;
+  line-height: 1.3;
+}
+
+.standings-featured__statement {
+  margin-top: var(--space-3);
+  font-size: var(--text-small);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-secondary);
+  max-width: 36rem;
+}
+
+.standings-featured__points {
+  text-align: right;
+}
+
+.standings-featured__points-value {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 500;
+  color: var(--color-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.standings-featured__points-label {
+  font-size: var(--text-caption);
+  color: var(--color-text-muted);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  margin-top: var(--space-1);
+}
+
+@media (max-width: 768px) {
+  .standings-featured__layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .standings-featured__points {
+    text-align: left;
+  }
+}
+
+/* ——— Standings table ——— */
+.standings-table-wrap {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.standings-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-small);
+}
+
+.standings-table thead {
+  background: var(--color-surface-2);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.standings-table th {
+  padding: var(--space-4) var(--space-6);
+  text-align: left;
+  font-weight: 500;
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.standings-table th.col-points,
+.standings-table th.col-events,
+.standings-table th.col-wins {
+  text-align: right;
+}
+
+.standings-table td {
+  padding: var(--space-5) var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  vertical-align: middle;
+}
+
+.standings-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.standings-table tbody tr {
+  transition: background var(--duration-fast) var(--ease-out);
+}
+
+.standings-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.standings-table tbody tr.is-ashoka {
+  background: var(--color-emerald-soft);
+}
+
+.standings-table tbody tr.is-ashoka:hover {
+  background: rgba(26, 122, 98, 0.12);
+}
+
+.standings-table tbody tr.is-ashoka td {
+  color: var(--color-text);
+}
+
+.standings-table .col-rank {
+  width: 4rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.standings-table tbody tr.is-ashoka .col-rank {
+  color: var(--color-emerald-mid);
+}
+
+.standings-table .col-house {
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.standings-table .house-cell {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.standings-table .house-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--house-color, var(--color-text-muted));
+}
+
+.standings-table .col-points,
+.standings-table .col-events,
+.standings-table .col-wins {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.standings-table .col-points {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+@media (max-width: 640px) {
+  .standings-table-wrap {
+    overflow-x: visible;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+
+  .standings-table {
+    min-width: 0;
+  }
+
+  .standings-table thead {
+    display: none;
+  }
+
+  .standings-table tbody tr {
+    display: block;
+    padding: var(--space-4) var(--space-5);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .standings-table tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  .standings-table td {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-4);
+    min-width: 0;
+    padding: var(--space-2) 0;
+    border-bottom: none;
+    text-align: right;
+  }
+
+  .standings-table td::before {
+    content: attr(data-label);
+    font-size: var(--text-caption);
+    font-weight: 600;
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    text-align: left;
+    flex-shrink: 0;
+  }
+
+  .standings-table .house-cell {
+    justify-content: flex-end;
+  }
+}
+
+.standings-disclaimer {
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-8);
+  max-width: 64ch;
+  font-size: var(--text-small);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-muted);
+  text-align: left;
+}
+
+/* ——— Editorial summary ——— */
+.standings-summary {
+  margin-top: var(--section-gap);
+  padding-top: var(--space-12);
+  border-top: 1px solid var(--color-border);
+}
+
+.standings-summary__title {
+  margin-bottom: var(--space-8);
+}
+
+.standings-summary__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.standings-summary__item h3 {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+
+.standings-summary__item p {
+  font-size: var(--text-small);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 768px) {
+  .standings-summary__grid {
+    grid-template-columns: 1fr;
+  }
+}

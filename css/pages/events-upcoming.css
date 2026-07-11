@@ -1,0 +1,89 @@
+/* Upcoming Events section (events page only) */
+
+/* Match standings-table-wrap */.events-upcoming__panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.events-upcoming__row {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  column-gap: var(--space-8);
+  align-items: start;
+  padding: var(--space-5) var(--space-6);
+}
+
+.events-upcoming__date {
+  font-family: var(--font-display);
+  font-size: var(--text-body);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-gold);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-snug);
+  white-space: nowrap;
+}
+
+.events-upcoming__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.events-upcoming__title {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: 500;
+  color: var(--color-text);
+  line-height: var(--leading-snug);
+  margin: 0;
+}
+
+.events-upcoming__category {
+  margin: 0;
+  font-size: var(--text-caption);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.events-upcoming__today {
+  display: inline-block;
+  font-size: var(--text-caption);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.events-upcoming__empty {
+  text-align: center;
+  padding: var(--space-8) var(--space-6);
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+@media (max-width: 600px) {
+  .events-upcoming__row {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-3);
+    padding: var(--space-5);
+  }
+
+  .events-upcoming__date {
+    white-space: normal;
+  }
+
+  .events-upcoming__info {
+    gap: var(--space-2);
+  }
+}

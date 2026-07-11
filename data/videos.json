@@ -1,0 +1,10 @@
+{
+  "videos": [
+    {
+      "src": "./assets/videos/sample-event.mp4",
+      "thumbnail": "./assets/videos/sample-event-thumb.jpg",
+      "title": "Annual Day 2026 — Highlights",
+      "duration": "03:12"
+    }
+  ]
+}

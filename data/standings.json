@@ -1,0 +1,33 @@
+{
+  "standings": [
+    {
+      "rank": 1,
+      "house": "Shivaji",
+      "color": "#3b66a2",
+      "points": 0,
+      "eventsParticipated": 0
+    },
+    {
+      "rank": 2,
+      "house": "Tagore",
+      "color": "#b28f36",
+      "points": 0,
+      "eventsParticipated": 0
+    },
+    {
+      "rank": 3,
+      "house": "Ashoka",
+      "color": "#1a7a62",
+      "points": 0,
+      "eventsParticipated": 0
+    },
+    {
+      "rank": 4,
+      "house": "Raman",
+      "color": "#9d3636",
+      "points": 0,
+      "eventsParticipated": 0
+    }
+  ],
+  "highlights": []
+}

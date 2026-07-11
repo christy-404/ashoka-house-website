@@ -1,0 +1,29 @@
+# Environment and secrets
+.env
+.env.*
+*.env
+secrets.json
+credentials*.json
+
+# Private keys and certificates
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Firebase / service accounts
+google-services.json
+serviceAccount*.json
+
+# Dependencies
+node_modules/
+
+# Editor / OS files
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+# Old development files
+under construction/

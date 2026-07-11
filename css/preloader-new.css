@@ -1,0 +1,163 @@
+/* Ashoka House — Global Preloader System */
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity var(--duration-slow) var(--ease-out),
+    visibility var(--duration-slow) var(--ease-out);
+  pointer-events: auto;
+}
+
+.preloader.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.preloader__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+  text-align: center;
+  max-width: 28rem;
+  padding: var(--space-12);
+}
+
+/* ——— Decorative background ——— */
+.preloader__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.preloader__gradient {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 60% at 50% 40%, var(--color-emerald-glow), transparent 60%),
+    linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-elevated) 100%);
+  opacity: 0.5;
+}
+
+/* ——— Logo animation ——— */
+.preloader__logo {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preloader__logo-icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  padding: 0;
+  background: rgba(26, 122, 98, 0.02);
+  border: 1px solid rgba(26, 122, 98, 0.06);
+  box-shadow: 0 0 18px rgba(16, 185, 129, 0.18);
+  animation: none;
+}
+
+
+@keyframes preloader-fade {
+  0%, 100% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ——— Text content ——— */
+.preloader__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.preloader__title {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 500;
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text);
+}
+
+.preloader__subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+/* ——— Progress bar ——— */
+.preloader__progress {
+  width: 100%;
+  max-width: 16rem;
+  height: 1px;
+  background: var(--color-border);
+  position: relative;
+  overflow: hidden;
+  border-radius: 1px;
+  margin-top: var(--space-4);
+}
+
+.preloader__progress-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: var(--color-emerald-mid);
+  border-radius: 1px;
+  transition: width 0.3s var(--ease-out);
+}
+
+/* ——— Progress percentage ——— */
+.preloader__percent {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-muted);
+  margin-top: var(--space-3);
+}
+
+/* ——— Responsive ——— */
+@media (max-width: 640px) {
+  .preloader__content {
+    gap: var(--space-6);
+    padding: var(--space-8);
+  }
+
+  .preloader__logo {
+    width: 88px;
+    height: 88px;
+  }
+
+  .preloader__logo-icon {
+    width: 80px;
+    height: 80px;
+  }
+
+  .preloader__title {
+    font-size: var(--text-h3);
+  }
+}
