@@ -89,11 +89,19 @@ class AshokaPreloader {
       const navbar = document.querySelector('.navbar');
       const hero = document.querySelector('.page-hero, .hero');
       
+      // Failsafe: maximum wait time (8 seconds)
+      const maxWaitTime = 8000;
+      const startTime = Date.now();
+      
       const checkReady = () => {
         // Check if critical elements are rendered and stable
         if (navbar && hero) {
           // Allow layout to stabilize
           setTimeout(resolve, 200);
+        } else if (Date.now() - startTime > maxWaitTime) {
+          // Failsafe: timeout reached, proceed anyway
+          console.warn('[Preloader] Critical assets timeout, proceeding');
+          resolve();
         } else {
           setTimeout(checkReady, 100);
         }

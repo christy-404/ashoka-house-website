@@ -257,29 +257,20 @@ class HeroCarousel {
   }
 
   buildCarousel() {
-    // Clear existing background
-    this.bgContainer.innerHTML = '';
-
-    // Create carousel wrapper
     this.carousel = document.createElement('div');
     this.carousel.className = 'hero-carousel';
-    this.carousel.setAttribute('role', 'region');
-    this.carousel.setAttribute('aria-label', 'Hero image carousel');
-    this.carousel.setAttribute('aria-roledescription', 'carousel');
 
-    // Create slides
     this.slideElements = this.slides.map((slide, index) => {
-      const slideEl = document.createElement('div');
-      slideEl.className = `hero-carousel__slide${index === 0 ? ' is-active' : ''}`;
-      slideEl.style.backgroundImage = `url("${slide.url}")`;
-      slideEl.setAttribute('aria-hidden', index !== 0);
-      slideEl.setAttribute('data-slide-index', index);
-      return slideEl;
+      const el = document.createElement('div');
+      el.className = `hero-carousel__slide${index === 0 ? ' is-active' : ''}`;
+      el.style.backgroundImage = `url(${slide.url})`;
+      el.setAttribute('aria-hidden', index !== 0);
+      return el;
     });
 
     this.slideElements.forEach(el => this.carousel.appendChild(el));
 
-    // Create navigation arrows (desktop only)
+    // Create navigation arrows
     this.prevBtn = document.createElement('button');
     this.prevBtn.className = 'hero-carousel__nav hero-carousel__nav--prev';
     this.prevBtn.setAttribute('aria-label', 'Previous slide');
@@ -357,9 +348,8 @@ class HeroCarousel {
     // Keyboard navigation
     this.hero.addEventListener('keydown', (e) => this.handleKeydown(e));
 
-    // Pause autoplay on hover/focus
-    this.hero.addEventListener('mouseenter', () => this.pauseAutoplay());
-    this.hero.addEventListener('mouseleave', () => this.resumeAutoplay());
+    // Pause autoplay on focus (keyboard navigation) and visibility change
+    // Hover pause removed: hero covers full viewport, causing constant pause
     this.hero.addEventListener('focusin', () => this.pauseAutoplay());
     this.hero.addEventListener('focusout', () => this.resumeAutoplay());
 
@@ -478,7 +468,7 @@ class HeroCarousel {
       if (!this.autoplayPaused && !this.userInteracted && !this.isTransitioning) {
         this.goToNext();
       }
-    }, 6000); // 6 seconds per slide
+    }, 3500); // 3.5 seconds per slide
   }
 
   pauseAutoplay() {
@@ -538,4 +528,5 @@ class HeroCarousel {
 
 if (document.body.classList.contains('page-home')) {
   document.addEventListener('DOMContentLoaded', () => new HomePage());
+
 }

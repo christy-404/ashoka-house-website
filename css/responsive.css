@@ -36,12 +36,20 @@ th {
   }
 }
 
-/* ——— Mobile ——— */
-@media (max-width: 640px) {
-  .page-hero {
-    padding-top: calc(var(--navbar-height) + var(--space-8));
-    padding-bottom: var(--space-10);
-  }
+  /* ——— Mobile ——— */
+  @media (max-width: 640px) {
+    /* Prevent sticky-footer flex grow from creating empty space before footer */
+    .site-shell {
+      min-height: auto;
+    }
+    
+    .site-main {
+      flex: 0 1 auto;
+    }
+
+    .footer {
+      margin-top: 0;
+    }
 
   .page-hero__inner,
   .hero__inner {
@@ -70,7 +78,7 @@ th {
   }
 
   .page-section:last-child {
-    padding-bottom: var(--space-16);
+    padding-bottom: var(--space-8);
   }
 
   .events-grid {

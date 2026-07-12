@@ -291,7 +291,7 @@
 
 .standings-disclaimer {
   margin-top: var(--space-8);
-  margin-bottom: var(--space-8);
+  margin-bottom: 0;
   max-width: 64ch;
   font-size: var(--text-small);
   line-height: var(--leading-relaxed);

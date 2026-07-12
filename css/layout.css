@@ -1,13 +1,13 @@
 /* Ashoka House — Layout & Grid */
 
 .site-shell {
-  min-height: 100vh;
+  min-height: auto;
   display: flex;
   flex-direction: column;
 }
 
 .site-main {
-  flex: 1;
+  flex: none;
 }
 
 .container {

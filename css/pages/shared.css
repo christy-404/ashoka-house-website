@@ -2,17 +2,25 @@
 
 .page-hero {
   position: relative;
+  z-index: 1;
+  min-height: calc(100svh - var(--navbar-height));
   padding-top: calc(var(--navbar-height) + var(--space-16));
   padding-bottom: var(--space-16);
   overflow: hidden;
 }
 
-.page-hero__bg {
+/* Hero background layer — exact homepage mechanic */
+.page-hero__background {
   position: absolute;
   inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   pointer-events: none;
 }
 
+/* Gradient overlay */
 .page-hero__gradient {
   position: absolute;
   inset: 0;
@@ -25,8 +33,10 @@
       rgba(0, 0, 0, 0.25) 55%,
       transparent 85%
     );
+  pointer-events: none;
 }
 
+/* Hero content */
 .page-hero__inner {
   position: relative;
   z-index: 1;
@@ -40,15 +50,85 @@
   margin-bottom: var(--space-5);
 }
 
-.page-hero__lead {
-  max-width: 34rem;
+/* Magazine-cover effect: first page-section becomes foreground layer */
+.page-hero + .page-section:first-of-type {
+  position: relative;
+  z-index: 2;
+  background: var(--color-bg);
+  transform: translate3d(0, 0, 0);
+  will-change: transform, box-shadow;
 }
-
 
 .page-section {
   padding-bottom: var(--section-gap);
 }
 
 .page-section:last-child {
-  padding-bottom: var(--space-24);
+  padding-bottom: var(--space-8);
+}
+
+/* Page-specific hero backgrounds — landscape (desktop) */
+.page-events .page-hero__background {
+  background-image: url("../../assets/hero/pages/landscape/events.jpg");
+}
+
+.page-standings .page-hero__background {
+  background-image: url("../../assets/hero/pages/landscape/standings.jpg");
+}
+
+.page-leadership .page-hero__background {
+  background-image: url("../../assets/hero/pages/landscape/leadership.jpg");
+}
+
+.page-about .page-hero__background {
+  background-image: url("../../assets/hero/pages/landscape/about.jpg");
+}
+
+.page-photos .page-hero__background {
+  background-image: url("../../assets/hero/pages/photos.jpg");
+}
+
+.page-videos .page-hero__background {
+  background-image: url("../../assets/hero/pages/videos.jpg");
+}
+
+/* Gallery hero background — landscape (desktop) */
+.page-gallery .page-hero__background {
+  background-image: url("../../assets/hero/pages/landscape/gallery.jpg");
+}
+
+/* Portrait (mobile) — use existing mobile breakpoint */
+@media (max-width: 768px) {
+  .page-events .page-hero__background {
+    background-image: url("../../assets/hero/pages/portrait/events.jpg");
+  }
+
+  .page-standings .page-hero__background {
+    background-image: url("../../assets/hero/pages/portrait/standings.jpg");
+  }
+
+  .page-leadership .page-hero__background {
+    background-image: url("../../assets/hero/pages/portrait/leadership.jpg");
+  }
+
+  .page-about .page-hero__background {
+    background-image: url("../../assets/hero/pages/portrait/about.jpg");
+  }
+
+  .page-gallery .page-hero__background {
+    background-image: url("../../assets/hero/pages/portrait/gallery.jpg");
+  }
+
+  /* Photos, Videos — use base images on mobile too */
+  .page-photos .page-hero__background,
+  .page-videos .page-hero__background {
+    background-image: url("../../assets/hero/pages/photos.jpg");
+  }
+}
+
+/* Fallback when portrait images don't exist — dark gradient */
+@media (max-width: 768px) {
+  .page-hero__background {
+    background-color: var(--color-bg);
+  }
 }

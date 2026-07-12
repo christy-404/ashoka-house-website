@@ -53,11 +53,40 @@ window.addEventListener('click', (e) => {
 });
 
 if (navbar) {
-  const hero = document.querySelector('.hero');
-  const contentSection = document.querySelector('.page-home .site-main > .section:first-of-type');
+  // Homepage hero + first editorial section
+  const homeHero = document.querySelector('.page-home .hero');
+  const homeContentSection = document.querySelector('.page-home .site-main > .editorial-section:first-of-type');
+
+  // Inner pages: page-hero + first page-section (may be direct sibling or nested, or dynamically rendered)
+  const innerHero = document.querySelector('.page-hero');
+  let innerContentSection = null;
+
+  const findInnerContentSection = () => {
+    if (!innerHero) return null;
+    const allSections = document.querySelectorAll('.page-section');
+    for (const section of allSections) {
+      if (section.compareDocumentPosition(innerHero) & Node.DOCUMENT_POSITION_PRECEDING) {
+        return section;
+      }
+    }
+    return null;
+  };
+
+  // Initial query
+  innerContentSection = findInnerContentSection();
+
+  // Watch for dynamically rendered .page-section (e.g., events page)
+  const observer = new MutationObserver(() => {
+    if (!innerContentSection) {
+      innerContentSection = findInnerContentSection();
+    }
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+
   let heroFrameId = null;
 
-  const updateHeroScroll = () => {
+  const updateHeroScroll = (hero, contentSection) => {
     if (!hero || !contentSection) return;
 
     const scrollY = window.scrollY || window.pageYOffset || 0;
@@ -81,7 +110,8 @@ if (navbar) {
 
     if (!heroFrameId) {
       heroFrameId = window.requestAnimationFrame(() => {
-        updateHeroScroll();
+        updateHeroScroll(homeHero, homeContentSection);
+        updateHeroScroll(innerHero, innerContentSection);
         heroFrameId = null;
       });
     }

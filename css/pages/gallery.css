@@ -1,5 +1,70 @@
 /* Ashoka House — Gallery page */
 
+/* Gallery hero uses shared .page-hero architecture.
+   Background image is set in css/pages/shared.css via .page-gallery .page-hero__background.
+   Gradient overlay is provided by .page-hero__gradient.
+   Content is in .page-hero__inner. */
+
+/* Gallery hero — centered editorial composition */
+.page-gallery .page-hero__inner {
+  text-align: center;
+  margin-inline: auto;
+}
+
+/* Desktop: reduce hero height, move text lower, reduce text sizes */
+@media (min-width: 641px) {
+  .page-gallery .page-hero {
+    min-height: calc(85svh - var(--navbar-height));
+  }
+  
+  .page-gallery .page-hero__inner {
+    margin-top: var(--space-12);
+  }
+  
+  .page-gallery .page-hero .eyebrow {
+    font-size: clamp(0.7rem, 1.2vw, 0.9rem);
+  }
+  
+  .page-gallery .page-hero .display-title {
+    font-size: clamp(3.4rem, 6.8vw, 5.1rem);
+  }
+}
+
+/* Gallery hero typography — larger responsive scale */
+.page-gallery .page-hero .eyebrow {
+  font-size: clamp(0.8rem, 1.4vw, 1rem);
+  /* letter-spacing preserved from .eyebrow (var(--tracking-wider)) */
+  margin-bottom: var(--space-4);
+}
+
+.page-gallery .page-hero .display-title {
+  font-size: clamp(4rem, 8vw, 6rem);
+  /* letter-spacing preserved from .display-title (var(--tracking-tight)) */
+  line-height: var(--leading-tight);
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.page-gallery .page-hero .body-lg {
+  font-size: clamp(1rem, 1.8vw, 1.35rem);
+  line-height: var(--leading-relaxed);
+  max-width: var(--container-narrow);
+  margin-inline: auto;
+}
+
+/* Clean boundary — gallery content starts on solid black */
+.page-gallery .site-main > .page-section:first-of-type {
+  background: var(--color-bg);
+}
+
+
+/* Desktop Gallery: compact natural-flow spacing before footer */
+@media (min-width: 641px) {
+  .page-gallery .gallery-gateway {
+    padding-bottom: var(--space-8);
+  }
+}
+
 /* ——— Gallery grid ——— */
 .gallery-grid {
   display: grid;
@@ -120,10 +185,38 @@
   min-height: 18rem;
 }
 
-.gateway-card__thumb { width: 100%; height: 100%; object-fit: cover; display:block; }
+.gateway-card__thumb { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  display:block; 
+  aspect-ratio: 16 / 9;
+}
 .gateway-card__meta { padding: var(--space-6); background: linear-gradient(180deg, rgba(0,0,0,0.02), transparent); }
 .gateway-card__title { font-size: 1.5rem; margin-bottom: 0.25rem; }
 .gateway-card__desc { color: var(--color-text-muted); }
+
+/* Desktop: reduce gateway card footprint by ~20% (width + image height) */
+@media (min-width: 641px) {
+  .gallery-gateway .gateway-grid {
+    width: 80%;
+    max-width: 80%;
+    margin-inline: auto;
+    gap: var(--space-4);
+  }
+  
+  .gateway-card__thumb {
+    aspect-ratio: 2 / 1; /* wider ratio = shorter image height */
+  }
+  
+  .gateway-card__meta {
+    padding: var(--space-4);
+  }
+  
+  .gateway-card__title {
+    font-size: 1.2rem;
+  }
+}
 
 @media (max-width: 768px) {
   .gallery-gateway .gateway-grid { grid-template-columns: 1fr; }
@@ -298,4 +391,123 @@
 @media (max-width: 768px) {
   .highlights__viewport { height: 18rem; }
   .album-card__cover { height: 9rem; }
+}
+
+/* ============================================================
+   MOBILE GALLERY REFINEMENTS (max-width: 640px)
+   ============================================================ */
+
+@media (max-width: 640px) {
+  /* 1. MOBILE HERO TEXT SIZES — reduced per spec */
+  .page-gallery .page-hero .eyebrow {
+    font-size: clamp(0.72rem, 2.5vw, 0.9rem);
+    letter-spacing: var(--tracking-wider);
+    margin-bottom: var(--space-3);
+  }
+
+  .page-gallery .page-hero .display-title {
+    font-size: clamp(3rem, 15vw, 4.4rem);
+    line-height: 0.98;
+    margin-top: var(--space-1);
+    margin-bottom: var(--space-5);
+  }
+
+  .page-gallery .page-hero .body-lg {
+    font-size: clamp(0.95rem, 3.5vw, 1.15rem);
+    line-height: 1.45;
+    max-width: 90%;
+  }
+
+  /* 2. MOVE MOBILE HERO TEXT LOWER — use flex alignment on hero inner */
+  .page-gallery .page-hero {
+    /* Increase bottom padding to push content lower */
+    padding-bottom: var(--space-20);
+  }
+
+  .page-gallery .page-hero__inner {
+    /* Use flex to position content in lower-middle area */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 58dvh; /* reduced height - text sits lower-middle */
+    padding-bottom: var(--space-16); /* breathing room above album cards */
+  }
+
+  /* 3. MOBILE ALBUM CARDS (gateway cards) — already in correct order (Photos first) */
+  .gallery-gateway {
+    padding-top: var(--space-6);
+  }
+
+  .gateway-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .gateway-card {
+    display: block;
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color var(--duration-fast) var(--ease-out),
+                box-shadow var(--duration-fast) var(--ease-out);
+  }
+
+  .gateway-card:hover,
+  .gateway-card:focus {
+    border-color: var(--color-border-strong);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .gateway-card__thumb {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    transition: transform var(--duration-normal) var(--ease-out);
+  }
+
+  .gateway-card:hover .gateway-card__thumb {
+    transform: scale(1.02);
+  }
+
+  .gateway-card__meta {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--space-6) var(--space-5) var(--space-5);
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.55) 40%,
+      rgba(0, 0, 0, 0.85) 100%
+    );
+    color: var(--color-text);
+  }
+
+  .gateway-card__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 4.5vw, 1.75rem);
+    font-weight: 600;
+    line-height: 1.15;
+    margin-bottom: var(--space-1);
+  }
+
+  .gateway-card__desc {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+  }
+
+  /* 4. CLEAN HERO-TO-ALBUM BOUNDARY */
+  .page-gallery .site-main > .page-section:first-of-type {
+    margin-top: calc(-1 * var(--space-4)); /* slight overlap for seamless transition */
+    padding-top: var(--space-8);
+  }
 }
