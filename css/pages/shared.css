@@ -119,10 +119,14 @@
     background-image: url("../../assets/hero/pages/portrait/gallery.jpg");
   }
 
-  /* Photos, Videos — use base images on mobile too */
-  .page-photos .page-hero__background,
-  .page-videos .page-hero__background {
+  /* Photos — use base image on mobile too */
+  .page-photos .page-hero__background {
     background-image: url("../../assets/hero/pages/photos.jpg");
+  }
+
+  /* Videos — use videos.jpg on mobile too */
+  .page-videos .page-hero__background {
+    background-image: url("../../assets/hero/pages/videos.jpg");
   }
 }
 

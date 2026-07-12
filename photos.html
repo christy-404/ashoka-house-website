@@ -12,7 +12,6 @@
 
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/pages/shared.css">
-    <link rel="stylesheet" href="./css/pages/gallery.css">
     <link rel="stylesheet" href="./css/preloader-new.css">
 </head>
 <body class="page-photos">
@@ -66,34 +65,8 @@
 
             <section class="page-section gallery-section" aria-label="Photo gallery">
                 <div class="container">
-                    <!-- Ashoka Highlights: random featured slideshow -->
-                    <div class="highlights" data-highlights-root aria-live="polite">
-                        <h2 class="highlights__title">ASHOKA HIGHLIGHTS</h2>
-                        <div class="highlights__viewport" data-highlights-viewport>
-                            <!-- Slides rendered by JS -->
-                        </div>
-                        <div class="highlights__meta" data-highlights-meta aria-hidden="true"></div>
-                    </div>
-
-                    <!-- Albums: auto-generated grid populated from data/gallery.json -->
-                    <div class="albums">
-                        <h3 class="albums__heading">All Albums</h3>
-                        <div class="album-grid" data-gallery-root>
-                            <!-- Album tiles rendered by JS -->
-                        </div>
-                    </div>
-
-                    <!-- Image viewer overlay (hidden until opened) -->
-                    <div id="image-viewer" class="image-viewer" aria-hidden="true">
-                        <div class="image-viewer__backdrop" data-viewer-backdrop></div>
-                        <div class="image-viewer__content" role="dialog" aria-modal="true">
-                            <button class="image-viewer__close" data-viewer-close aria-label="Close">✕</button>
-                            <button class="image-viewer__prev" data-viewer-prev aria-label="Previous">‹</button>
-                            <img src="" alt="" class="image-viewer__img" data-viewer-img>
-                            <button class="image-viewer__next" data-viewer-next aria-label="Next">›</button>
-                            <div class="image-viewer__caption" data-viewer-caption></div>
-                        </div>
-                    </div>
+                    <div class="photos-grid" data-photos-root></div>
+                    <p class="photos-empty" data-photos-empty hidden>No photos have been uploaded yet.</p>
                 </div>
             </section>
 
@@ -121,6 +94,6 @@
 
     <script src="./js/preloader-global.js"></script>
     <script src="./js/nav.js"></script>
-    <script src="./js/gallery.js"></script>
+    <script src="./js/photos.js"></script>
 </body>
 </html>

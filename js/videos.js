@@ -7,51 +7,54 @@
 
   function buildGrid(videos){
     const grid = qs('[data-videos-root]');
+    const empty = qs('[data-videos-empty]');
     if(!grid) return;
     grid.innerHTML = '';
+    
+    if(videos.length === 0){
+      if(empty) empty.hidden = false;
+      return;
+    }
+    
+    if(empty) empty.hidden = true;
+    
     videos.forEach((v,i)=>{
-      const card = document.createElement('a');
-      card.href = '#';
-      card.className = 'album-card';
-      card.dataset.index = i;
+      const item = document.createElement('div');
+      item.className = 'video-item';
+      item.dataset.index = i;
 
-      const thumb = document.createElement('div');
-      thumb.className = 'album-card__thumb';
-      if(v.thumbnail){
-        const img = document.createElement('img'); img.src = v.thumbnail; img.alt = v.title; img.className='album-card__cover'; thumb.appendChild(img);
-      } else {
-        thumb.textContent = 'Video';
-      }
+      const video = document.createElement('video');
+      video.src = v.src;
+      video.controls = true;
+      video.preload = 'metadata';
+      video.className = 'video-item__video';
+      video.style.background = '#000';
+      video.style.width = '100%';
+      video.style.aspectRatio = '16/9';
 
-      const meta = document.createElement('div'); meta.className='album-card__meta';
-      const title = document.createElement('div'); title.className='album-card__title'; title.textContent = v.title;
-      const details = document.createElement('div'); details.className='album-card__details'; details.textContent = v.duration ? v.duration : '';
-      meta.appendChild(title); meta.appendChild(details);
+      const meta = document.createElement('div');
+      meta.className = 'video-item__meta';
+      
+      const title = document.createElement('div');
+      title.className = 'video-item__title';
+      title.textContent = v.title || `Video ${i+1}`;
+      
+      const duration = document.createElement('div');
+      duration.className = 'video-item__duration';
+      duration.textContent = v.duration || '';
+      
+      meta.appendChild(title);
+      meta.appendChild(duration);
 
-      card.appendChild(thumb); card.appendChild(meta);
-
-      card.addEventListener('click',(ev)=>{ ev.preventDefault(); openViewer(v); });
-
-      grid.appendChild(card);
+      item.appendChild(video);
+      item.appendChild(meta);
+      grid.appendChild(item);
     });
   }
-
-  function openViewer(video){
-    const viewer = document.getElementById('video-viewer');
-    if(!viewer) return;
-    viewer.setAttribute('aria-hidden','false');
-    const videoEl = qs('[data-video-player]');
-    videoEl.src = video.src;
-    qs('[data-video-title]').textContent = video.title || '';
-  }
-  function closeViewer(){ const v=document.getElementById('video-viewer'); if(!v) return; v.setAttribute('aria-hidden','true'); qs('[data-video-player]').src = ''; }
 
   document.addEventListener('DOMContentLoaded', ()=>{
     fetchData().then(data=>{
       buildGrid(data.videos || []);
     }).catch(err=>console.error(err));
-
-    qs('[data-video-close]')?.addEventListener('click', closeViewer);
-    qs('[data-video-backdrop]')?.addEventListener('click', closeViewer);
   });
 })();

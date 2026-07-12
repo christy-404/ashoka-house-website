@@ -236,6 +236,7 @@
   color: var(--color-text);
 }
 
+/* ——— Mobile compact table rows (max-width: 640px) ——— */
 @media (max-width: 640px) {
   .standings-table-wrap {
     overflow-x: visible;
@@ -247,48 +248,144 @@
     min-width: 0;
   }
 
+  /* Hide desktop thead */
   .standings-table thead {
     display: none;
   }
 
-  .standings-table tbody tr {
-    display: block;
-    padding: var(--space-4) var(--space-5);
+  /* Mobile header row - rendered in tbody via JS */
+  .standings-table .standings-mobile-header {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) 52px;
+    align-items: center;
+    padding: var(--space-3) var(--space-4);
     border-bottom: 1px solid var(--color-border);
+    background: var(--color-surface-2);
+    font-size: var(--text-caption);
+    font-weight: 500;
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  /* Mobile row as grid - 3 columns matching header */
+  .standings-table tbody tr {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) 52px;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+    background: transparent;
+    min-height: 68px;
   }
 
   .standings-table tbody tr:last-child {
     border-bottom: none;
   }
 
+  .standings-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.015);
+  }
+
+  .standings-table tbody tr.is-ashoka {
+    background: var(--color-emerald-soft);
+  }
+
+  .standings-table tbody tr.is-ashoka:hover {
+    background: rgba(26, 122, 98, 0.1);
+  }
+
   .standings-table td {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: var(--space-4);
-    min-width: 0;
-    padding: var(--space-2) 0;
-    border-bottom: none;
-    text-align: right;
+    display: contents;
+    padding: 0;
+    border: none;
+    text-align: inherit;
   }
 
   .standings-table td::before {
-    content: attr(data-label);
-    font-size: var(--text-caption);
-    font-weight: 600;
-    letter-spacing: var(--tracking-wide);
-    text-transform: uppercase;
+    content: none;
+  }
+
+  /* Column 1: Rank */
+  .standings-table .col-rank {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: 500;
     color: var(--color-text-muted);
-    text-align: left;
-    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .standings-table tbody tr.is-ashoka .col-rank {
+    color: var(--color-emerald-mid);
+  }
+
+  /* Column 2: House (dot + name + events below) */
+  .standings-table .col-house {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    min-width: 0;
   }
 
   .standings-table .house-cell {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    width: 100%;
+  }
+
+  .standings-table .house-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .standings-table .house-name {
+    font-weight: 500;
+    color: var(--color-text);
+    font-size: var(--text-small);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .standings-table tbody tr.is-ashoka .house-name {
+    color: var(--color-text);
+  }
+
+  .standings-table .col-events {
+    display: none;
+  }
+
+  /* Column 3: Points */
+  .standings-table .col-points {
+    display: flex;
+    align-items: center;
     justify-content: flex-end;
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-text);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .standings-table tbody tr.is-ashoka .col-points {
+    color: var(--color-emerald-mid);
+  }
+
+  /* Hide col-wins on mobile */
+  .standings-table .col-wins {
+    display: none;
   }
 }
 
+/* ——— Disclaimer ——— */
 .standings-disclaimer {
   margin-top: var(--space-8);
   margin-bottom: 0;

@@ -1,32 +1,44 @@
 {
   "standings": [
     {
-      "rank": 1,
-      "house": "Shivaji",
+      "id": "shivaji",
+      "name": "Shivaji",
+      "section": "A",
+      "sectionOrder": 1,
       "color": "#3b66a2",
       "points": 0,
-      "eventsParticipated": 0
+      "podiums": 0,
+      "events": 0
     },
     {
-      "rank": 2,
-      "house": "Tagore",
+      "id": "tagore",
+      "name": "Tagore",
+      "section": "B",
+      "sectionOrder": 2,
       "color": "#b28f36",
       "points": 0,
-      "eventsParticipated": 0
+      "podiums": 0,
+      "events": 0
     },
     {
-      "rank": 3,
-      "house": "Ashoka",
+      "id": "ashoka",
+      "name": "Ashoka",
+      "section": "C",
+      "sectionOrder": 3,
       "color": "#1a7a62",
       "points": 0,
-      "eventsParticipated": 0
+      "podiums": 0,
+      "events": 0
     },
     {
-      "rank": 4,
-      "house": "Raman",
+      "id": "raman",
+      "name": "Raman",
+      "section": "D",
+      "sectionOrder": 4,
       "color": "#9d3636",
       "points": 0,
-      "eventsParticipated": 0
+      "podiums": 0,
+      "events": 0
     }
   ],
   "highlights": []

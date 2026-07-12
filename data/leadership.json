@@ -15,34 +15,34 @@
           "type": "teacher"
         },
         {
-        "id": 102,
-        "title": "Vice Principal",
-        "name": "Mrs Bindu R",
-        "designation": "Vice Principal",
-        "subject": "Physics",
-        "position": "Vice Principal",
-        "type": "teacher"
-      },
-      {
-        "id": 103,
-        "title": "Senior Teacher",
-        "name": "Mrs Bindu Nelsen",
-        "designation": "Senior Most Teacher",
-        "subject": "Physics",
-        "position": "Senior Most Teacher",
-        "type": "teacher"
-      },
-      {
-        "id": 104,
-        "title": "Cultural In-Charge",
-        "name": "Mrs Smitha Gopal",
-        "designation": "CCA In Charge",
-        "subject": "English",
-        "position": "CCA In Charge",
-        "type": "teacher"
-      }
-    ]
-  },
+          "id": 102,
+          "title": "Vice Principal",
+          "name": "Mrs Bindu R",
+          "designation": "Vice Principal",
+          "subject": "Physics",
+          "position": "Vice Principal",
+          "type": "teacher"
+        },
+        {
+          "id": 103,
+          "title": "Senior Teacher",
+          "name": "Mrs Bindu Nelsen",
+          "designation": "Senior Most Teacher",
+          "subject": "Physics",
+          "position": "Senior Most Teacher",
+          "type": "teacher"
+        },
+        {
+          "id": 104,
+          "title": "Cultural In-Charge",
+          "name": "Mrs Smitha Gopal",
+          "designation": "CCA In Charge",
+          "subject": "English",
+          "position": "CCA In Charge",
+          "type": "teacher"
+        }
+      ]
+    },
     {
       "key": "house_faculty",
       "section": "House Faculty",
@@ -75,82 +75,90 @@
       "cards": [
         {
           "id": 301,
-          "name": "To Be Decided",
+          "name": "Hariganesh P G",
           "classYear": "XII",
           "section": "C",
-          "position": "House Captain (Boy)",
+          "position": "House Captain — Boy",
           "type": "student"
         },
         {
           "id": 302,
-          "name": "To Be Decided",
+          "name": "Snigdha Ann Fijy",
           "classYear": "XII",
           "section": "C",
-          "position": "House Captain (Girl)",
+          "position": "House Captain — Girl",
           "type": "student"
         },
         {
           "id": 303,
-          "name": "To Be Decided",
+          "name": "To be updated",
           "classYear": "XI",
           "section": "C",
-          "position": "House Vice Captain (Boy)",
+          "position": "House Vice Captain — Boy",
           "type": "student"
         },
         {
           "id": 304,
-          "name": "To Be Decided",
+          "name": "To be updated",
           "classYear": "XI",
           "section": "C",
-          "position": "House Vice Captain (Girl)",
+          "position": "House Vice Captain — Girl",
           "type": "student"
         },
         {
           "id": 305,
-          "name": "To Be Decided",
+          "name": "Sahil Kumar",
           "classYear": "XII",
           "section": "C",
-          "position": "CCA Captain (Boy)",
+          "position": "Sports Captain — Boy",
           "type": "student"
         },
         {
           "id": 306,
-          "name": "To Be Decided",
+          "name": "Jeneeta Katelin Sequiera",
           "classYear": "XII",
           "section": "C",
-          "position": "CCA Captain (Girl)",
+          "position": "Sports Captain — Girl",
           "type": "student"
         },
         {
           "id": 307,
-          "name": "To Be Decided",
-          "classYear": "XI",
+          "name": "To be updated",
+          "classYear": "XII",
           "section": "C",
-          "position": "CCA Vice Captain (Boy)",
+          "position": "CCA Captain — Boy",
           "type": "student"
         },
         {
           "id": 308,
-          "name": "To Be Decided",
-          "classYear": "XI",
+          "name": "To be updated",
+          "classYear": "XII",
           "section": "C",
-          "position": "CCA Vice Captain (Girl)",
+          "position": "CCA Captain — Girl",
           "type": "student"
         },
         {
           "id": 309,
-          "name": "To Be Decided",
+          "name": "To be updated",
           "classYear": "XI",
           "section": "C",
-          "position": "Publication In-Charge (Boy)",
+          "position": "CCA Vice Captain — Boy",
           "type": "student"
         },
         {
           "id": 310,
-          "name": "To Be Decided",
+          "name": "To be updated",
           "classYear": "XI",
           "section": "C",
-          "position": "Publication In-Charge (Girl)",
+          "position": "CCA Vice Captain — Girl",
+          "type": "student"
+        },
+        {
+          "id": 311,
+          "name": "To be updated",
+          "classYear": "XI",
+          "section": "C",
+          "position": "Publication Captain",
           "type": "student"
         }
       ]

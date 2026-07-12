@@ -9,16 +9,53 @@ class StandingsPage {
 
   async init() {
     const data = await AshokaAPI.fetchJSON('./data/standings.json');
-    this.standings = (data?.standings || []).sort((a, b) => a.rank - b.rank);
+    this.standings = data?.standings || [];
     this.highlights = data?.highlights || [];
     this.render();
+  }
+
+  /**
+   * Calculate ranks based on points, podiums, and section order
+   * All-zero rule: if all points are 0, use section order
+   * Otherwise: points DESC, podiums DESC, sectionOrder ASC
+   */
+  calculateRanks(houses) {
+    const allZero = houses.every(h => h.points === 0);
+    
+    const sorted = [...houses].sort((a, b) => {
+      if (allZero) {
+        // All zero: use section order
+        return a.sectionOrder - b.sectionOrder;
+      }
+      
+      // Normal ranking: points DESC
+      if (b.points !== a.points) {
+        return b.points - a.points;
+      }
+      
+      // Tie-breaker 1: podiums DESC
+      if (b.podiums !== a.podiums) {
+        return b.podiums - a.podiums;
+      }
+      
+      // Tie-breaker 2: section order ASC
+      return a.sectionOrder - b.sectionOrder;
+    });
+    
+    // Assign ranks
+    return sorted.map((house, index) => ({
+      ...house,
+      rank: index + 1
+    }));
   }
 
   renderFeatured() {
     const container = AshokaAPI.qs('[data-standings-featured]');
     if (!container) return;
 
-    const allZeros = this.standings.length && this.standings.every((row) => row.points === 0 && row.eventsParticipated === 0);
+    const ranked = this.calculateRanks(this.standings);
+    const allZeros = this.standings.length && this.standings.every((row) => row.points === 0 && row.events === 0);
+    
     if (allZeros) {
       container.innerHTML = `
         <article class="card card--featured standings-featured__layout">
@@ -44,7 +81,7 @@ class StandingsPage {
       return;
     }
 
-    const leader = this.standings[0];
+    const leader = ranked[0];
     if (!leader) {
       container.innerHTML = '<p class="empty-state">Standings unavailable.</p>';
       return;
@@ -61,7 +98,7 @@ class StandingsPage {
             <span class="standings-featured__dot" style="--house-color: ${leader.color}"></span>
             <div>
               <p class="eyebrow card__eyebrow">Leading house</p>
-              <h2 class="standings-featured__name">${leader.house} House</h2>
+              <h2 class="standings-featured__name">${leader.name} House</h2>
             </div>
           </div>
         </div>
@@ -77,19 +114,30 @@ class StandingsPage {
     const tbody = AshokaAPI.qs('[data-standings-table]');
     if (!tbody) return;
 
-    tbody.innerHTML = this.standings
+    const ranked = this.calculateRanks(this.standings);
+    
+    // Mobile header row (hidden on desktop via CSS)
+    const mobileHeader = `
+      <tr class="standings-mobile-header" aria-hidden="true">
+        <th scope="col" class="col-rank">RANK</th>
+        <th scope="col" class="col-house">HOUSE</th>
+        <th scope="col" class="col-points">POINTS</th>
+      </tr>
+    `;
+    
+    tbody.innerHTML = mobileHeader + ranked
       .map(
         (row) => `
-      <tr class="${row.house === 'Ashoka' ? 'is-ashoka' : ''}">
+      <tr class="${row.name === 'Ashoka' ? 'is-ashoka' : ''}" data-rank="${row.rank}">
         <td class="col-rank" data-label="Rank">${row.rank}</td>
         <td class="col-house" data-label="House">
           <span class="house-cell">
             <span class="house-dot" style="--house-color: ${row.color}"></span>
-            ${row.house}
+            <span class="house-name">${row.name}</span>
           </span>
         </td>
         <td class="col-points" data-label="Points">${row.points.toLocaleString('en-IN')}</td>
-        <td class="col-events" data-label="Events">${row.eventsParticipated}</td>
+        <td class="col-events" data-label="Events">${row.events}</td>
       </tr>
     `
       )

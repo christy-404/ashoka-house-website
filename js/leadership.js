@@ -1,179 +1,334 @@
-// Ashoka House — Leadership page renderer and accordion system
+/**
+ * Leadership page — data-driven rendering
+ * Fetches leadership.json and renders sections.
+ * House Council is rendered as a scrollable table; other sections use cards.
+ */
 
-const LeadershipPage = {
-  container: null,
-  sections: [],
+const LEADERSHIP_DATA_URL = './data/leadership.json';
 
-  async init() {
-    if (!document.querySelector('.page-leadership')) return;
-
-    document.addEventListener('DOMContentLoaded', async () => {
-      this.container = document.querySelector('.leadership-content');
-      if (!this.container) return;
-
-      const data = await AshokaAPI.fetchJSON('./data/leadership.json');
-      if (!data || !Array.isArray(data.leadership)) {
-        this.container.innerHTML = '<div class="leadership-empty body-copy">Leadership information could not be loaded.</div>';
-        return;
-      }
-
-      this.sections = data.leadership;
-      this.render();
-      this.bindEvents();
-    });
-  },
-
-  render() {
-    this.container.innerHTML = this.sections.map(section => this.renderSection(section)).join('');
-  },
-
-  renderSection(section) {
-    return `
-      <div class="leadership-section" data-section-key="${section.key}">
-        <div class="leadership-section-heading">
-          <button class="leadership-section-toggle" type="button" aria-expanded="false" aria-controls="panel-${section.key}">
-            <span>${section.section}</span>
-            <span class="section-toggle-icon" aria-hidden="true">+</span>
-          </button>
-          <p class="leadership-section-summary body-copy">${section.description}</p>
-        </div>
-        <div id="panel-${section.key}" class="leadership-section-panel" role="region" aria-hidden="true">
-          <div class="leadership-grid">
-            ${section.cards.map(card => this.renderCard(card)).join('')}
-          </div>
-        </div>
-      </div>
-    `;
-  },
-
-  renderCard(card) {
-    if (card.type === 'teacher') {
-      return `
-        <article class="leadership-card" data-card-id="${card.id}" aria-expanded="false">
-          <button class="leadership-card__header" type="button" aria-controls="card-details-${card.id}" aria-expanded="false">
-            <div class="leadership-card__main">
-              <p class="leadership-card__name">${card.name}</p>
-              <p class="leadership-card__designation">${card.designation}</p>
-            </div>
-            <span class="leadership-card__toggle" aria-hidden="true">+</span>
-          </button>
-
-          <div id="card-details-${card.id}" class="leadership-card__details" aria-hidden="true">
-            <div class="leadership-card__detail-item">
-              <span class="leadership-card__label">Subject</span>
-              <span class="leadership-card__value">${card.subject}</span>
-            </div>
-            <div class="leadership-card__detail-item">
-              <span class="leadership-card__label">Position</span>
-              <span class="leadership-card__value">${card.position}</span>
-            </div>
-          </div>
-        </article>
-      `;
-    }
-
-    // Student card
-    return `
-      <article class="leadership-card" data-card-id="${card.id}" aria-expanded="false">
-        <button class="leadership-card__header" type="button" aria-controls="card-details-${card.id}" aria-expanded="false">
-          <div class="leadership-card__main">
-            <p class="leadership-card__name">${card.name}</p>
-            <p class="leadership-card__class">Class ${card.classYear}${card.section ? `-${card.section}` : ''}</p>
-          </div>
-          <span class="leadership-card__toggle" aria-hidden="true">+</span>
-        </button>
-
-        <div id="card-details-${card.id}" class="leadership-card__details" aria-hidden="true">
-          <div class="leadership-card__detail-item">
-            <span class="leadership-card__label">Position</span>
-            <span class="leadership-card__value">${card.position}</span>
-          </div>
-        </div>
-      </article>
-    `;
-  },
-
-  bindEvents() {
-    this.container.addEventListener('click', event => {
-      const sectionToggle = event.target.closest('.leadership-section-toggle');
-      if (sectionToggle) {
-        const section = sectionToggle.closest('.leadership-section');
-        const key = section?.dataset.sectionKey;
-        if (key) this.toggleSection(key);
-        return;
-      }
-
-      const cardSummary = event.target.closest('.leadership-card__header');
-      if (cardSummary) {
-        const card = cardSummary.closest('.leadership-card');
-        if (card) this.toggleCard(card);
-      }
-    });
-  },
-
-  toggleSection(key) {
-    const sections = this.container.querySelectorAll('.leadership-section');
-    sections.forEach(section => {
-      const isTarget = section.dataset.sectionKey === key;
-      if (isTarget) {
-        const isOpen = section.classList.contains('open');
-        if (isOpen) {
-          this.closeSection(section);
-        } else {
-          this.openSection(section);
-        }
-      } else {
-        this.closeSection(section);
-      }
-    });
-
-    this.closeAllCards();
-  },
-
-  openSection(section) {
-    const panel = section.querySelector('.leadership-section-panel');
-    const toggle = section.querySelector('.leadership-section-toggle');
-    section.classList.add('open');
-    toggle.setAttribute('aria-expanded', 'true');
-    panel.setAttribute('aria-hidden', 'false');
-  },
-
-  closeSection(section) {
-    const panel = section.querySelector('.leadership-section-panel');
-    const toggle = section.querySelector('.leadership-section-toggle');
-    section.classList.remove('open');
-    toggle.setAttribute('aria-expanded', 'false');
-    panel.setAttribute('aria-hidden', 'true');
-  },
-
-  toggleCard(card) {
-    const openCard = this.container.querySelector('.leadership-card.open');
-    if (openCard && openCard !== card) {
-      this.closeCard(openCard);
-    }
-
-    const isOpen = card.classList.toggle('open');
-    const header = card.querySelector('.leadership-card__header');
-    const details = card.querySelector('.leadership-card__details');
-
-    header.setAttribute('aria-expanded', isOpen);
-    card.setAttribute('aria-expanded', isOpen);
-    details.setAttribute('aria-hidden', !isOpen);
-  },
-
-  closeCard(card) {
-    const header = card.querySelector('.leadership-card__header');
-    const details = card.querySelector('.leadership-card__details');
-    card.classList.remove('open');
-    header?.setAttribute('aria-expanded', 'false');
-    card.setAttribute('aria-expanded', 'false');
-    details?.setAttribute('aria-hidden', 'true');
-  },
-
-  closeAllCards() {
-    const openCards = this.container.querySelectorAll('.leadership-card.open');
-    openCards.forEach(card => this.closeCard(card));
+async function fetchJSON(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    return await response.json();
+  } catch (error) {
+    console.error(`Failed to load ${url}`, error);
+    return null;
   }
+}
+
+const SELECTORS = {
+  container: '.leadership-content',
+  empty: '.leadership-empty',
 };
 
-LeadershipPage.init();
+const SELECTORS_CSS = {
+  section: 'leadership-section',
+  sectionHeading: 'leadership-section-heading',
+  sectionToggle: 'leadership-section-toggle',
+  sectionTitle: 'leadership-section__title',
+  sectionDescription: 'leadership-section__description',
+  sectionPanel: 'leadership-section-panel',
+  cardGrid: 'leadership-grid',
+  card: 'leadership-card',
+  cardHeader: 'leadership-card__header',
+  cardMain: 'leadership-card__main',
+  cardName: 'leadership-card__name',
+  cardDesignation: 'leadership-card__designation',
+  cardClass: 'leadership-card__class',
+  cardToggle: 'leadership-card__toggle',
+  cardDetails: 'leadership-card__details',
+  detailItem: 'leadership-card__detail-item',
+  detailLabel: 'leadership-card__label',
+  detailValue: 'leadership-card__value',
+  // Roster action panel
+  rosterAction: 'council-roster-action',
+  rosterActionTitle: 'council-roster-action__title',
+  rosterActionDescription: 'council-roster-action__description',
+  rosterActionTrigger: 'council-roster-action__trigger',
+  // Modal classes
+  modal: 'council-modal',
+  modalBackdrop: 'council-modal__backdrop',
+  modalCard: 'council-modal__card',
+  modalHeader: 'council-modal__header',
+  modalTitle: 'council-modal__title',
+  modalDescription: 'council-modal__description',
+  modalClose: 'council-modal__close',
+  modalBody: 'council-modal__body',
+  // Table-specific classes (used inside modal)
+  tableWrapper: 'council-table-wrapper',
+  table: 'council-table',
+  tableHeader: 'council-table__header',
+  tableHeaderCell: 'council-table__header-cell',
+  tableBody: 'council-table__body',
+  tableRow: 'council-table__row',
+  tableCell: 'council-table__cell',
+  tableCellRole: 'council-table__cell--role',
+  tableCellName: 'council-table__cell--name',
+  tableCellClass: 'council-table__cell--class',
+};
+
+function createElement(tag, className = '', innerHTML = '') {
+  const el = document.createElement(tag);
+  if (className) el.className = className;
+  if (innerHTML) el.innerHTML = innerHTML;
+  return el;
+}
+
+function createPersonEntry(member) {
+  const entry = createElement('article', SELECTORS_CSS.card);
+  entry.dataset.id = member.id;
+
+  const header = createElement('header', SELECTORS_CSS.cardHeader);
+  header.innerHTML = `
+    <div class="${SELECTORS_CSS.cardMain}">
+      <h3 class="${SELECTORS_CSS.cardName}">${escapeHtml(member.name)}</h3>
+      <p class="${SELECTORS_CSS.cardDesignation}">${escapeHtml(member.position)}</p>
+      ${member.classYear ? `<span class="${SELECTORS_CSS.cardClass}">${escapeHtml(member.classYear)}${member.section ? ' ' + escapeHtml(member.section) : ''}</span>` : ''}
+    </div>
+    <button type="button" class="${SELECTORS_CSS.cardToggle}" aria-label="Toggle details" aria-expanded="false">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    </button>
+  `;
+
+  const details = createElement('div', SELECTORS_CSS.cardDetails);
+
+  if (member.type === 'teacher') {
+    if (member.designation) {
+      details.appendChild(createDetailItem('Designation', member.designation));
+    }
+    if (member.subject) {
+      details.appendChild(createDetailItem('Subject', member.subject));
+    }
+  } else if (member.type === 'student') {
+    if (member.classYear) {
+      details.appendChild(createDetailItem('Class', `${member.classYear}${member.section ? ' ' + member.section : ''}`));
+    }
+    if (member.position) {
+      details.appendChild(createDetailItem('Position', member.position));
+    }
+  }
+
+  entry.appendChild(header);
+  entry.appendChild(details);
+
+  // Toggle details on click
+  const toggleBtn = header.querySelector(`.${SELECTORS_CSS.cardToggle}`);
+  header.addEventListener('click', (e) => {
+    if (e.target.closest(`.${SELECTORS_CSS.cardToggle}`)) return;
+    entry.classList.toggle('open');
+    const isOpen = entry.classList.contains('open');
+    toggleBtn.setAttribute('aria-expanded', isOpen);
+  });
+  toggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    entry.classList.toggle('open');
+    const isOpen = entry.classList.contains('open');
+    toggleBtn.setAttribute('aria-expanded', isOpen);
+  });
+
+  return entry;
+}
+
+function createRosterActionPanel() {
+  const panel = createElement('div', SELECTORS_CSS.rosterAction);
+  panel.innerHTML = `
+    <div class="${SELECTORS_CSS.rosterActionTitle}">House Council</div>
+    <p class="${SELECTORS_CSS.rosterActionDescription}">View the complete council.</p>
+    <button type="button" class="${SELECTORS_CSS.rosterActionTrigger}" aria-label="Open House Council roster">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+  `;
+  return panel;
+}
+
+function createRosterModal(memberList) {
+  const modal = createElement('div', SELECTORS_CSS.modal);
+  modal.setAttribute('role', 'dialog');
+  modal.setAttribute('aria-modal', 'true');
+  modal.setAttribute('aria-labelledby', 'council-modal-title');
+  modal.innerHTML = `
+    <div class="${SELECTORS_CSS.modalBackdrop}" tabindex="-1"></div>
+    <div class="${SELECTORS_CSS.modalCard}">
+      <header class="${SELECTORS_CSS.modalHeader}">
+        <h2 id="council-modal-title" class="${SELECTORS_CSS.modalTitle}">House Council</h2>
+        <p class="${SELECTORS_CSS.modalDescription}">View the complete council.</p>
+        <button type="button" class="${SELECTORS_CSS.modalClose}" aria-label="Close roster">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </header>
+      <div class="${SELECTORS_CSS.modalBody}"></div>
+    </div>
+  `;
+
+  const modalBody = modal.querySelector(`.${SELECTORS_CSS.modalBody}`);
+  const tableWrapper = createTable(memberList);
+  modalBody.appendChild(tableWrapper);
+
+  // Close handlers
+  const closeBtn = modal.querySelector(`.${SELECTORS_CSS.modalClose}`);
+  const backdrop = modal.querySelector(`.${SELECTORS_CSS.modalBackdrop}`);
+
+  const closeModal = () => {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    document.body.style.paddingRight = '';
+    setTimeout(() => modal.remove(), 250);
+  };
+
+  closeBtn.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', closeModal);
+
+  // ESC key
+  const handleKeydown = (e) => {
+    if (e.key === 'Escape') {
+      closeModal();
+      document.removeEventListener('keydown', handleKeydown);
+    }
+  };
+  document.addEventListener('keydown', handleKeydown);
+
+  return modal;
+}
+
+function createDetailItem(label, value) {
+  const item = createElement('div', SELECTORS_CSS.detailItem);
+  item.innerHTML = `
+    <span class="${SELECTORS_CSS.detailLabel}">${escapeHtml(label)}</span>
+    <span class="${SELECTORS_CSS.detailValue}">${escapeHtml(value)}</span>
+  `;
+  return item;
+}
+
+function createTable(memberList) {
+  const wrapper = createElement('div', SELECTORS_CSS.tableWrapper);
+  const table = createElement('table', SELECTORS_CSS.table);
+  table.setAttribute('role', 'table');
+  table.setAttribute('aria-label', 'House Council roster');
+
+  // Header
+  const thead = createElement('thead', SELECTORS_CSS.tableHeader);
+  thead.innerHTML = `
+    <tr>
+      <th class="${SELECTORS_CSS.tableHeaderCell} ${SELECTORS_CSS.tableCellRole}" scope="col">ROLE</th>
+      <th class="${SELECTORS_CSS.tableHeaderCell} ${SELECTORS_CSS.tableCellName}" scope="col">NAME</th>
+      <th class="${SELECTORS_CSS.tableHeaderCell} ${SELECTORS_CSS.tableCellClass}" scope="col">CLASS</th>
+    </tr>
+  `;
+
+  // Body
+  const tbody = createElement('tbody', SELECTORS_CSS.tableBody);
+  memberList.forEach(member => {
+    const row = createElement('tr', SELECTORS_CSS.tableRow);
+    row.innerHTML = `
+      <td class="${SELECTORS_CSS.tableCell} ${SELECTORS_CSS.tableCellRole}" data-label="Role">${escapeHtml(member.position)}</td>
+      <td class="${SELECTORS_CSS.tableCell} ${SELECTORS_CSS.tableCellName}" data-label="Name">${escapeHtml(member.name)}</td>
+      <td class="${SELECTORS_CSS.tableCell} ${SELECTORS_CSS.tableCellClass}" data-label="Class">${escapeHtml(member.classYear)}${member.section ? ' ' + escapeHtml(member.section) : ''}</td>
+    `;
+    tbody.appendChild(row);
+  });
+
+  table.appendChild(thead);
+  table.appendChild(tbody);
+  wrapper.appendChild(table);
+
+  return wrapper;
+}
+
+function createSection(sectionData) {
+  const section = createElement('section', SELECTORS_CSS.section);
+  section.dataset.key = sectionData.key;
+
+  const heading = createElement('div', SELECTORS_CSS.sectionHeading);
+  heading.innerHTML = `
+    <button type="button" class="${SELECTORS_CSS.sectionToggle}" aria-expanded="false" aria-controls="panel-${sectionData.key}">
+      <span class="${SELECTORS_CSS.sectionTitle}">${escapeHtml(sectionData.section)}</span>
+      <span class="section-toggle-icon" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </span>
+    </button>
+    ${sectionData.description ? `<p class="${SELECTORS_CSS.sectionDescription}">${escapeHtml(sectionData.description)}</p>` : ''}
+  `;
+
+  const panel = createElement('div', SELECTORS_CSS.sectionPanel);
+  panel.id = `panel-${sectionData.key}`;
+  panel.setAttribute('role', 'region');
+  panel.setAttribute('aria-labelledby', `heading-${sectionData.key}`);
+
+  const content = createElement('div', SELECTORS_CSS.cardGrid);
+
+  if (sectionData.key === 'house_council') {
+    // Render roster action panel instead of inline table
+    const rosterAction = createRosterActionPanel();
+    content.appendChild(rosterAction);
+
+    // Add click handler to open modal
+    const trigger = rosterAction.querySelector(`.${SELECTORS_CSS.rosterActionTrigger}`);
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const modal = createRosterModal(sectionData.cards);
+      document.body.appendChild(modal);
+      // Lock body scroll
+      document.body.style.overflow = 'hidden';
+      // Force reflow then open
+      requestAnimationFrame(() => {
+        modal.classList.add('open');
+      });
+    });
+  } else {
+    // Render as person entries (nested collapsibles)
+    sectionData.cards.forEach(cardData => {
+      const entry = createPersonEntry(cardData);
+      content.appendChild(entry);
+    });
+  }
+
+  panel.appendChild(content);
+
+  // Toggle panel on button click
+  const toggleBtn = heading.querySelector(`.${SELECTORS_CSS.sectionToggle}`);
+  toggleBtn.addEventListener('click', () => {
+    const isOpen = section.classList.toggle('open');
+    toggleBtn.setAttribute('aria-expanded', isOpen);
+  });
+
+  section.appendChild(heading);
+  section.appendChild(panel);
+
+  return section;
+}
+
+function escapeHtml(text) {
+  if (text == null) return '';
+  return String(text)
+    .replace(/&/g, '&')
+    .replace(/</g, '<')
+    .replace(/>/g, '>')
+    .replace(/"/g, '"')
+    .replace(/'/g, '&#039;');
+}
+
+async function initLeadership() {
+  const container = document.querySelector(SELECTORS.container);
+  const empty = document.querySelector(SELECTORS.empty);
+
+  if (!container) return;
+
+  try {
+    const data = await fetchJSON(LEADERSHIP_DATA_URL);
+
+    if (empty) empty.remove();
+
+    data.leadership.forEach(sectionData => {
+      const section = createSection(sectionData);
+      container.appendChild(section);
+    });
+  } catch (err) {
+    console.error('Failed to load leadership data:', err);
+    if (empty) {
+      empty.textContent = 'Failed to load leadership information. Please try again later.';
+    }
+  }
+}
+
+document.addEventListener('DOMContentLoaded', initLeadership);

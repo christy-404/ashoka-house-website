@@ -1,43 +1,69 @@
-/* Ashoka House — Leadership directory page */
+/* ==========================================
+   LEADERSHIP PAGE — Editorial Directory
+   ========================================== */
 
 .leadership-content {
-  display: grid;
-  gap: calc(var(--space-10) + var(--space-2));
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
+
+/* ==========================================
+   OUTER SECTIONS — Editorial Accordion Rows
+   ========================================== */
 
 .leadership-section {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-lg);
   overflow: hidden;
+  margin-bottom: var(--space-4);
   transition: border-color var(--duration-normal) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out);
 }
 
+.leadership-section:last-child {
+  margin-bottom: 0;
+}
+
+.leadership-section:hover {
+  border-color: var(--color-border-strong);
+}
+
 .leadership-section.open {
-  border-color: rgba(13, 92, 71, 0.15);
-  box-shadow: var(--shadow-card-hover);
+  border-color: var(--color-emerald);
+  box-shadow: 0 0 0 1px var(--color-emerald);
 }
 
 .leadership-section-heading {
-  padding: var(--space-6);
-  border-bottom: 1px solid var(--color-border);
   display: grid;
-  gap: var(--space-3);
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: start;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-6);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.leadership-section-heading:focus-visible {
+  outline: 2px solid var(--color-emerald);
+  outline-offset: -2px;
+  border-radius: var(--radius-sm);
 }
 
 .leadership-section-toggle {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
   gap: var(--space-4);
   padding: 0;
   background: transparent;
   border: none;
   color: var(--color-text);
   font-family: var(--font-body);
-  font-size: var(--text-xl);
-  font-weight: 700;
+  font-size: var(--text-lg);
+  font-weight: 600;
   text-align: left;
   cursor: pointer;
 }
@@ -47,71 +73,136 @@
   color: var(--color-emerald-mid);
 }
 
+.leadership-section__title {
+  min-width: 0;
+}
+
+.leadership-section__description {
+  grid-column: 1 / -1;
+  margin: var(--space-2) 0 0 0;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  line-height: var(--leading-snug);
+}
+
 .section-toggle-icon {
-  display: inline-flex;
+  grid-column: 3;
+  grid-row: 1 / span 2;
+  align-self: start;
+}
+
+.section-toggle-icon {
+  display: flex;
   align-items: center;
   justify-content: center;
-  width: 1.9rem;
-  height: 1.9rem;
-  border-radius: 50%;
-  background: var(--color-surface-2);
-  color: var(--color-text-secondary);
-  transition: transform var(--duration-normal) var(--ease-out);
+  width: 2rem;
+  height: 2rem;
   flex-shrink: 0;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
   user-select: none;
-}
-
-.leadership-section.open .section-toggle-icon {
-  transform: rotate(45deg);
-}
-
-.leadership-section-summary {
-  margin: 0;
+  position: relative;
   color: var(--color-text-secondary);
-  font-size: var(--text-sm);
-  line-height: var(--leading-normal);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+/* Hide the SVG inside the icon container */
+.section-toggle-icon svg {
+  display: none;
+}
+
+/* Two lines only — small down chevron (⌄) to small X (×) morph */
+.section-toggle-icon::before,
+.section-toggle-icon::after {
+  content: "";
+  position: absolute;
+  width: 1rem;
+  height: 2px;
+  background: currentColor;
+  border-radius: 1px;
+  transition: transform 200ms var(--ease-out);
+  transform-origin: center;
+}
+
+/* Closed state: small down chevron ⌄ (two lines meeting at bottom center) */
+/* Line length 1rem, half = 0.5rem, vertical offset for 45° = 0.5rem * sin(45°) ≈ 0.35rem */
+.section-toggle-icon::before {
+  transform: translate(-0.35rem, 0.35rem) rotate(-45deg);
+}
+.section-toggle-icon::after {
+  transform: translate(0.35rem, 0.35rem) rotate(45deg);
+}
+
+/* Hover state */
+.section-toggle-icon:hover {
+  color: var(--color-text);
+}
+
+/* Open state: small X × (same two lines crossing at center) */
+.leadership-section.open .section-toggle-icon {
+  color: var(--color-emerald);
+}
+
+.leadership-section.open .section-toggle-icon::before {
+  transform: translate(0, 0) rotate(-45deg);
+}
+.leadership-section.open .section-toggle-icon::after {
+  transform: translate(0, 0) rotate(45deg);
 }
 
 .leadership-section-panel {
   max-height: 0;
   opacity: 0;
   overflow: hidden;
-  transition: max-height 320ms var(--ease-out), opacity 280ms var(--ease-out);
+  transition: max-height 300ms var(--ease-out), opacity 280ms var(--ease-out), padding 280ms var(--ease-out);
 }
 
 .leadership-section.open .leadership-section-panel {
-  max-height: 3000px;
+  max-height: 2000px;
   opacity: 1;
+  padding: 0 var(--space-6) var(--space-6);
 }
 
+/* ==========================================
+   PERSON ENTRY GRID (nested inside sections)
+   ========================================== */
+
 .leadership-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
-  gap: var(--space-6);
-  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: 0;
+  align-items: stretch;
 }
+
+/* ==========================================
+   PERSON ENTRIES — Nested Collapsibles
+   ========================================== */
 
 .leadership-card {
   background: var(--color-surface-2);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   overflow: hidden;
-  transition: box-shadow var(--duration-normal) var(--ease-out), border-color var(--duration-normal) var(--ease-out), transform var(--duration-normal) var(--ease-out);
+  transition: border-color var(--duration-normal) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out);
 }
 
 .leadership-card:hover {
   border-color: var(--color-border-strong);
   box-shadow: var(--shadow-card-hover);
-  transform: translateY(-1px);
 }
 
 .leadership-card__header {
   width: 100%;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  gap: var(--space-4);
-  padding: var(--space-5);
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
   background: transparent;
   border: none;
   text-align: left;
@@ -122,14 +213,14 @@
   flex: 1;
   min-width: 0;
   display: grid;
-  gap: var(--space-2);
+  gap: 2px;
 }
 
 .leadership-card__name {
   margin: 0;
   font-family: var(--font-body);
   font-size: var(--text-base);
-  font-weight: 600;
+  font-weight: 500;
   color: var(--color-text);
   line-height: var(--leading-tight);
   word-break: break-word;
@@ -139,7 +230,7 @@
   margin: 0;
   font-family: var(--font-body);
   font-size: var(--text-sm);
-  font-weight: 500;
+  font-weight: 400;
   color: var(--color-text-secondary);
   line-height: var(--leading-snug);
 }
@@ -154,35 +245,84 @@
 }
 
 .leadership-card__toggle {
-  color: var(--color-text-secondary);
-  font-size: 1.2rem;
-  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
   flex-shrink: 0;
-  margin-top: 2px;
-  transition: transform var(--duration-normal) var(--ease-out);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  color: var(--color-text-secondary);
+  transition: color var(--duration-fast) var(--ease-out);
 }
 
+/* Hide the SVG inside the icon container */
+.leadership-card__toggle svg {
+  display: none;
+}
+
+/* Two lines only — small down chevron (⌄) to small X (×) morph */
+.leadership-card__toggle::before,
+.leadership-card__toggle::after {
+  content: "";
+  position: absolute;
+  width: 0.875rem;
+  height: 2px;
+  background: currentColor;
+  border-radius: 1px;
+  transition: transform 200ms var(--ease-out);
+  transform-origin: center;
+}
+
+/* Closed state: small down chevron ⌄ (two lines meeting at bottom center) */
+/* Line length 0.875rem, half = 0.4375rem, vertical offset for 45° ≈ 0.31rem */
+.leadership-card__toggle::before {
+  transform: translate(-0.31rem, 0.31rem) rotate(-45deg);
+}
+.leadership-card__toggle::after {
+  transform: translate(0.31rem, 0.31rem) rotate(45deg);
+}
+
+/* Hover state */
+.leadership-card__toggle:hover {
+  color: var(--color-text);
+}
+
+/* Open state: small X × (same two lines crossing at center) */
 .leadership-card.open .leadership-card__toggle {
-  transform: rotate(45deg);
+  color: var(--color-emerald);
+}
+
+.leadership-card.open .leadership-card__toggle::before {
+  transform: translate(0, 0) rotate(-45deg);
+}
+.leadership-card.open .leadership-card__toggle::after {
+  transform: translate(0, 0) rotate(45deg);
 }
 
 .leadership-card__details {
   max-height: 0;
   opacity: 0;
   overflow: hidden;
+  border-top: 1px solid var(--color-border);
   transition: max-height 280ms var(--ease-out), opacity 260ms var(--ease-out), padding 260ms var(--ease-out);
 }
 
 .leadership-card.open .leadership-card__details {
   max-height: 300px;
   opacity: 1;
-  padding: 0 var(--space-5) var(--space-5);
+  padding: var(--space-3) var(--space-4) var(--space-4);
 }
 
 .leadership-card__detail-item {
   display: flex;
   flex-direction: column;
-  gap: var(--space-1);
+  gap: 2px;
   margin-bottom: var(--space-3);
 }
 
@@ -192,7 +332,7 @@
 
 .leadership-card__label {
   font-family: var(--font-body);
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
@@ -206,50 +346,543 @@
   line-height: var(--leading-snug);
 }
 
+/* ==========================================
+   ROSTER ACTION PANEL (House Council)
+   ========================================== */
+
+.council-roster-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-6);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--duration-normal) var(--ease-out), background-color var(--duration-normal) var(--ease-out);
+}
+
+.council-roster-action:hover {
+  border-color: var(--color-emerald);
+  background: var(--color-surface);
+}
+
+.council-roster-action__title {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: var(--leading-tight);
+}
+
+.council-roster-action__description {
+  margin: 2px 0 0 0;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  line-height: var(--leading-snug);
+}
+
+.council-roster-action__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.council-roster-action__trigger:hover {
+  color: var(--color-emerald);
+  border-color: var(--color-emerald);
+  background: rgba(13, 92, 71, 0.08);
+}
+
+/* ==========================================
+   ROSTER MODAL
+   ========================================== */
+
+.council-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 250ms var(--ease-out), visibility 250ms var(--ease-out);
+}
+
+.council-modal.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.council-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+}
+
+.council-modal__card {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  max-height: 85dvh;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform: scale(0.95) translateY(10px);
+  transition: transform 250ms var(--ease-out);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.council-modal.open .council-modal__card {
+  transform: scale(1) translateY(0);
+}
+
+.council-modal__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface-2);
+  flex-shrink: 0;
+}
+
+.council-modal__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: var(--leading-tight);
+}
+
+.council-modal__description {
+  margin: var(--space-1) 0 0 0;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  line-height: var(--leading-snug);
+}
+
+.council-modal__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.council-modal__close:hover {
+  color: var(--color-text);
+  border-color: var(--color-border-strong);
+  background: var(--color-surface-3);
+}
+
+.council-modal__body {
+  flex: 1;
+  overflow: auto;
+  padding: 0;
+}
+
+/* Table inside modal uses existing council-table styles */
+.council-modal__body .council-table-wrapper {
+  border-radius: 0;
+  border: none;
+  max-height: none;
+  background: transparent;
+}
+
+.council-modal__body .council-table {
+  min-width: 560px;
+}
+
+/* ==========================================
+   RESPONSIVE — Editorial Directory
+   ========================================== */
+
 @media (max-width: 1024px) {
-  .leadership-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .leadership-section-heading {
+    padding: var(--space-4) var(--space-5);
+  }
+
+  .leadership-section.open .leadership-section-panel {
+    padding: 0 var(--space-5) var(--space-5);
   }
 }
 
 @media (max-width: 768px) {
-  .leadership-grid {
-    grid-template-columns: 1fr;
-    padding: var(--space-5);
-    gap: var(--space-5);
+  .leadership-section-heading {
+    padding: var(--space-4) var(--space-4);
   }
 
-  .leadership-section-heading {
-    padding: var(--space-5);
+  .leadership-section__title {
+    font-size: var(--text-base);
+  }
+
+  .leadership-section__description {
+    font-size: var(--text-sm);
+  }
+
+  .leadership-section.open .leadership-section-panel {
+    padding: 0 var(--space-4) var(--space-4);
   }
 
   .leadership-card__header {
-    padding: var(--space-4);
+    padding: var(--space-3) var(--space-4);
   }
 
-  .leadership-card.open .leadership-card__details {
-    padding: 0 var(--space-4) var(--space-4);
+  .leadership-card__name {
+    font-size: var(--text-base);
+  }
+
+  .leadership-card__designation {
+    font-size: var(--text-sm);
+  }
+
+  .council-roster-action {
+    padding: var(--space-4) var(--space-4);
+  }
+
+  .council-roster-action__title {
+    font-size: var(--text-sm);
+  }
+
+  .council-roster-action__description {
+    font-size: 0.8125rem;
   }
 }
 
-@media (max-width: 540px) {
-  .leadership-grid {
-    grid-template-columns: 1fr;
-    padding: var(--space-4);
-    gap: var(--space-4);
+@media (max-width: 480px) {
+  .leadership-section-heading {
+    padding: var(--space-3) var(--space-3);
+  }
+
+  .leadership-section__title {
+    font-size: var(--text-base);
+  }
+
+  .leadership-section__description {
+    font-size: var(--text-sm);
+  }
+
+  .leadership-section.open .leadership-section-panel {
+    padding: 0 var(--space-3) var(--space-3);
   }
 
   .leadership-card__header {
-    padding: var(--space-4);
+    padding: var(--space-2) var(--space-3);
   }
 
   .leadership-card__name {
     font-size: var(--text-sm);
   }
 
-  .leadership-card__designation,
-  .leadership-card__class {
+  .leadership-card__designation {
     font-size: 0.8125rem;
+  }
+
+  .leadership-card__toggle {
+    width: 1.75rem;
+    height: 1.75rem;
+    font-size: 1rem;
+  }
+
+  .leadership-card.open .leadership-card__details {
+    padding: var(--space-2) var(--space-3) var(--space-3);
+  }
+
+  .leadership-card__label {
+    font-size: 0.6rem;
+  }
+
+  .leadership-card__value {
+    font-size: 0.8125rem;
+  }
+
+  .council-roster-action {
+    padding: var(--space-3) var(--space-3);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .council-roster-action__trigger {
+    align-self: flex-end;
+  }
+
+  /* Modal responsive */
+  .council-modal {
+    padding: var(--space-2);
+    align-items: flex-end;
+  }
+
+  .council-modal__card {
+    max-height: 90dvh;
+    max-width: 100%;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    transform: translateY(100%);
+  }
+
+  .council-modal.open .council-modal__card {
+    transform: translateY(0);
+  }
+
+  .council-modal__header {
+    padding: var(--space-4) var(--space-4);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  .council-modal__title {
+    font-size: var(--text-lg);
+  }
+
+  .council-modal__body .council-table {
+    min-width: 100%;
+  }
+
+  .council-modal__body .council-table-wrapper {
+    overflow-x: auto;
+  }
+}
+
+/* ==========================================
+   COUNCIL TABLE — House Council roster (used in modal)
+   ========================================== */
+
+.council-table-wrapper {
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 22.5rem; /* ~5 rows + header at ~3.5rem each */
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.council-table {
+  width: 100%;
+  min-width: 560px; /* ensures horizontal scroll on narrow screens */
+  border-collapse: collapse;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text);
+}
+
+.council-table__header {
+  background: linear-gradient(180deg, rgba(13, 92, 71, 0.18), rgba(13, 92, 71, 0.08));
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.council-table__header-cell {
+  padding: var(--space-4) var(--space-5);
+  text-align: left;
+  font-weight: 700;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-emerald-mid);
+  white-space: nowrap;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.council-table__body tr {
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+.council-table__body tr:last-child {
+  border-bottom: none;
+}
+
+.council-table__body tr:hover {
+  background: rgba(13, 92, 71, 0.04);
+}
+
+.council-table__cell {
+  padding: var(--space-4) var(--space-5);
+  vertical-align: middle;
+  line-height: var(--leading-snug);
+}
+
+/* Column sizing */
+.council-table__cell--role {
+  width: 45%;
+  min-width: 220px;
+  font-weight: 600;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.council-table__cell--name {
+  width: 40%;
+  min-width: 180px;
+  font-weight: 500;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.council-table__cell--class {
+  width: 15%;
+  min-width: 70px;
+  text-align: center;
+  font-weight: 600;
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+/* Mobile: allow horizontal scroll inside wrapper only */
+@media (max-width: 768px) {
+  .council-table-wrapper {
+    max-height: 20rem; /* ~5 rows on mobile */
+    border-radius: var(--radius-md);
+  }
+
+  .council-table {
+    min-width: 520px;
+  }
+
+  .council-table__header-cell {
+    padding: var(--space-3) var(--space-4);
+    font-size: 0.65rem;
+  }
+
+  .council-table__cell {
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .council-table__cell--role {
+    min-width: 200px;
+  }
+
+  .council-table__cell--name {
+    min-width: 160px;
+  }
+
+  .council-table__cell--class {
+    min-width: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .council-table-wrapper {
+    max-height: 18rem;
+    border-radius: var(--radius-md);
+  }
+
+  .council-table {
+    min-width: 480px;
+  }
+
+  .council-table__header-cell {
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .council-table__cell {
+    padding: var(--space-2) var(--space-3);
+    font-size: 0.8125rem;
+  }
+
+  .council-table__cell--role {
+    min-width: 180px;
+  }
+
+  .council-table__cell--name {
+    min-width: 140px;
+  }
+
+  .council-table__cell--class {
+    min-width: 55px;
+  }
+}
+
+/* Mobile stacked table layout for modal */
+@media (max-width: 480px) {
+  .council-modal__body .council-table thead {
+    display: none;
+  }
+
+  .council-modal__body .council-table tbody {
+    display: block;
+  }
+
+  .council-modal__body .council-table tr {
+    display: block;
+    padding: var(--space-4) var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-surface-2);
+    margin-bottom: var(--space-3);
+    border-radius: var(--radius-md);
+  }
+
+  .council-modal__body .council-table tr:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  .council-modal__body .council-table td {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 0;
+    border: none;
+    white-space: normal;
+  }
+
+  .council-modal__body .council-table td::before {
+    content: attr(data-label);
+    font-family: var(--font-body);
+    font-size: 0.6rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    color: var(--color-text-secondary);
+  }
+
+  .council-modal__body .council-table .council-table__cell--role {
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .council-modal__body .council-table .council-table__cell--name {
+    font-weight: 500;
+    color: var(--color-text);
+  }
+
+  .council-modal__body .council-table .council-table__cell--class {
+    text-align: left;
+    font-weight: 600;
+    color: var(--color-text-secondary);
   }
 }
 
