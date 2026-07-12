@@ -3,7 +3,7 @@
     {
       "key": "school_administration",
       "section": "School Administration",
-      "description": "Senior school leadership responsible for academic and operational direction.",
+      "description": "Key members of the school administration.",
       "cards": [
         {
           "id": 101,
@@ -15,38 +15,38 @@
           "type": "teacher"
         },
         {
-          "id": 102,
-          "title": "Vice Principal",
-          "name": "Mrs. Bindu R",
-          "designation": "Vice Principal",
-          "subject": "Physics",
-          "position": "Vice Principal",
-          "type": "teacher"
-        },
-        {
-          "id": 103,
-          "title": "Senior Teacher",
-          "name": "To Be Decided",
-          "designation": "Teacher",
-          "subject": "To Be Decided",
-          "position": "Senior Teacher",
-          "type": "teacher"
-        },
-        {
-          "id": 104,
-          "title": "Cultural In-Charge",
-          "name": "To Be Decided",
-          "designation": "Teacher",
-          "subject": "To Be Decided",
-          "position": "Cultural In-Charge",
-          "type": "teacher"
-        }
-      ]
-    },
+        "id": 102,
+        "title": "Vice Principal",
+        "name": "Mrs Bindu R",
+        "designation": "Vice Principal",
+        "subject": "Physics",
+        "position": "Vice Principal",
+        "type": "teacher"
+      },
+      {
+        "id": 103,
+        "title": "Senior Teacher",
+        "name": "Mrs Bindu Nelsen",
+        "designation": "Senior Most Teacher",
+        "subject": "Physics",
+        "position": "Senior Most Teacher",
+        "type": "teacher"
+      },
+      {
+        "id": 104,
+        "title": "Cultural In-Charge",
+        "name": "Mrs Smitha Gopal",
+        "designation": "CCA In Charge",
+        "subject": "English",
+        "position": "CCA In Charge",
+        "type": "teacher"
+      }
+    ]
+  },
     {
       "key": "house_faculty",
       "section": "House Faculty",
-      "description": "The house faculty team supporting mentorship, wellbeing and house culture.",
+      "description": "The teachers who guide and support Ashoka House.",
       "cards": [
         {
           "id": 201,
@@ -71,7 +71,7 @@
     {
       "key": "house_council",
       "section": "House Council",
-      "description": "Student representatives leading Ashoka House through council duties.",
+      "description": "Student leaders of Ashoka House.",
       "cards": [
         {
           "id": 301,
@@ -151,93 +151,6 @@
           "classYear": "XI",
           "section": "C",
           "position": "Publication In-Charge (Girl)",
-          "type": "student"
-        }
-      ]
-    },
-    {
-      "key": "school_council",
-      "section": "School Council",
-      "description": "Student leadership roles representing the wider school community.",
-      "cards": [
-        {
-          "id": 401,
-          "name": "To Be Decided",
-          "classYear": "XII",
-          "section": "C",
-          "position": "School Captain (Boy)",
-          "type": "student"
-        },
-        {
-          "id": 402,
-          "name": "To Be Decided",
-          "classYear": "XII",
-          "section": "C",
-          "position": "School Captain (Girl)",
-          "type": "student"
-        },
-        {
-          "id": 403,
-          "name": "To Be Decided",
-          "classYear": "XI",
-          "section": "C",
-          "position": "School Vice Captain (Boy)",
-          "type": "student"
-        },
-        {
-          "id": 404,
-          "name": "To Be Decided",
-          "classYear": "XI",
-          "section": "C",
-          "position": "School Vice Captain (Girl)",
-          "type": "student"
-        },
-        {
-          "id": 405,
-          "name": "To Be Decided",
-          "classYear": "XII",
-          "section": "C",
-          "position": "School Sports Captain (Boy)",
-          "type": "student"
-        },
-        {
-          "id": 406,
-          "name": "To Be Decided",
-          "classYear": "XII",
-          "section": "C",
-          "position": "School Sports Captain (Girl)",
-          "type": "student"
-        },
-        {
-          "id": 407,
-          "name": "To Be Decided",
-          "classYear": "XI",
-          "section": "C",
-          "position": "School Prefect 1",
-          "type": "student"
-        },
-        {
-          "id": 408,
-          "name": "To Be Decided",
-          "classYear": "XI",
-          "section": "C",
-          "position": "School Prefect 2",
-          "type": "student"
-        },
-        {
-          "id": 409,
-          "name": "To Be Decided",
-          "classYear": "XI",
-          "section": "C",
-          "position": "School Prefect 3",
-          "type": "student"
-        },
-        {
-          "id": 410,
-          "name": "To Be Decided",
-          "classYear": "XI",
-          "section": "C",
-          "position": "School Prefect 4",
           "type": "student"
         }
       ]
