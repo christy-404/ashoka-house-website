@@ -134,7 +134,6 @@ function createRosterActionPanel() {
   const panel = createElement('div', SELECTORS_CSS.rosterAction);
   panel.innerHTML = `
     <div class="${SELECTORS_CSS.rosterActionTitle}">House Council</div>
-    <p class="${SELECTORS_CSS.rosterActionDescription}">View the complete council.</p>
     <button type="button" class="${SELECTORS_CSS.rosterActionTrigger}" aria-label="Open House Council roster">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
     </button>
@@ -152,18 +151,34 @@ function createRosterModal(memberList) {
     <div class="${SELECTORS_CSS.modalCard}">
       <header class="${SELECTORS_CSS.modalHeader}">
         <h2 id="council-modal-title" class="${SELECTORS_CSS.modalTitle}">House Council</h2>
-        <p class="${SELECTORS_CSS.modalDescription}">View the complete council.</p>
         <button type="button" class="${SELECTORS_CSS.modalClose}" aria-label="Close roster">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
       </header>
-      <div class="${SELECTORS_CSS.modalBody}"></div>
+      <div class="council-modal__table-header" role="rowheader">
+        <div class="council-columns">
+          <div class="council-column council-column--role" role="columnheader">ROLE</div>
+          <div class="council-column council-column--name" role="columnheader">NAME</div>
+          <div class="council-column council-column--class" role="columnheader">CLASS</div>
+        </div>
+      </div>
+      <div class="${SELECTORS_CSS.modalBody}">
+        <div class="council-rows" role="listbox"></div>
+      </div>
     </div>
   `;
 
-  const modalBody = modal.querySelector(`.${SELECTORS_CSS.modalBody}`);
-  const tableWrapper = createTable(memberList);
-  modalBody.appendChild(tableWrapper);
+  const rowsContainer = modal.querySelector('.council-rows');
+  memberList.forEach(member => {
+    const row = createElement('div', 'council-row');
+    row.setAttribute('role', 'option');
+    row.innerHTML = `
+      <div class="council-cell council-cell--role">${escapeHtml(member.position)}</div>
+      <div class="council-cell council-cell--name">${escapeHtml(member.name)}</div>
+      <div class="council-cell council-cell--class">${escapeHtml(member.classYear)}${member.section ? ' ' + escapeHtml(member.section) : ''}</div>
+    `;
+    rowsContainer.appendChild(row);
+  });
 
   // Close handlers
   const closeBtn = modal.querySelector(`.${SELECTORS_CSS.modalClose}`);

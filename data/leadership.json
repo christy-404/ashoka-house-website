@@ -8,9 +8,9 @@
         {
           "id": 101,
           "title": "Principal",
-          "name": "To Be Decided",
+          "name": "Mrs Sreeja Vivek",
           "designation": "Principal",
-          "subject": "To Be Decided",
+          "subject": "Physics",
           "position": "Principal",
           "type": "teacher"
         },
@@ -51,18 +51,18 @@
         {
           "id": 201,
           "title": "House Master",
-          "name": "To Be Decided",
+          "name": " Mrs Krishnaveni",
           "designation": "Teacher",
-          "subject": "To Be Decided",
+          "subject": "Sanskrit",
           "position": "House Master",
           "type": "teacher"
         },
         {
           "id": 202,
           "title": "Associate House Masters",
-          "name": "To Be Decided",
+          "name": " Mrs Jismy A K",
           "designation": "Teacher",
-          "subject": "To Be Decided",
+          "subject": "English",
           "position": "Associate House Master",
           "type": "teacher"
         }
@@ -123,7 +123,7 @@
         },
         {
           "id": 307,
-          "name": "To be updated",
+          "name": "Shubham Sayala",
           "classYear": "XII",
           "section": "C",
           "position": "CCA Captain — Boy",
