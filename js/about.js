@@ -9,7 +9,7 @@
   const form = document.getElementById('feedback-form');
   if (!form) return;
 
-  const FEEDBACK_EMAIL = 'ashokahousekv1kochi@gmail.com';
+  const FEEDBACK_EMAIL = 'ashokahousekvno1kochi@gmail.com';
 
   form.addEventListener('submit', function (event) {
     event.preventDefault();
