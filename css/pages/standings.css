@@ -142,6 +142,11 @@
   font-size: var(--text-small);
 }
 
+/* Mobile header row - hidden on desktop, shown on mobile via media query */
+.standings-table .standings-mobile-header {
+  display: none;
+}
+
 .standings-table thead {
   background: var(--color-surface-2);
   border-bottom: 1px solid var(--color-border);
